@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="row ">
-            <div class="col-12 col-md-5 mx-auto  bg-col">
+            <div class="col-12 col-md-5 mx-auto bg-col">
                 <form action="<?= site_url('admin/login') ?>" method="POST">
                     <div class="form-group">
                         <label for="email">Username</label>
