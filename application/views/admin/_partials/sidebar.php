@@ -17,10 +17,15 @@
             <a class="dropdown-item" href="<?php echo site_url('admin/products') ?>">List Product</a>
         </div>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
+    <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'user' ? 'active': '' ?>">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
             <i class="fas fa-fw fa-users"></i>
             <span>Users</span></a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="<?php echo site_url('admin/user/add') ?>">New User</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/user') ?>">List User</a>
+        </div>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">
