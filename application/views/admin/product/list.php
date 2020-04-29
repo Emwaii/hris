@@ -29,9 +29,9 @@
 							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
+										<th>Photo</th>
 										<th>Name</th>
 										<th>Price</th>
-										<th>Photo</th>
 										<th>Description</th>
 										<th>Action</th>
 									</tr>
@@ -39,15 +39,16 @@
 								<tbody>
 									<?php foreach ($products as $product): ?>
 									<tr>
+										<td>
+											<img src="<?php echo base_url('upload/product/'.$product->image) ?>" width="64" />
+										</td>
 										<td width="150">
 											<?php echo $product->name ?>
 										</td>
 										<td>
 											<?php echo $product->price ?>
 										</td>
-										<td>
-											<img src="<?php echo base_url('upload/product/'.$product->image) ?>" width="64" />
-										</td>
+										
 										<td class="small">
 											<?php echo substr($product->description, 0, 120) ?>...</td>
 										<td width="250">
