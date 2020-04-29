@@ -9,6 +9,8 @@ class Product_model extends CI_Model
     public $price;
     public $image = "default.jpg";
     public $description;
+    public $date_start;
+    public $date_end;
 
     public function rules()
     {
@@ -23,7 +25,15 @@ class Product_model extends CI_Model
             
             ['field' => 'description',
             'label' => 'Description',
-            'rules' => 'required']
+            'rules' => 'required'],
+
+            ['field' => 'date_start',
+            'label' => 'date_start',
+            'rules' => 'required'],
+
+            ['field' => 'date_end',
+            'label' => 'date_end',
+            'rules' => 'required'],
         ];
     }
 
@@ -42,7 +52,9 @@ class Product_model extends CI_Model
         $post = $this->input->post();
         $this->product_id = uniqid();
         $this->name = $post["name"];
-		$this->price = $post["price"];
+        $this->price = $post["price"];
+        $this->date_start= $post["date_start"];
+        $this->date_end = $post["date_end"];
 		$this->image = $this->_uploadImage();
         $this->description = $post["description"];
         $this->db->insert($this->_table, $this);
@@ -53,7 +65,9 @@ class Product_model extends CI_Model
         $post = $this->input->post();
         $this->product_id = $post["id"];
         $this->name = $post["name"];
-		$this->price = $post["price"];
+        $this->price = $post["price"];
+        $this->date_start = $post["date_start"];
+        $this->date_end = $post["date_end"];
 		
 		
 		if (!empty($_FILES["image"]["name"])) {
@@ -74,7 +88,7 @@ class Product_model extends CI_Model
 	
 	private function _uploadImage()
 	{
-		$config['upload_path']          = './upload/product/';
+		$config['upload_path']          = './upload/images/';
 		$config['allowed_types']        = 'gif|jpg|png';
 		$config['file_name']            = $this->product_id;
 		$config['overwrite']			= true;
@@ -96,7 +110,7 @@ class Product_model extends CI_Model
 		$product = $this->getById($id);
 		if ($product->image != "default.jpg") {
 			$filename = explode(".", $product->image)[0];
-			return array_map('unlink', glob(FCPATH."upload/product/$filename.*"));
+			return array_map('unlink', glob(FCPATH."upload/images/$filename.*"));
 		}
 	}
 

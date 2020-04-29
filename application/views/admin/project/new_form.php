@@ -26,11 +26,11 @@
 
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/products/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
+						<a href="<?php echo site_url('admin/project/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
 					</div>
 					<div class="card-body">
 
-						<form action="<?php base_url('admin/product/add') ?>" method="post" enctype="multipart/form-data" >
+						<form action="<?php base_url('admin/project/add') ?>" method="post" enctype="multipart/form-data" >
 							<div class="form-group">
 								<label for="name">Name*</label>
 								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
@@ -48,9 +48,29 @@
 									<?php echo form_error('price') ?>
 								</div>
 							</div>
+							<form>
+							<div class="row">
+								<div class="col">
+								<label for="name">Date Start*</label>
+								<input class="form-control <?php echo form_error('date_start') ? 'is-invalid':'' ?>"
+								 type="date" name="date_start" />
+								 <div class="invalid-feedback">
+									<?php echo form_error('date_start') ?>
+								</div>
+								 </div>
+								 <div class="col">
+								<label for="name">Date End*</label>
+								<input class="form-control <?php echo form_error('date_end') ? 'is-invalid':'' ?>"
+								 type="date" name="date_end"/>
+								 <div class="invalid-feedback">
+									<?php echo form_error('date_end') ?>
+								</div>
+								 </div>
+								
+							</div>
+							</form>
 
-
-							<div class="form-group">
+							<div class="form-group mt-3">
 								<label for="name">Photo</label>
 								<input class="form-control-file <?php echo form_error('price') ? 'is-invalid':'' ?>"
 								 type="file" name="image" />
