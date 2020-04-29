@@ -7,11 +7,11 @@ class Product_model extends CI_Model
     public $product_id;
     public $name;
     public $price;
+    public $mulai;
+    public $selesai;
     public $image = "default.jpg";
     public $description;
-    public $date_start;
-    public $date_end;
-
+    
     public function rules()
     {
         return [
@@ -25,15 +25,15 @@ class Product_model extends CI_Model
             
             ['field' => 'description',
             'label' => 'Description',
-            'rules' => 'required'],
-
-            ['field' => 'date_start',
-            'label' => 'Date_start',
-            'rules' => 'required'],
-
-            ['field' => 'date_end',
-            'label' => 'Date_end',
             'rules' => 'required']
+            
+            // ['field' => 'mulai',
+            // 'label' => 'muali',
+            // 'rules' => 'required'],
+
+            // ['field' => 'selesai',
+            // 'label' => 'selesai',
+            // 'rules' => 'required']
         ];
     }
 
@@ -53,9 +53,9 @@ class Product_model extends CI_Model
         $this->product_id = uniqid();
         $this->name = $post["name"];
         $this->price = $post["price"];
-        $this->date_start= $post["date_start"];
-        $this->date_end = $post["date_end"];
-		$this->image = $this->_uploadImage();
+        $this->mulai= $post["mulai"];
+        $this->selesai = $post["selesai"];
+        $this->image = $this->_uploadImage();
         $this->description = $post["description"];
         $this->db->insert($this->_table, $this);
     }
@@ -66,9 +66,8 @@ class Product_model extends CI_Model
         $this->product_id = $post["id"];
         $this->name = $post["name"];
         $this->price = $post["price"];
-        $this->date_start = $post["date_start"];
-        $this->date_end = $post["date_end"];
-		
+        $this->mulai = $post["mulai"];
+        $this->selesai = $post["selesai"];
 		
 		if (!empty($_FILES["image"]["name"])) {
             $this->image = $this->_uploadImage();
@@ -77,6 +76,7 @@ class Product_model extends CI_Model
 		}
 
         $this->description = $post["description"];
+        
         $this->db->update($this->_table, $this, array('product_id' => $post['id']));
     }
 
