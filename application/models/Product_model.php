@@ -28,12 +28,12 @@ class Product_model extends CI_Model
             'rules' => 'required'],
 
             ['field' => 'date_start',
-            'label' => 'date_start',
+            'label' => 'Date_start',
             'rules' => 'required'],
 
             ['field' => 'date_end',
-            'label' => 'date_end',
-            'rules' => 'required'],
+            'label' => 'Date_end',
+            'rules' => 'required']
         ];
     }
 
