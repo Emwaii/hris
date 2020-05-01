@@ -25,15 +25,15 @@ class Product_model extends CI_Model
             
             ['field' => 'description',
             'label' => 'Description',
-            'rules' => 'required']
+            'rules' => 'required'],
             
-            // ['field' => 'mulai',
-            // 'label' => 'muali',
-            // 'rules' => 'required'],
+            ['field' => 'mulai',
+            'label' => 'Date Started',
+            'rules' => 'required'],
 
-            // ['field' => 'selesai',
-            // 'label' => 'selesai',
-            // 'rules' => 'required']
+            ['field' => 'selesai',
+            'label' => 'Date Ended',
+            'rules' => 'required']
         ];
     }
 

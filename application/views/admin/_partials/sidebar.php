@@ -10,23 +10,34 @@
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <i class="fas fa-fw fa-boxes"></i>
-            <span>Project</span>
+            <span>Projects</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/project/add') ?>">New Project</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/project/add') ?>">Tambah Project</a>
             <a class="dropdown-item" href="<?php echo site_url('admin/project') ?>">List Project</a>
         </div>
     </li>
-    <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'user' ? 'active': '' ?>">
+    <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'karyawan' ? 'active': '' ?>">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <i class="fas fa-fw fa-users"></i>
-            <span>Users</span></a>
-            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/user/add') ?>">New User</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/user') ?>">List User</a>
+            <span>Karyawan</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="<?php echo site_url('admin/karyawan/add') ?>">Tambah Karyawan</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/karyawan') ?>">List Karyawan</a>
         </div>
     </li>
+    <!-- <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'user' ? 'active': '' ?>">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Users</span></a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="<?php echo site_url('admin/user/add') ?>">Tambah User</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/user') ?>">List User</a>
+        </div>
+    </li> -->
     <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-fw fa-cog"></i>

@@ -48,27 +48,24 @@
 									<?php echo form_error('price') ?>
 								</div>
 							</div>
-							<form>
 							<div class="row">
 								<div class="col">
 								<label for="name">Date Start*</label>
 								<input class="form-control <?php echo form_error('mulai') ? 'is-invalid':'' ?>"
 								 type="date" name="mulai" />
-								 <!-- <div class="invalid-feedback">
+								 <div class="invalid-feedback">
 									<?php echo form_error('mulai') ?>
-								</div> -->
+								</div>
 								 </div>
 								 <div class="col">
 								<label for="name">Date End*</label>
-								<input class="form-control <?php echo form_error('selsai') ? 'is-invalid':'' ?>"
+								<input class="form-control <?php echo form_error('selesai') ? 'is-invalid':'' ?>"
 								 type="date" name="selesai"/>
-								 <!-- <div class="invalid-feedback">
-									<?php echo form_error('mulai') ?>
-								</div> -->
+								 <div class="invalid-feedback">
+									<?php echo form_error('selesai') ?>
+								</div>
 								 </div>
-								
 							</div>
-							</form>
 
 							<div class="form-group mt-3">
 								<label for="name">Photo</label>
