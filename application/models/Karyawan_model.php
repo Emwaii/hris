@@ -5,38 +5,43 @@ class Karyawan_model extends CI_Model
     private $_table = "karyawan";
 
     public $karyawan_id;
+    public $no_karyawan;
     public $nama_lengkap;
     public $jenis_kelamin;
     public $alamat;
+    public $city;
+    public $state;
+    public $zip;
     public $jabatan;
     public $jenis_karyawan;
     public $tanggal_masuk;
-    public $dokumen;
-    public $foto;
+    public $dokumen = "default.docx";
+    public $foto = "default.jpg";
 
     
     public function rules()
     {
         return [
-            ['field' => 'name',
-            'label' => 'Name',
+            ['field' => 'nama_lengkap',
+            'label' => 'Full Name',
             'rules' => 'required'],
 
-            ['field' => 'price',
-            'label' => 'Price',
-            'rules' => 'numeric'],
-            
-            ['field' => 'description',
-            'label' => 'Description',
+            ['field' => 'jenis_kelamin',
+            'label' => 'Jenis Kelamin',
             'rules' => 'required'],
             
-            ['field' => 'mulai',
+            ['field' => 'alamat',
+            'label' => 'Alamat',
+            'rules' => 'required'],
+            
+            ['field' => 'tanggal_masuk',
             'label' => 'Date Started',
             'rules' => 'required'],
 
-            ['field' => 'selesai',
-            'label' => 'Date Ended',
+            ['field' => 'no_karyawan',
+            'label' => 'No Karyawan',
             'rules' => 'required']
+          
         ];
     }
 
@@ -51,26 +56,22 @@ class Karyawan_model extends CI_Model
     }
 
     public function save()
-    {
-        $name = '';
-        if(isset($_POST['fname'])){
-            $name .= $_POST['fname'];
-        }
-        if(isset($_POST['lname'])){
-            //add a space before
-            $name .= ' ' .$_POST['lname'];
-        }
-       
+    {   
+           
         $post = $this->input->post();
         $this->karyawan_id = uniqid();
-        $this->nama_lengkap = $post["fname"];
+        $this->nama_lengkap = $post["nama_lengkap"];
+        $this->no_karyawan = $post["no_karyawan"];
         $this->jenis_kelamin = $post["jenis_kelamin"];
-        $this->alamat= $post["alamat"]; //["city"]["state"]["zip"]
+        $this->alamat = $post["alamat"];
+        $this->city = $post["city"];
+        $this->state = $post["state"];
+        $this->zip = $post["zip"];
         $this->jabatan = $post["jabatan"];
         $this->jenis_karyawan = $post["jenis_karyawan"];
-        $this->tanggal_masuk = $post["tgl_masuk"];
-        $this->dokumen = $this->_uploadDoc();
+        $this->tanggal_masuk = $post["tanggal_masuk"];
         $this->foto = $this->_uploadImage();
+        $this->dokumen = $this->_uploadDoc();
         $this->db->insert($this->_table, $this);
         
     }
@@ -79,12 +80,16 @@ class Karyawan_model extends CI_Model
     {
         $post = $this->input->post();
         $this->karyawan_id = $post["id"];                             //update belum
-        $this->nama_lengkap = $post["fname"]["lname"];
+        $this->nama_lengkap = $post["nama_lengkap"];
+        $this->no_karyawan = $post["no_karyawan"];
         $this->jenis_kelamin = $post["jenis_kelamin"];
-        $this->alamat= $post["alamat"]["city"]["state"]["zip"];
+        $this->alamat= $post["alamat"];
+        $this->city = $post["city"];
+        $this->state = $post["state"];
+        $this->zip = $post["zip"];
         $this->jabatan = $post["jabatan"];
         $this->jenis_karyawan = $post["jenis_karyawan"];
-        $this->tanggal_masuk = $post["tgl_masuk"];
+        $this->tanggal_masuk = $post["tanggal_masuk"];
 		
 		if (!empty($_FILES["dokumen"]["name"])) {
             $this->dokumen = $this->_uploadDoc();
@@ -109,9 +114,10 @@ class Karyawan_model extends CI_Model
 	
 	private function _uploadImage()
 	{
-		$config['upload_path']          = './upload/images/';
-		$config['allowed_types']        = 'gif|jpg|png';
-		$config['file_name']            = $this->product_id;
+        
+        $config['upload_path']          = './upload/images/';
+		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
+		$config['file_name']            = $this->karyawan_id;
 		$config['overwrite']			= true;
 		$config['max_size']             = 1024; // 1MB
 		// $config['max_width']            = 1024;
@@ -124,15 +130,15 @@ class Karyawan_model extends CI_Model
 		}
 		
 		return "default.jpg";
-    }
+	}
     
     private function _uploadDoc()
 	{
 		$config['upload_path']          = './upload/dokumen/';
-		$config['allowed_types']        = 'pdf|doc|docx';
-		$config['file_name']            = $this->product_id;
-		$config['overwrite']			= true;
-		$config['max_size']             = 10240; // 1MB
+		$config['allowed_types']        = 'pdf|doc|docx|gif|jpg|png';
+		$config['file_name']            = $this->karyawan_id;
+		$config['overwrite']			= false;
+		$config['max_size']             = 1024; // 1MB
 		// $config['max_width']            = 1024;
 		// $config['max_height']           = 768;
 
@@ -142,24 +148,28 @@ class Karyawan_model extends CI_Model
 			return $this->upload->data("file_name");
 		}
 		
-		return "default.jpg";
+		return "default.docx";
 	}
 
 	private function _deleteImage($id)
 	{
-		$product = $this->getById($id);
-		if ($product->image != "default.jpg") {
-			$filename = explode(".", $product->image)[0];
+		$karyawan = $this->getById($id);
+		if ($karyawan->image != "default.jpg") {
+			$filename = explode(".", $karyawan->foto)[0];
 			return array_map('unlink', glob(FCPATH."upload/images/$filename.*"));
 		}
     }
     private function _deleteDoc($id)
 	{
-		$product = $this->getById($id);
-		if ($product->image != "default.jpg") {
-			$filename = explode(".", $product->image)[0];
-			return array_map('unlink', glob(FCPATH."upload/images/$filename.*"));
+		$karyawan = $this->getById($id);
+		if ($karyawan->image != "default.docx") {
+			$filename = explode(".", $karyawan->dokumen)[0];
+			return array_map('unlink', glob(FCPATH."upload/dokumen/$filename.*"));
 		}
-	}
+    }
+    
+    public function filemulti()
+    {
 
+    }
 }

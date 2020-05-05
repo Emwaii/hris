@@ -7,9 +7,10 @@ class Karyawan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model("karyawan_model");
         $this->load->library('form_validation');
         $this->load->model("user_model");
-        $this->load->model("karyawan_model");
+        $this->load->model("jabatan");
 		if($this->user_model->isNotLogin()) redirect(site_url('admin/login'));
     }
 
