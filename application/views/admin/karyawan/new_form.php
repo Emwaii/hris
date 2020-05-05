@@ -107,6 +107,7 @@
 									echo $jb->jabatan_id==$jabatan['jabatan_id']?'selected':'';
 									} 
 									echo"</select>"?>
+									<!-- lalal -->
 							</select>
 							</div>
 
