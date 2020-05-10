@@ -10,7 +10,9 @@ class Karyawan extends CI_Controller
         $this->load->model("karyawan_model");
         $this->load->library('form_validation');
         $this->load->model("user_model");
-        $this->load->model("jabatan");
+        $this->load->model("jabatan_model");
+        
+        
 		if($this->user_model->isNotLogin()) redirect(site_url('admin/login'));
     }
 
@@ -23,19 +25,27 @@ class Karyawan extends CI_Controller
     public function add()
     {
         $karyawan = $this->karyawan_model;
+       
         $validation = $this->form_validation;
         $validation->set_rules($karyawan->rules());
 
         if ($validation->run()) {
             $karyawan->save();
+            
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
-
-        $this->load->view("admin/karyawan/new_form");
+        $jabatan = $this->jabatan_model->getAll();
+                
+        $data = ['jabatan' => $jabatan];
+        
+        // $data = ['dokumen' => $upload];
+        $this->load->view("admin/karyawan/new_form", $data);
     }
 
     public function edit($id = null)
     {
+        $jabatan = $this->jabatan_model->getAll();
+        $data = ['jabatan' => $jabatan];
         if (!isset($id)) redirect('admin/karyawan');
        
         $karyawan = $this->karyawan_model;
@@ -46,7 +56,7 @@ class Karyawan extends CI_Controller
             $karyawan->update();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
-
+        
         $data["karyawan"] = $karyawan->getById($id);
         if (!$data["karyawan"]) show_404();
         

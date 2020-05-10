@@ -21,48 +21,51 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/project/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+						<a href="<?php echo site_url('admin/karyawan/add') ?>"><i class="fas fa-plus"></i> Add New</a>
 					</div>
 					<div class="card-body">
 
 						<div class="table-responsive">
-							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
-								<thead>
+							<table class="table table-hover " id="dataTable" width="120%" cellspacing="0">
+								<thead class="thead-light ">
 									<tr>
 										<th>Photo</th>
-										<th>Name</th>
-										<th>Price</th>
-										<th>Date Start</th>
-										<th>Date Ended</th>
-										<th>Description</th>
+										<th>No Karyawan</th>
+										<th>Nama </th>
+										<th>Email</th>
+										<th>Jabatan</th>
+										<th>Tanggal Masuk</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($products as $product): ?>
+									<?php foreach ($karyawan as $kry): ?>
 									<tr>
 										<td>
-											<img src="<?php echo base_url('upload/images/'.$product->image) ?>" width="64" />
+											<img src="<?php echo base_url('upload/images/'.$kry->foto) ?>" width="64" />
 										</td>
 										<td width="150">
-											<?php echo $product->name ?>
+										<?php echo $kry->no_karyawan ?>
 										</td>
-										<td>
-											<?php echo $product->price ?>
+										<td width="150">
+											<?php echo $kry->nama_lengkap ?>
 										</td>
-										<td>
-											<?php echo $product->mulai ?>
+										<td width="150">
+											<?php echo $kry->email ?>
 										</td>
-										<td>
-											<?php echo $product->selesai ?>
+										<td width="150">
+											<?php echo $kry->jn ?>
+										</td>
+										<td width="150">
+											<?php echo $kry->tanggal_masuk ?>
 										</td>
 										
-										<td class="small">
-											<?php echo substr($product->description, 0, 120) ?>...</td>
-										<td width="200">
-											<a href="<?php echo site_url('admin/project/edit/'.$product->product_id) ?>"
+										<td width="270">
+											<a href="<?php echo site_url('admin/karyawan/edit/'.$kry->karyawan_id) ?>"
+											 class="btn btn-small"><i class="fas fa-info"></i> Detail</a>
+											<a href="<?php echo site_url('admin/karyawan/edit/'.$kry->karyawan_id) ?>"
 											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-											<a onclick="deleteConfirm('<?php echo site_url('admin/project/delete/'.$product->product_id) ?>')"
+											<a onclick="deleteConfirm('<?php echo site_url('admin/karyawan/delete/'.$kry->karyawan_id) ?>')"
 											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
 										</td>
 									</tr>

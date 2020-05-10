@@ -3,6 +3,7 @@
 
 <head>
 	<?php $this->load->view("admin/_partials/head.php") ?>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -26,71 +27,138 @@
 
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/project/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
+						<a href="<?php echo site_url('admin/karyawan/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
 					</div>
 					<div class="card-body">
 
-						<form action="<?php base_url('admin/project/edit') ?>" method="post" enctype="multipart/form-data" >
+						<form action="<?php base_url('admin/karyawan/edit') ?>" method="post" enctype="multipart/form-data" >
 						
-						<input type="hidden" name="id" value="<?php echo $project->product_id?>" />
+						<input type="hidden" name="id" value="<?php echo $karyawan->karyawan_id?>" />
 
 							<div class="form-group">
-								<label for="name">Name*</label>
-								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
-								 type="text" name="name" placeholder="Product name" value="<?php echo $project->name?>" />
-								<div class="invalid-feedback">
-									<?php echo form_error('name') ?>
+								<label for="no_karyawan">No Karyawan*</label>
+								<input class="form-control <?php echo form_error('no_karyawan') ? 'is-invalid':'' ?>" 
+								type="text" name="no_karyawan" placeholder="Nomor Karyawan" value="<?php echo $karyawan->no_karyawan?>"/>
+								 <div class="invalid-feedback">
+									<?php echo form_error('no_karyawan') ?>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="price">Price*</label>
-								<input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
-								 type="number" name="price" min="0" placeholder="Product price" value="<?php echo $project->price?>" />
-								<div class="invalid-feedback">
-									<?php echo form_error('price') ?>
+								<label for="nama_lengkap">Nama Lengkap*</label>
+								<input class="form-control <?php echo form_error('nama_lengkap') ? 'is-invalid':'' ?>" 
+								type="text" name="nama_lengkap" placeholder="Nama Lengkap" value="<?php echo $karyawan->nama_lengkap?>"/>
+								 <div class="invalid-feedback">
+									<?php echo form_error('nama_lengkap') ?>
+								</div>
+							</div>		
+
+							<div class="form-group">
+							<label for="jenis_kelamin">Jenis Kelamin*</label>
+							<select class="form-control <?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" 
+							name="jenis_kelamin">
+								<option selected>Pilih...</option>
+								<option value="Laki - laki">Laki - laki</option>
+								<option value="Perempuan">Perempuan</option>
+								<option value="Lainnya">Lainnya</option>
+							</select>
+							<div class="invalid-feedback">
+									<?php echo form_error('jenis_kelamin') ?>
 								</div>
 							</div>
+
+							<div class="form-group">
+								<label for="email">Email*</label>
+								<input class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" 
+								type="text" name="email" placeholder="Email" value="<?php echo $karyawan->email?>"/>
+								 <div class="invalid-feedback">
+									<?php echo form_error('email') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="alamat">Alamat</label>
+								<textarea class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" 
+								name="alamat" placeholder="Alamat..."  value=""><?php echo $karyawan->alamat?></textarea>
+								<div class="invalid-feedback">
+									<?php echo form_error('alamat') ?>
+								</div>
+							</div>
+
 							<div class="row">
-								<div class="col">
-								<label for="name">Date Start*</label>
-								<input class="form-control <?php echo form_error('mulai') ? 'is-invalid':'' ?>"
-								 type="date" name="mulai" value="<?php echo $project->mulai?>"  />
-								 <div class="invalid-feedback">
-									<?php echo form_error('mulai') ?>
+								<div class="col-md-6 mb-3">
+								<label for="city">Kota</label>
+								<input type="text" class="form-control" name="city" placeholder="Kota"  value="<?php echo $karyawan->city?>">
+								<div class="invalid-feedback">
+									Please provide a valid city.
 								</div>
-								 </div>
-								 <div class="col">
-								<label for="name">Date End*</label>
-								<input class="form-control <?php echo form_error('selesai') ? 'is-invalid':'' ?>"
-								 type="date" name="selesai" value="<?php echo $project->selesai?>" />
-								 <div class="invalid-feedback">
-									<?php echo form_error('selesai') ?>
 								</div>
-								 </div>
+								<div class="col-md-3 mb-3">
+								<label for="state">Provinsi</label>
+								<input type="text" class="form-control" name="state" placeholder="Provinsi"  value="<?php echo $karyawan->state?>">
+								<div class="invalid-feedback">
+									Please provide a valid state.
+								</div>
+								</div>
+								<div class="col-md-3 mb-3">
+								<label for="zip">Kode pos</label>
+								<input type="text" class="form-control" name="zip" placeholder="Kode pos"  value="<?php echo $karyawan->zip?>">
+								<div class="invalid-feedback">
+									Please provide a valid zip code.
+								</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+							<label for="jabatan">Jabatan</label>
+							<select class="form-control" name="jbtn">
+								<option selected>Pilih...</option>
+								<?php foreach ($jabatan as $jb) {
+										echo '<option value="'.$jb->jabatan_id.'">'.$jb->jabatan_name.'</option>';
+								}?>
+							</select>
+							</div>
+
+							<div class="form-group">
+							<label for="jenis_karyawan">Jenis karyawan</label>
+							<select class="form-control" name="jenis_karyawan">
+								<option selected>Choose...</option>
+								<option value="Tetap">Tetap</option>
+								<option value="Freelance">Freelance</option>
+								
+							</select>
+							</div>
+
+							<div class="form-group">
+								<label for="tanggal_masuk">Tanggal Masuk*</label>
+								<input class="form-control <?php echo form_error('tanggal_masuk') ? 'is-invalid':'' ?>"
+								 type="date" name="tanggal_masuk" value="<?php echo $karyawan->tanggal_masuk?>" >
+								<div class="invalid-feedback">
+									<?php echo form_error('tanggal_masuk') ?>
+								</div>
 							</div>
 
 							<div class="form-group mt-3">
-								<label for="name">Photo</label>
-								<input class="form-control-file <?php echo form_error('price') ? 'is-invalid':'' ?>"
-								 type="file" name="image" />
-								<input type="hidden" name="old_image" value="<?php echo $project->image ?>" />
-								<div class="invalid-feedback">
-									<?php echo form_error('image') ?>
-								</div>
+								<label for="foto">Photo</label>
+								<input class="form-control-file " type="file" name="foto" />
 							</div>
 
-							<div class="form-group">
-								<label for="name">Description*</label>
-								<textarea class="form-control <?php echo form_error('description') ? 'is-invalid':'' ?>"
-								 name="description" placeholder="Product description..."><?php echo $project->description?></textarea>
-								<div class="invalid-feedback">
-									<?php echo form_error('description') ?>
-								</div>
-							</div>
+							<!-- <div class="table-responsive">
+								<label for="dokumen">Dokumen</label>
+									<table class="table" id="doc">
+										<tr>
+											<td><input class="form-control-file " type="file" name="dokumen" multiple/></td>
+											<td><button type="button" name="add" id="add" class="btn btn-success" >Add More</button></td>
+										</tr>
+									</table>
+							</div>			
+							  -->
+						<!--<div class="form-group mt-3">
+								<label for="dokumen">Dokumen </label>
+								<input class="form-control-file " type="file" name="dok[]" multiple=""/>
+							</div> -->
 
 							<input class="btn btn-success" type="submit" name="btn" value="Save" />
-							<!-- <input class="btn btn-cancel" type="submit" name="btn" value="Save" /> -->
 						</form>
 
 					</div>
@@ -120,3 +188,18 @@
 </body>
 
 </html>
+
+<script>
+$(document).ready(function(){
+	var i=1;
+	$('#add').click(function(){
+		i++;
+		$('#doc').append('<tr id="row'+i+'"><td><input class="form-control-file " type="file" name="dokumen[]" multiple /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">Delete</button></td></tr>');
+	});
+	
+	$(document).on('click', '.btn_remove', function(){
+		var button_id = $(this).attr("id"); 
+		$('#row'+button_id+'').remove();
+	});
+});
+</script>

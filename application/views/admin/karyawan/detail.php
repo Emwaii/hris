@@ -3,7 +3,6 @@
 
 <head>
 	<?php $this->load->view("admin/_partials/head.php") ?>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -19,27 +18,19 @@
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
-				<?php if ($this->session->flashdata('success')): ?>
-				<div class="alert alert-success" role="alert">
-					<?php echo $this->session->flashdata('success'); ?>
-				</div>
-				<?php endif; ?>
-					
+				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
 						<a href="<?php echo site_url('admin/karyawan/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
 					</div>
 					<div class="card-body">
-
-						<form action="<?php base_url('admin/karyawan/add') ?>" method="post" enctype="multipart/form-data " >
-						
 							<div class="form-group">
 								<label for="no_karyawan">No Karyawan*</label>
 								<input class="form-control <?php echo form_error('no_karyawan') ? 'is-invalid':'' ?>" 
 								type="text" name="no_karyawan" placeholder="Nomor Karyawan"/>
 								 <div class="invalid-feedback">
 									<?php echo form_error('no_karyawan') ?>
-								</div>
+							</div>
 							</div>
 
 							<div class="form-group">
@@ -140,83 +131,35 @@
 								<label for="foto">Photo</label>
 								<input class="form-control-file " type="file" name="foto" />
 							</div>
-								
 
-							<div class="form-group">
-								<label for="dokumen">Dokumen</label>
-								<input class="form-control-file " type="file" name="file" />
-									<!-- <table class="table" id="doc">
-										<tr>											
-											<td><input class="form-control-file " type="file" name="dokumen[]" multiple/></td>
-											<td><button type="button" name="add" id="add" class="btn btn-success" >Add More</button></td>
-										</tr>
-									</table>  -->
-							</div>
-							 
-					
-							<input class="btn btn-success" type="submit" name="btn" value="Save" />
-						</form>
-
+						
 					</div>
-
-					<div class="card-footer small text-muted">
-						* required fields
-					</div>
-
-
 				</div>
-				<!-- /.container-fluid -->
-
-				<!-- Sticky Footer -->
-				<?php $this->load->view("admin/_partials/footer.php") ?>
 
 			</div>
-			<!-- /.content-wrapper -->
+			<!-- /.container-fluid -->
+
+			<!-- Sticky Footer -->
+			<?php $this->load->view("admin/_partials/footer.php") ?>
 
 		</div>
-		<!-- /#wrapper -->
+		<!-- /.content-wrapper -->
 
-
-		<?php $this->load->view("admin/_partials/scrolltop.php") ?>
-
-		<?php $this->load->view("admin/_partials/js.php") ?>
-
-</body>
-</html>
-<!-- Modal dokumen
-<div class="modal fade bd-example-modal-lg" id="modal-item">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-	  	<h4 class="modal-title">Select Client</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body table-responsive">
-		<label for="dokumen">Dokumen</label>
-			<table class="table" id="doc">
-				<tr>
-					<td><input class="form-control-file " type="file" name="dokumen[]" multiple/></td>
-					<td><button type="button" name="add" id="add" class="btn btn-success" >Add More</button></td>
-				</tr>
-			</table>
 	</div>
-    </div>
-  </div>
-</div> -->
+	<!-- /#wrapper -->
 
-<script>
-$(document).ready(function(){
-	var i=1;
-	$('#add').click(function(){
-		i++;
-		$('#doc').append('<tr id="row'+i+'"><td><input class="form-control-file " type="file" name="dokumen[]" multiple /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">Delete</button></td></tr>');
-	});
-	
-	$(document).on('click', '.btn_remove', function(){
-		var button_id = $(this).attr("id"); 
-		$('#row'+button_id+'').remove();
-	});
-});
-</script>
+
+	<?php $this->load->view("admin/_partials/scrolltop.php") ?>
+	<?php $this->load->view("admin/_partials/modal.php") ?>
+
+	<?php $this->load->view("admin/_partials/js.php") ?>
+
+	<script>
+	function deleteConfirm(url){
+		$('#btn-delete').attr('href', url);
+		$('#deleteModal').modal();
+	}
+	</script>
+</body>
+
+</html>
