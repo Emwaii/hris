@@ -42,7 +42,7 @@
 									<?php foreach ($products as $product): ?>
 									<tr>
 										<td>
-											<img src="<?php echo base_url('upload/images/'.$product->image) ?>" width="64" />
+											<img src="<?php echo base_url('upload/file/'.$product->image) ?>" width="64" />
 										</td>
 										<td width="150">
 											<?php echo $product->name ?>

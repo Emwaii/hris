@@ -18,9 +18,11 @@ class Karyawan_model extends CI_Model
     public $jenis_karyawan;
     public $tanggal_masuk;
     public $foto = "default.jpg";
-    public $file = "default.zip";
-    
-
+    public $dokumen1;
+    public $dokumen2;
+    public $dokumen3;
+    public $dokumen4;
+    public $dokumen5;
     
     public function rules()
     {
@@ -45,6 +47,10 @@ class Karyawan_model extends CI_Model
             'label' => 'Email',
             'rules' => 'required'],
 
+            ['field' => 'foto',
+            'label' => 'Foto',
+            'rules' => 'required'],
+
             ['field' => 'no_karyawan',
             'label' => 'No Karyawan',
             'rules' => 'required']
@@ -57,7 +63,8 @@ class Karyawan_model extends CI_Model
         // return $this->db->get($this->_table)->result();
         return $this->db->query("SELECT karyawan.karyawan_id, karyawan.no_karyawan, karyawan.nama_lengkap, 
         karyawan.jenis_kelamin, karyawan.email, karyawan.alamat, karyawan.city, karyawan.state, karyawan.zip, 
-        karyawan.jabatan_id as kj, karyawan.jenis_karyawan, karyawan.tanggal_masuk, karyawan.foto, karyawan.file, jabatan.jabatan_id,
+        karyawan.jabatan_id as kj, karyawan.jenis_karyawan, karyawan.tanggal_masuk, karyawan.foto, karyawan.dokumen1,
+        karyawan.dokumen2,karyawan.dokumen3,karyawan.dokumen4, karyawan.dokumen5,jabatan.jabatan_id,
         jabatan.jabatan_name as jn FROM karyawan,jabatan where karyawan.jabatan_id = jabatan.jabatan_id")->result();
 
     }
@@ -84,7 +91,7 @@ class Karyawan_model extends CI_Model
         $this->jenis_karyawan = $post["jenis_karyawan"];
         $this->tanggal_masuk = $post["tanggal_masuk"];
         $this->foto = $this->_uploadImage();
-        $this->file = $this->_uploadDoc();
+        $this->dokumen1 = $this->doc1();
         $this->db->insert($this->_table, $this);
         
     }
@@ -129,8 +136,8 @@ class Karyawan_model extends CI_Model
 	private function _uploadImage()
 	{
         
-        $config['upload_path']          = './upload/images/';
-		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx|zip';
+        $config['upload_path']          = './upload/file/';
+		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
 		$config['file_name']            = $this->karyawan_id;
 		$config['overwrite']			= true;
 		$config['max_size']             = 1024; // 1MB
@@ -146,25 +153,43 @@ class Karyawan_model extends CI_Model
 		return "default.jpg";
 	}
     
-    private function _uploadDoc()
+    private function doc1()
 	{   
-		$config['upload_path']          = './upload/dokumen/';
-		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx|zip';
+        
+		$config['upload_path']          = './upload/file/';
+		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
 		$config['file_name']            = $this->karyawan_id;
-		$config['overwrite']			= false;
-		$config['max_size']             = 5000; // 1MB
+		$config['overwrite']			= true;
+		$config['max_size']             = 2048; // 1MB
 		// $config['max_width']            = 1024;
 		// $config['max_height']           = 768;
 
-        $this->load->library('zip');
+        
         $this->load->library('upload', $config);
         
 
-		if ($this->upload->do_upload('file')) {
+		if ($this->upload->do_upload('dokumen1')) {
 			return $this->upload->data("file_name");
-		}
-		
-		return "default.zip";
+        }        		
+		return "default.docx";
+    }
+    private function doc2()
+	{   
+        
+		$config['upload_path']          = './upload/file/';
+		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
+		$config['file_name']            = $this->karyawan_id;
+		$config['overwrite']			= true;
+		$config['max_size']             = 2048; // 1MB
+		// $config['max_width']            = 1024;
+		// $config['max_height']           = 768;
+        
+        $this->load->library('upload', $config);
+        
+        if ($this->upload->do_upload('dokumen2')) {
+			return $this->upload->data("file_name");
+        }        		
+		return "default.docx";
 	}
 
 	private function _deleteImage($id)
@@ -185,7 +210,6 @@ class Karyawan_model extends CI_Model
 
     }
 
-    
-        
+           
 
 }

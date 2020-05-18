@@ -137,20 +137,29 @@
 							</div>
 
 							<div class="form-group mt-3">
-								<label for="foto">Photo</label>
-								<input class="form-control-file " type="file" name="foto" />
+								<label for="name">Photo</label>
+								<input class="form-control-file <?php echo form_error('foto') ? 'is-invalid':'' ?>"
+								 type="file" name="foto" />
+								<div class="invalid-feedback">
+									<?php echo form_error('foto') ?>
+								</div>
 							</div>
 								
 
 							<div class="form-group">
 								<label for="dokumen">Dokumen</label>
-								<input class="form-control-file " type="file" name="file" />
-									<!-- <table class="table" id="doc">
-										<tr>											
-											<td><input class="form-control-file " type="file" name="dokumen[]" multiple/></td>
-											<td><button type="button" name="add" id="add" class="btn btn-success" >Add More</button></td>
-										</tr>
-									</table>  -->
+								
+								<!-- <input class="form-control-file " type="file" name="file" /> -->
+									<table class="table" id="doc">
+										<tr>	
+										<?php 
+										$i=1;								
+											echo '<td><input class="form-control-file " type="file" name = "dokumen'.$i.'" multiple/></td>';
+											echo '<td><button type="button" name="add" id="add" class="btn btn-success" >Add More</button></td>';
+										
+										?>										
+											</tr>
+									</table> 
 							</div>
 							 
 					
@@ -211,7 +220,7 @@ $(document).ready(function(){
 	var i=1;
 	$('#add').click(function(){
 		i++;
-		$('#doc').append('<tr id="row'+i+'"><td><input class="form-control-file " type="file" name="dokumen[]" multiple /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">Delete</button></td></tr>');
+		$('#doc').append('<tr id="row'+i+'"><td><input class="form-control-file " type="file" name="dokumen'+i+'" multiple /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">Delete</button></td></tr>');
 	});
 	
 	$(document).on('click', '.btn_remove', function(){
