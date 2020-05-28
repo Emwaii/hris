@@ -32,7 +32,6 @@
 								<thead class="thead-light ">
 									<tr>
 										<th>Photo</th>
-										<th>No Karyawan</th>
 										<th>Nama </th>
 										<th>Email</th>
 										<th>Jabatan</th>
@@ -46,14 +45,14 @@
 										<td>
 											<img src="<?php echo base_url('upload/file/'.$kry->image) ?>" width="64" />
 										</td>
-										<td width="150">
+										<!-- <td width="150">
 										<?php echo $kry->no_karyawan ?>
-										</td>
+										</td> -->
 										<td width="150">
 											<?php echo $kry->nama_lengkap ?>
 										</td>
 										<td width="150">
-											<?php echo $kry->email ?>
+											<?php echo $kry->email_kantor ?>
 										</td>
 										<td width="150">
 											<?php echo $kry->jn ?>
