@@ -13,7 +13,7 @@
             <span>Projects</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/project/add') ?>">Tambah Project</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/project/add') ?>">Add Project</a>
             <a class="dropdown-item" href="<?php echo site_url('admin/project') ?>">List Project</a>
         </div>
     </li>
@@ -24,8 +24,20 @@
             <span>Karyawan</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/karyawan/add') ?>">Tambah Karyawan</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/karyawan/add') ?>">Add Karyawan</a>
             <a class="dropdown-item" href="<?php echo site_url('admin/karyawan') ?>">List Karyawan</a>
+        </div>
+    </li>
+
+    <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'client' ? 'active': '' ?>">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-fw fa-user-tie"></i>
+            <span>Client</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="<?php echo site_url('admin/client/add') ?>">Add Client</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/client') ?>">List Client</a>
         </div>
     </li>
     <!-- <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'user' ? 'active': '' ?>">

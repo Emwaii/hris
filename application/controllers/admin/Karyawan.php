@@ -34,8 +34,7 @@ class Karyawan extends CI_Controller
             
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
-        $jabatan = $this->jabatan_model->getAll();
-                
+        $jabatan = $this->jabatan_model->getAll();                
         $data = ['jabatan' => $jabatan];
         
         // $data = ['dokumen' => $upload];

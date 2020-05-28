@@ -4,6 +4,18 @@
 <head>
 	<?php $this->load->view("admin/_partials/head.php") ?>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+	<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"> -->
+	<!-- <link href="../css/jquery.datetimepicker.min.css" rel="stylesheet"> -->
+	<link href="<?php echo base_url('css/sb-admin-2.min.css') ?>" rel="stylesheet">
+	<link href="<?php echo base_url('css/jquery.datetimepicker.min.css') ?>" rel="stylesheet">
+	<style>
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+		}
+	</style>
 </head>
 
 <body id="page-top">
@@ -33,118 +45,186 @@
 
 						<form action="<?php base_url('admin/karyawan/add') ?>" method="post" enctype="multipart/form-data " >
 						
-							<div class="form-group">
-								<label for="no_karyawan">No Karyawan*</label>
-								<input class="form-control <?php echo form_error('no_karyawan') ? 'is-invalid':'' ?>" 
-								type="text" name="no_karyawan" placeholder="Nomor Karyawan"/>
-								 <div class="invalid-feedback">
-									<?php echo form_error('no_karyawan') ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="nama_lengkap">Nama Lengkap*</label>
+							<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="nama_lengkap">Nama Lengkap<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('nama_lengkap') ? 'is-invalid':'' ?>" 
-								type="text" name="nama_lengkap" placeholder="Nama Lengkap"/>
-								 <div class="invalid-feedback">
-									<?php echo form_error('nama_lengkap') ?>
-								</div>
-							</div>		
-
-							<div class="form-group">
-							<label for="jenis_kelamin">Jenis Kelamin*</label>
-							<select class="form-control <?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" 
-							name="jenis_kelamin">
-								<option selected>Pilih...</option>
-								<option value="Laki - laki">Laki - laki</option>
-								<option value="Perempuan">Perempuan</option>
-								<option value="Lainnya">Lainnya</option>
-							</select>
-							<div class="invalid-feedback">
-									<?php echo form_error('jenis_kelamin') ?>
-								</div>
+								type="text" name="nama_lengkap" placeholder="Nama Lengkap" />
+							
 							</div>
 
-							<div class="form-group">
-								<label for="email">Email*</label>
-								<input class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" 
-								type="text" name="email" placeholder="Email"/>
-								 <div class="invalid-feedback">
-									<?php echo form_error('email') ?>
-								</div>
+							<div class="col-md-6 mb-3">
+								<label for="tanggal_masuk">Tanggal Masuk<?php echo"<font color ='red'>*</font>"?></label>
+								<input class="form-control <?php echo form_error('tanggal_masuk') ? 'is-invalid':'' ?>"
+								 type="text" id="tanggal_masuk" name="tanggal_masuk" placeholder="Tanggal Masuk">
+								
 							</div>
-
-							<div class="form-group">
-								<label for="alamat">Alamat</label>
-								<textarea class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" 
-								name="alamat" placeholder="Alamat..."></textarea>
-								<div class="invalid-feedback">
-									<?php echo form_error('alamat') ?>
-								</div>
+							</div>	
+		
+							<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="pendidikan">Pendidikan<?php echo"<font color ='red'>*</font>"?></label>
+								<input class="form-control <?php echo form_error('pendidikan') ? 'is-invalid':'' ?>" 
+								type="text" name="pendidikan" placeholder="Pendidikan Terakhir"/>
+								 
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="univ">Universitas<?php echo"<font color ='red'>*</font>"?></label>
+								<input class="form-control <?php echo form_error('univ') ? 'is-invalid':'' ?>" 
+								type="text" name="univ" placeholder="Universitas"/>
+								
+							</div>
 							</div>
 
 							<div class="row">
-								<div class="col-md-6 mb-3">
-								<label for="city">Kota</label>
+							<div class="col-md-3 mb-3">
+								<label for="ttl">Tempat Lahir<?php echo"<font color ='red'>*</font>"?></label>
+								<input class="form-control <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>"
+								 type="text" name="tempat_lahir" placeholder="Tempat Lahir">
+								
+							</div>
+
+							<div class="col-md-3 mb-3">
+								<label for="ttl">Tanggal Lahir<?php echo"<font color ='red'>*</font>"?></label>
+								<input class="form-control <?php echo form_error('tgl_lahir') ? 'is-invalid':'' ?>" 
+								id="tgl_lahir" type="text" name="tgl_lahir" placeholder="Tanggal lahir">
+								
+							</div>
+
+							
+							<div class="col-md-6 mb-3">
+								<label for="no_ktp">No KTP<?php echo"<font color ='red'>*</font>"?></label>
+								<input class="form-control <?php echo form_error('no_ktp') ? 'is-invalid':'' ?>" 
+								type="number" name="no_ktp" placeholder="Nomor Karyawan"/>
+								
+							</div>	
+							</div>
+
+							<div class="row">							
+							<div class="col-md-6 mb-3">
+								<label for="nama_ayah">Nama Ayah<?php echo"<font color ='red'>*</font>"?></label>
+								<input class="form-control <?php echo form_error('nama_ayah') ? 'is-invalid':'' ?>" 
+								type="text" name="nama_ayah" placeholder="Nama Ayah"/>
+								 
+							</div>
+
+							<div class="col-md-6 mb-3">
+								<label for="nama_ibu">Nama Ibu<?php echo"<font color ='red'>*</font>"?></label>
+								<input class="form-control <?php echo form_error('nama_ibu') ? 'is-invalid':'' ?>" 
+								type="text" name="nama_ibu" placeholder="Nama Ibu"/>
+								 
+							</div>
+							</div>
+
+							<div class="row">							
+							<div class="col-md-6 mb-3">
+								<label for="nama_ss">Nama Suami/Istri</label>
+								<input class="form-control "type="text" name="nama_ss" placeholder="Nama Suami/Istri"/>
+								
+							</div>	
+
+							<div class="col-md-6 mb-3">
+								<label for="no_paspor">No Passport</label>
+								<input class="form-control " type="text" name="no_paspor" placeholder="Nomor Passport"/>
+								 
+							</div>
+							</div>
+
+							<div class="row">							
+							<div class="col-md-6 mb-3">
+								<label for="no_bpjs">No BPJS</label>
+								<input class="form-control "	type="number" name="no_bpjs" placeholder="Nomor BPJS"/>
+								 
+							</div>
+
+							<div class="col-md-6 mb-3">
+								<label for="no_npwp">No NPWP</label>
+								<input class="form-control"	type="number" name="no_npwp" placeholder="Nomor NPWP"/>
+								 
+							</div>
+							</div>
+						
+							<div class = "row">
+							<div class="col-md-6 mb-3">
+								<label for="alamat">Alamat KTP</label>
+								<textarea class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" 
+								name="alamat" placeholder="Alamat KTP..."></textarea>
+								
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="alamat">Alamat Sekarang</label>
+								<textarea class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" 
+								name="alamat1" placeholder="Alamat Sekarang..."></textarea>
+								
+							</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-2 mb-3 ml-0">
+								
 								<input type="text" class="form-control" name="city" placeholder="Kota" >
 								<div class="invalid-feedback">
 									Please provide a valid city.
 								</div>
 								</div>
-								<div class="col-md-3 mb-3">
-								<label for="state">Provinsi</label>
+								<div class="col-md-2 mb-3 ml-0">
+								
 								<input type="text" class="form-control" name="state" placeholder="Provinsi" >
 								<div class="invalid-feedback">
 									Please provide a valid state.
 								</div>
 								</div>
-								<div class="col-md-3 mb-3">
-								<label for="zip">Kode pos</label>
-								<input type="text" class="form-control" name="zip" placeholder="Kode pos" >
+								<div class="mb-3 col-md-2 ml-0">
+								
+								<input type="number" class="form-control" name="zip" placeholder="Kode pos" >
+								<div class="invalid-feedback">
+									Please provide a valid zip code.
+								</div>
+								</div>
+								<div class="col-md-2 mb-3 ml-0">
+								
+								<input type="text" class="form-control" name="city1" placeholder="Kota" >
+								<div class="invalid-feedback">
+									Please provide a valid city.
+								</div>
+								</div>
+								<div class="col-md-2 mb-3 ml-0">
+								
+								<input type="text" class="form-control" name="state1" placeholder="Provinsi" >
+								<div class="invalid-feedback">
+									Please provide a valid state.
+								</div>
+								</div>
+								<div class="mb-3 col-md-2 ml-0">
+								
+								<input type="number" class="form-control" name="zip1" placeholder="Kode pos" >
 								<div class="invalid-feedback">
 									Please provide a valid zip code.
 								</div>
 								</div>
 							</div>
-
-							<div class="form-group">
-							<label for="jabatan">Jabatan</label>
-							<select class="form-control" name="jbtn">
-								<option selected>Pilih...</option>
-								<?php foreach ($jabatan as $jb) {
-										echo '<option value="'.$jb->jabatan_id.'">'.$jb->jabatan_name.'</option>';
-								}?>
-							</select>
-							</div>
-
-							<div class="form-group">
-							<label for="jenis_karyawan">Jenis karyawan</label>
-							<select class="form-control" name="jenis_karyawan">
-								<option selected>Pilih...</option>
-								<option value="Tetap">Tetap</option>
-								<option value="Freelance">Freelance</option>
+					
+						
+							<div class="row">
+							<div class="mb-3 col-md-6">
+								<label for="email">Email Kantor<?php echo"<font color ='red'>*</font>"?></label>
+								<input class="form-control <?php echo form_error('email_kantor') ? 'is-invalid':'' ?>" 
+								type="text" name="email_kantor" placeholder="Email"/>
+								 
+							</div> 							
+							<div class="mb-3 col-md-6">
+								<label for="email">Email Pribadi<?php echo"<font color ='red'>*</font>"?></label>
+								<input class="form-control <?php echo form_error('email_pribadi') ? 'is-invalid':'' ?>" 
+								type="text" name="email_pribadi" placeholder="Email"/>
 								
-							</select>
 							</div>
-
-							<div class="form-group">
-								<label for="tanggal_masuk">Tanggal Masuk*</label>
-								<input class="form-control <?php echo form_error('tanggal_masuk') ? 'is-invalid':'' ?>"
-								 type="date" name="tanggal_masuk">
-								<div class="invalid-feedback">
-									<?php echo form_error('tanggal_masuk') ?>
-								</div>
 							</div>
+										
 
 							<div class="form-group mt-3">
 								<label for="name">Photo</label>
-								<input class="form-control-file <?php echo form_error('foto') ? 'is-invalid':'' ?>"
-								 type="file" name="foto" />
-								<div class="invalid-feedback">
-									<?php echo form_error('foto') ?>
-								</div>
+								<input class="form-control-file" type="file" name="image"/>
 							</div>
-								
 
 							<div class="form-group">
 								<label for="dokumen">Dokumen</label>
@@ -169,7 +249,7 @@
 					</div>
 
 					<div class="card-footer small text-muted">
-						* required fields
+					<?php echo"<font color ='red'>*</font>"?> required fields
 					</div>
 
 
@@ -190,37 +270,44 @@
 
 		<?php $this->load->view("admin/_partials/js.php") ?>
 
+
 </body>
 </html>
-<!-- Modal dokumen
-<div class="modal fade bd-example-modal-lg" id="modal-item">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-	  	<h4 class="modal-title">Select Client</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body table-responsive">
-		<label for="dokumen">Dokumen</label>
-			<table class="table" id="doc">
-				<tr>
-					<td><input class="form-control-file " type="file" name="dokumen[]" multiple/></td>
-					<td><button type="button" name="add" id="add" class="btn btn-success" >Add More</button></td>
-				</tr>
-			</table>
-	</div>
-    </div>
-  </div>
-</div> -->
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+<script src="<?php echo base_url('css/jquery.datetimepicker.full.min.js') ?>"></script>
+<script>
+	$('#tgl_lahir').datetimepicker({
+	timepicker: false,
+	datepicker: true,
+	format: 'd-m-Y',
+	weeks: true,
+	autoclose: true,
+	todayHighlight: true,
+	scrollMonth : false,
+    scrollInput : false,
+	});	
+</script>
+<script>
+	$('#tanggal_masuk').datetimepicker({
+	timepicker: false,
+	datepicker: true,
+	format: 'd-m-Y',
+	weeks: true,
+	autoclose: true,
+	todayHighlight: true,
+	scrollMonth : false,
+    scrollInput : false,
+	});	
+</script>
 <script>
 $(document).ready(function(){
 	var i=1;
 	$('#add').click(function(){
 		i++;
-		$('#doc').append('<tr id="row'+i+'"><td><input class="form-control-file " type="file" name="dokumen'+i+'" multiple /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">Delete</button></td></tr>');
+		$('#doc').append('<tr id="row'+i+'"><td><input class="form-control-file " type="file" name="dokumen'+i+'" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">Delete</button></td></tr>');
+		
 	});
 	
 	$(document).on('click', '.btn_remove', function(){
@@ -229,3 +316,14 @@ $(document).ready(function(){
 	});
 });
 </script>
+<script>
+	$('form').on('focus', 'input[type=number]', function (e) {
+	$(this).on('wheel.disableScroll', function (e) {
+	e.preventDefault()
+	})
+	})
+	$('form').on('blur', 'input[type=number]', function (e) {
+	$(this).off('wheel.disableScroll')
+	})
+</script>
+

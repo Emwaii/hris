@@ -3,6 +3,8 @@
 
 <head>
 	<?php $this->load->view("admin/_partials/head.php") ?>
+	<link href="<?php echo base_url('css/sb-admin-2.min.css') ?>" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -42,7 +44,7 @@
 									<?php foreach ($karyawan as $kry): ?>
 									<tr>
 										<td>
-											<img src="<?php echo base_url('upload/images/'.$kry->foto) ?>" width="64" />
+											<img src="<?php echo base_url('upload/file/'.$kry->image) ?>" width="64" />
 										</td>
 										<td width="150">
 										<?php echo $kry->no_karyawan ?>

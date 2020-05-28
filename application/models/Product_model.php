@@ -11,12 +11,17 @@ class Product_model extends CI_Model
     public $selesai;
     public $image = "default.jpg";
     public $description;
+    public $client_id;
     
     public function rules()
     {
         return [
             ['field' => 'name',
             'label' => 'Name',
+            'rules' => 'required'],
+            
+            ['field' => 'client_id',
+            'label' => 'Client',
             'rules' => 'required'],
 
             ['field' => 'price',
@@ -39,7 +44,11 @@ class Product_model extends CI_Model
 
     public function getAll()
     {
-        return $this->db->get($this->_table)->result();
+        //return $this->db->get($this->_table)->result();
+        return $this->db->query("SELECT products.product_id, products.name, products.price, 
+        products.mulai, products.selesai, products.image as pim, products.description, products.client_id as pci, client.client_id as cci,
+        client.id_card, client.nama, client.no_telp, client.email, client.perusahaan, client.alamat, client.image
+        FROM products,client where products.client_id = client.client_id")->result();
     }
     
     public function getById($id)
@@ -57,6 +66,7 @@ class Product_model extends CI_Model
         $this->selesai = $post["selesai"];
         $this->image = $this->_uploadImage();
         $this->description = $post["description"];
+        $this->client_id = $post["client_id"];
         $this->db->insert($this->_table, $this);
     }
 
@@ -76,7 +86,7 @@ class Product_model extends CI_Model
 		}
 
         $this->description = $post["description"];
-        
+        $this->client_id = $post["client_id"];
         $this->db->update($this->_table, $this, array('product_id' => $post['id']));
     }
 

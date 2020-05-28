@@ -3,12 +3,8 @@
 
 <head>
 	<?php $this->load->view("admin/_partials/head.php") ?>
-	<link href="<?php echo base_url('css/sb-admin-2.css') ?>" rel="stylesheet">
-	<style>
-	.borderless td, .borderless th {
-	border: none;
-	}
-	</style>
+	<link href="<?php echo base_url('css/sb-admin-2.min.css') ?>" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -27,61 +23,50 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/user/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+						<a href="<?php echo site_url('admin/client/add') ?>"><i class="fas fa-plus"></i> Add New</a>
 					</div>
 					<div class="card-body">
 
 						<div class="table-responsive">
-						<table class="table borderless" id="dataTable" width="100%" cellspacing="0">
-							
-							<tbody class=" text-dark">
-								<?php foreach($user as $usr)?>
-									<tr>										
-										<th><img src="<?php echo base_url('upload/file/'.$usr->photo) ?>" width="64"/></th>
-									</tr>
-
+							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+								<thead>
 									<tr>
-										<th width="30%" >Name : <?php echo $usr->full_name ?> </th>
-										<!-- <th><?php echo $usr->full_name ?></th> -->
-									</tr>	
-										<th>Price</th>
-										<th>Date Start</th>
-										<th>Date Ended</th>
-										<th>Description</th>
+										<th>Photo</th>
+										<th>Name</th>
+										<th>Email</th>
+										<th>Indusry</th>
+										<th>Address</th>
 										<th>Action</th>
 									</tr>
-							
-								<!-- <tbody>
-									<?php foreach ($user as $usr): ?>
+								</thead>
+								<tbody>
+									<?php foreach ($client as $cl): ?>
 									<tr>
 										<td>
-											<img src="<?php echo base_url('upload/file/'.$product->pim) ?>" width="64"/>
+											<img src="<?php echo base_url('upload/client/'.$cl->image) ?>" width="64" />
 										</td>
 										<td width="150">
-											<?php echo $product->name ?>
+											<?php echo $cl->nama ?>
 										</td>
-										<td>
-											<?php echo $product->price ?>
+										<td width="150">
+											<?php echo $cl->email ?>
 										</td>
-										<td>
-											<?php echo $product->mulai ?>
+										<td width="150">
+											<?php echo $cl->perusahaan ?>
 										</td>
-										<td>
-											<?php echo $product->selesai ?>
+										<td class="small">
+											<?php echo substr($cl->alamat, 0, 120) ?>...
 										</td>
 										
-										<td class="small">
-											<?php echo substr($product->description, 0, 120) ?>...</td>
 										<td width="200">
-											<a href="<?php echo site_url('admin/project/edit/'.$product->product_id) ?>"
+											<a href="<?php echo site_url('admin/client/edit/'.$cl->client_id) ?>"
 											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-											<a onclick="deleteConfirm('<?php echo site_url('admin/project/delete/'.$product->product_id) ?>')"
+											<a onclick="deleteConfirm('<?php echo site_url('admin/client/delete/'.$cl->client_id) ?>')"
 											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
 										</td>
 									</tr>
 									<?php endforeach; ?>
 
-								</tbody> -->
 								</tbody>
 							</table>
 						</div>

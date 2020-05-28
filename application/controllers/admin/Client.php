@@ -2,12 +2,12 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends CI_Controller
+class Client extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
-       
+        $this->load->model("client_model");
         $this->load->library('form_validation');
         $this->load->model("user_model");
 		if($this->user_model->isNotLogin()) redirect(site_url('admin/login'));
@@ -15,49 +15,49 @@ class User extends CI_Controller
 
     public function index()
     {
-        $data["user"] = $this->user_model->getAll();
-        $this->load->view("admin/user/list", $data);
+        $data["client"] = $this->client_model->getAll();
+        $this->load->view("admin/client/list", $data);
     }
 
     public function add()
     {
-        $user = $this->user_model;
+        $client = $this->client_model;
         $validation = $this->form_validation;
-        $validation->set_rules($user->rules());
+        $validation->set_rules($client->rules());
 
         if ($validation->run()) {
-            $user->save();
+            $client->save();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
-        $this->load->view("admin/user/new_form");
+        $this->load->view("admin/client/new_form");
     }
 
     public function edit($id = null)
     {
-        if (!isset($id)) redirect('admin/user');
+        if (!isset($id)) redirect('admin/client');
        
-        $user = $this->user_model;
+        $client = $this->client_model;
         $validation = $this->form_validation;
-        $validation->set_rules($user->rules());
+        $validation->set_rules($client->rules());
 
         if ($validation->run()) {
-            $user->update();
+            $client->update();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
-        $data["user"] = $user->getById($id);
-        if (!$data["user"]) show_404();
+        $data["client"] = $client->getById($id);
+        if (!$data["client"]) show_404();
         
-        $this->load->view("admin/user/edit_form", $data);
+        $this->load->view("admin/client/edit_form", $data);
     }
 
     public function delete($id=null)
     {
         if (!isset($id)) show_404();
         
-        if ($this->user_model->delete($id)) {
-            redirect(site_url('admin/user'));
+        if ($this->client_model->delete($id)) {
+            redirect(site_url('admin/client'));
         }
     }
 }
