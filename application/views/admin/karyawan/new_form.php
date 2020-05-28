@@ -154,7 +154,7 @@
 							<div class="col-md-6 mb-3">
 								<label for="alamat">Alamat Sekarang</label>
 								<textarea class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" 
-								name="alamat1" placeholder="Alamat Sekarang..."></textarea>
+								name="alamat_now" placeholder="Alamat Sekarang..."></textarea>
 								
 							</div>
 							</div>
@@ -183,21 +183,21 @@
 								</div>
 								<div class="col-md-2 mb-3 ml-0">
 								
-								<input type="text" class="form-control" name="city1" placeholder="Kota" >
+								<input type="text" class="form-control" name="city_now" placeholder="Kota" >
 								<div class="invalid-feedback">
 									Please provide a valid city.
 								</div>
 								</div>
 								<div class="col-md-2 mb-3 ml-0">
 								
-								<input type="text" class="form-control" name="state1" placeholder="Provinsi" >
+								<input type="text" class="form-control" name="state_now" placeholder="Provinsi" >
 								<div class="invalid-feedback">
 									Please provide a valid state.
 								</div>
 								</div>
 								<div class="mb-3 col-md-2 ml-0">
 								
-								<input type="number" class="form-control" name="zip1" placeholder="Kode pos" >
+								<input type="number" class="form-control" name="zip_now" placeholder="Kode pos" >
 								<div class="invalid-feedback">
 									Please provide a valid zip code.
 								</div>
@@ -227,22 +227,18 @@
 							</div>
 
 							<div class="form-group">
-								<label for="dokumen">Dokumen</label>
-								
-								<!-- <input class="form-control-file " type="file" name="file" /> -->
-									<table class="table" id="doc">
-										<tr>	
-										<?php 
-										$i=1;								
-											echo '<td><input class="form-control-file " type="file" name = "dokumen'.$i.'" multiple/></td>';
-											echo '<td><button type="button" name="add" id="add" class="btn btn-success" >Add More</button></td>';
-										
-										?>										
-											</tr>
-									</table> 
+								<label for="dokumen">CV</label>
+								<input class="form-control-file " type="file" name="cv" />
 							</div>
-							 
-					
+
+							<div class="form-group">
+								<label for="dokumen">Kontrak Kerja</label>
+								<input class="form-control-file " type="file" name="kontrak_kerja" />
+							</div>
+
+							<!-- <input type="hidden" name="jbtn" value="2">
+							<input type="hidden" name="jenis_kelamin" value="-">-->
+					 
 							<input class="btn btn-success" type="submit" name="btn" value="Save" />
 						</form>
 
@@ -315,6 +311,7 @@ $(document).ready(function(){
 		$('#row'+button_id+'').remove();
 	});
 });
+
 </script>
 <script>
 	$('form').on('focus', 'input[type=number]', function (e) {

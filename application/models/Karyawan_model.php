@@ -14,10 +14,10 @@ class Karyawan_model extends CI_Model
     public $id_card;
     public $nama_ayah;
     public $nama_ibu;
-    public $nama_ss  = "-";
-    public $no_pasport = "-";
-    public $no_bpjs = "-";
-    public $no_npwp = "-";
+    public $nama_ss;
+    public $no_pasport;
+    public $no_bpjs;
+    public $no_npwp;
     public $alamat;
     public $city;
     public $state;
@@ -28,14 +28,13 @@ class Karyawan_model extends CI_Model
     public $zip_now;
     public $email_kantor;
     public $email_pribadi;
-    public $jenis_kelamin = "-";
-    public $jabatan_id = "2";
+    public $jenis_kelamin;
+    public $jabatan_id;
     public $cv = "default.docx";
     public $kontrak_kerja = "default.docx";
     public $image = "default.jpg";
     
-    public function rules()
-    {
+    public function rules(){
         return [
             ['field' => 'nama_lengkap',
             'label' => 'Full Name',
@@ -45,7 +44,7 @@ class Karyawan_model extends CI_Model
             'label' => 'Alamat',
             'rules' => 'required'],
             
-            ['field' => 'alamat1',
+            ['field' => 'alamat_now',
             'label' => 'Alamat',
             'rules' => 'required'],
 
@@ -96,8 +95,7 @@ class Karyawan_model extends CI_Model
         ];
     }
 
-    public function getAll()
-    {
+    public function getAll(){
         // return $this->db->get($this->_table)->result();
         return $this->db->query("SELECT 
         karyawan.karyawan_id, 
@@ -149,7 +147,7 @@ class Karyawan_model extends CI_Model
         $this->pendidikan = $post["pendidikan"];
         $this->universitas = $post["univ"];
         $this->ttl = $post["tempat_lahir"];
-        $this->tgl_lahir=$post["tangal_lahir"];
+        $this->tgl_lahir=$post["tgl_lahir"];
         $this->id_card = $post["no_ktp"];
         $this->nama_ayah = $post["nama_ayah"];
         $this->nama_ibu = $post["nama_ibu"];
@@ -161,12 +159,14 @@ class Karyawan_model extends CI_Model
         $this->city = $post["city"];
         $this->state = $post["state"];
         $this->zip = $post["zip"];
-        $this->alamat_now = $post["alamat1"];
-        $this->city_now = $post["city1"];
-        $this->state_now = $post["state1"];
-        $this->zip_now = $post["zip1"];
+        $this->alamat_now = $post["alamat_now"];
+        $this->city_now = $post["city_now"];
+        $this->state_now = $post["state_now"];
+        $this->zip_now = $post["zip_now"];
         $this->email_kantor = $post["email_kantor"];
         $this->email_pribadi = $post["email_pribadi"];
+        $this->jabatan_id = $post["jbtn"];
+        $this->jenis_kelamin = $post["jenis_kelamin"];
         $this->image = $this->_uploadImage();
         $this->cv = $this->_cv();
         $this->kontrak_kerja = $this->_kontrak();
@@ -245,10 +245,10 @@ class Karyawan_model extends CI_Model
        
         $this->load->library('upload', $config);
         
-		if ($this->upload->do_upload('dokumen1')) {
+		if ($this->upload->do_upload('cv')) {
 			return $this->upload->data("file_name");
         }        		
-		
+		return "default.docx";
     }
     private function _kontrak()
 	{   
@@ -263,10 +263,10 @@ class Karyawan_model extends CI_Model
        
         $this->load->library('upload', $config);
         
-		if ($this->upload->do_upload('dokumen2')) {
+		if ($this->upload->do_upload('kontrak_kerja')) {
 			return $this->upload->data("file_name");
         }        		
-		
+		return "default.docx";
     }
 
     

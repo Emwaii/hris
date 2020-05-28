@@ -34,11 +34,12 @@ class Karyawan extends CI_Controller
             
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
-        $jabatan = $this->jabatan_model->getAll();                
-        $data = ['jabatan' => $jabatan];
+        // $jabatan = $this->jabatan_model->getAll();                
+        // $data = ['jabatan' => $jabatan];
         
         // $data = ['dokumen' => $upload];
-        $this->load->view("admin/karyawan/new_form", $data);
+        // $this->load->view("admin/karyawan/new_form", $data);
+        $this->load->view("admin/karyawan/new_form");
     }
 
     public function edit($id = null)
