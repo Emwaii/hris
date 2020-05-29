@@ -52,10 +52,6 @@ class Karyawan_model extends CI_Model
             'label' => 'Date Started',
             'rules' => 'required'],
 
-            ['field' => 'email',
-            'label' => 'Email',
-            'rules' => 'required'],
-
             ['field' => 'pendidikan',
             'label' => 'Pendidikan',
             'rules' => 'required'],
@@ -216,8 +212,9 @@ class Karyawan_model extends CI_Model
 	private function _uploadImage()
 	{
 		$config['upload_path']          = './upload/karyawan/';
-		$config['allowed_types']        = 'gif|jpg|png';
-		$config['file_name']            = $this->karyawan_id;
+		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
+        $config['file_name']            = $this->karyawan_id;
+        $config['encrypt_name']         = true;
 		$config['overwrite']			= true;
 		$config['max_size']             = 1024; // 1MB
 		// $config['max_width']            = 1024;
@@ -228,17 +225,18 @@ class Karyawan_model extends CI_Model
 		if ($this->upload->do_upload('image')) {
 			return $this->upload->data("file_name");
 		}
-		print_r($this->upload->display_errors());
-		//return "default.jpg";
+		//print_r($this->upload->display_errors());
+		return "default.jpg";
 	}
 
     
     private function _cv()
 	{           
-		$config['upload_path']          = './upload/file/';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['upload_path']          = './upload/karyawan/';
+		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
 		$config['file_name']            = $this->karyawan_id;
-		$config['overwrite']			= false;
+        $config['encrypt_name']         = true;
+        $config['overwrite']			= true;
 		$config['max_size']             = 2048; // 1MB
 		// $config['max_width']            = 1024;
 		// $config['max_height']           = 768;
@@ -247,16 +245,18 @@ class Karyawan_model extends CI_Model
         
 		if ($this->upload->do_upload('cv')) {
 			return $this->upload->data("file_name");
-        }        		
+        }   
+        //print_r($this->upload->display_errors());     		
 		return "default.docx";
     }
+
     private function _kontrak()
-	{   
-        
-		$config['upload_path']          = './upload/file/';
-		$config['allowed_types']        = 'pdf|doc|docx';
+	{           
+		$config['upload_path']          = './upload/karyawan/';
+		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
 		$config['file_name']            = $this->karyawan_id;
-		$config['overwrite']			= false;
+        $config['encrypt_name']         = true;
+        $config['overwrite']			= true;
 		$config['max_size']             = 2048; // 1MB
 		// $config['max_width']            = 1024;
 		// $config['max_height']           = 768;

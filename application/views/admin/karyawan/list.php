@@ -43,7 +43,7 @@
 									<?php foreach ($karyawan as $kry): ?>
 									<tr>
 										<td>
-											<img src="<?php echo base_url('upload/file/'.$kry->image) ?>" width="64" />
+											<img src="<?php echo base_url('upload/karyawan/'.$kry->image) ?>" width="64" />
 										</td>
 										<!-- <td width="150">
 										<?php echo $kry->no_karyawan ?>
@@ -63,7 +63,7 @@
 										
 										<td width="270">
 											<a href="<?php echo site_url('admin/karyawan/edit/'.$kry->karyawan_id) ?>"
-											 class="btn btn-small"><i class="fas fa-info"></i> Detail</a>
+											 class="btn btn-small text-success"><i class="fas fa-info"></i> Detail</a>
 											<a href="<?php echo site_url('admin/karyawan/edit/'.$kry->karyawan_id) ?>"
 											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
 											<a onclick="deleteConfirm('<?php echo site_url('admin/karyawan/delete/'.$kry->karyawan_id) ?>')"

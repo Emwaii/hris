@@ -33,16 +33,18 @@
 
 				<?php if ($this->session->flashdata('success')): ?>
 				<div class="alert alert-success" role="alert">
-					<?php echo $this->session->flashdata('success'); ?>
+					<?php echo $this->session->flashdata('success');?>
 				</div>
-				<?php endif; ?>
+				<?php 
+				
+				endif;?>
 					
 				<div class="card mb-3">
 					<div class="card-header">
 						<a href="<?php echo site_url('admin/karyawan/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
 					</div>
 					<div class="card-body">
-
+						<?php echo form_open_multipart('admin/karyawan/add');?>
 						<form action="<?php base_url('admin/karyawan/add') ?>" method="post" enctype="multipart/form-data " >
 						
 							<div class="row">
@@ -223,12 +225,20 @@
 
 							<div class="form-group mt-3">
 								<label for="name">Photo</label>
-								<input class="form-control-file" type="file" name="image"/>
+								<input class="form-control-file <?php echo form_error('nama_lengkap') ? 'is-invalid':'' ?>"
+								 type="file" name="image">
+								<div class="invalid-feedback">
+									<?php echo form_error('nama_lengkap') ?>
+								</div>
 							</div>
 
-							<div class="form-group">
-								<label for="dokumen">CV</label>
-								<input class="form-control-file " type="file" name="cv" />
+							<div class="form-group mt-3">
+								<label for="name">CV</label>
+								<input class="form-control-file <?php echo form_error('nama_lengkap') ? 'is-invalid':'' ?>"
+								 type="file" name="cv">
+								<div class="invalid-feedback">
+									<?php echo form_error('nama_lengkap') ?>
+								</div>
 							</div>
 
 							<div class="form-group">
@@ -236,8 +246,8 @@
 								<input class="form-control-file " type="file" name="kontrak_kerja" />
 							</div>
 
-							<!-- <input type="hidden" name="jbtn" value="2">
-							<input type="hidden" name="jenis_kelamin" value="-">-->
+							<input type="hidden" name="jbtn" value="2">
+							<input type="hidden" name="jenis_kelamin" value="-">
 					 
 							<input class="btn btn-success" type="submit" name="btn" value="Save" />
 						</form>
@@ -265,7 +275,6 @@
 		<?php $this->load->view("admin/_partials/scrolltop.php") ?>
 
 		<?php $this->load->view("admin/_partials/js.php") ?>
-
 
 </body>
 </html>
