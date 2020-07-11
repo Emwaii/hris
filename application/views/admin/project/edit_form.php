@@ -3,14 +3,15 @@
 
 <head>
 	<?php $this->load->view("admin/_partials/head.php") ?>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<link href="<?php echo base_url('css/sb-admin-2.min.css') ?>" rel="stylesheet">
+	<link href="<?php echo base_url('css/jquery.datetimepicker.min.css') ?>" rel="stylesheet">
 	<style>
 		input::-webkit-outer-spin-button,
 		input::-webkit-inner-spin-button {
 		-webkit-appearance: none;
 		margin: 0;
 		}
-		
 	</style>
 </head>
 
@@ -27,15 +28,15 @@
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
-				<?php if ($this->session->flashdata('success')): ?>
+				<!-- <?php if ($this->session->flashdata('success')): ?>
 				<div class="alert alert-success" role="alert">
 					<?php echo $this->session->flashdata('success'); ?>
 				</div>
-				<?php endif; ?>
+				<?php endif; ?> -->
 
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/project/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
+						<a href="<?php echo site_url('admin/project/') ?>" style="text-decoration:none;"><i class="fas fa-arrow-left"></i> Back</a>
 					</div>
 					<div class="card-body">
 
@@ -44,7 +45,7 @@
 						<input type="hidden" name="id" value="<?php echo $project->product_id?>" />
 
 							<div class="form-group">
-								<label for="name">Name*</label>
+							<label for="name">Nama Project<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
 								 type="text" name="name" placeholder="Product name" value="<?php echo $project->name?>" />
 								<div class="invalid-feedback">
@@ -53,11 +54,12 @@
 							</div>
 
 							<div>
-								<label for="name">Pilih Client*</label>
+							<label for="name">Pilih Client<?php echo"<font color ='red'>*</font>"?></label>
 							</div>
 							<div class="form-group input-group">
-								<input type="hidden" name="client_id" id="client_id">
-								<input type="text" name="name_client" id="name_client" class="form-control <?php echo form_error('client_id') ? 'is-invalid':'' ?>">
+								<input type="hidden" name="client_id" id="client_id" value="<?php foreach($client as $cl){	if($project->client_id==$cl->client_id) echo $cl->client_id;}?>">
+								<input type="text" name="name_client" value="<?php foreach($client as $cl){	if($project->client_id==$cl->client_id) echo $cl->nama;}?>" 
+								placeholder="Nama Client" id="name_client"  class="form-control <?php echo form_error('client_id') ? 'is-invalid':'' ?>" >
 								<span class="input-group-btn">
 									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-item">
 										<i class="fa fa-search"></i>
@@ -70,26 +72,26 @@
 
 
 							<div class="form-group">
-								<label for="price">Price*</label>
+							<label for="price">Price<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
-								 type="number" name="price" min="0" placeholder="Product price" value="<?php echo $project->price?>" />
+								 type="number" name="price" min="0" placeholder="Harga Product" value="<?php echo $project->price?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('price') ?>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col">
-								<label for="name">Date Start*</label>
+								<label for="name">Tanggal Mulai<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('mulai') ? 'is-invalid':'' ?>"
-								 type="date" name="mulai" value="<?php echo $project->mulai?>"  />
+								 type="text" name="mulai" id="mulai"  placeholder="Exp. 11-11-2011" value="<?php echo $project->mulai?>"  />
 								 <div class="invalid-feedback">
 									<?php echo form_error('mulai') ?>
 								</div>
 								 </div>
 								 <div class="col">
-								<label for="name">Date End*</label>
+								 <label for="name">Tanggal Selesai<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('selesai') ? 'is-invalid':'' ?>"
-								 type="date" name="selesai" value="<?php echo $project->selesai?>" />
+								 type="text" name="selesai" id="selesai" placeholder="Exp. 12-12-2012" value="<?php echo $project->selesai?>" />
 								 <div class="invalid-feedback">
 									<?php echo form_error('selesai') ?>
 								</div>
@@ -107,7 +109,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="name">Description*</label>
+							<label for="name">Deskripsi Project<?php echo"<font color ='red'>*</font>"?></label>
 								<textarea class="form-control <?php echo form_error('description') ? 'is-invalid':'' ?>"
 								 name="description" placeholder="Product description..."><?php echo $project->description?></textarea>
 								<div class="invalid-feedback">
@@ -122,7 +124,7 @@
 					</div>
 
 					<div class="card-footer small text-muted">
-						* required fields
+					<?php echo"<font color ='red'>*</font>"?> required fields
 					</div>
 
 
@@ -185,8 +187,7 @@
       </div>
     </div>
   </div>
-</div>
-
+</div>	
 <script>
 $(document).ready(function() {
 	$(document).on('click','#select', function() {
@@ -197,4 +198,42 @@ $(document).ready(function() {
 		$('#modal-item').modal('hide');
 	})
 })
+</script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+<script src="<?php echo base_url('css/jquery.datetimepicker.full.min.js') ?>"></script>
+<script>
+	$('#mulai').datetimepicker({
+	timepicker: false,
+	datepicker: true,
+	format: 'd-m-Y',
+	weeks: true,
+	autoclose: true,
+	todayHighlight: true,
+	scrollMonth : false,
+    scrollInput : false,
+	});	
+</script>
+<script>
+	$('#selesai').datetimepicker({
+	timepicker: false,
+	datepicker: true,
+	format: 'd-m-Y',
+	weeks: true,
+	autoclose: true,
+	todayHighlight: true,
+	scrollMonth : false,
+    scrollInput : false,
+	});	
+</script>
+<script>
+	$('form').on('focus', 'input[type=number]', function (e) {
+	$(this).on('wheel.disableScroll', function (e) {
+	e.preventDefault()
+	})
+	})
+	$('form').on('blur', 'input[type=number]', function (e) {
+	$(this).off('wheel.disableScroll')
+	})
 </script>

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head></head>
 	<?php $this->load->view("admin/_partials/head.php") ?>
+	<link href="<?php echo base_url('css/sb-admin-2.min.css') ?>" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -18,54 +20,81 @@
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
-				<?php if ($this->session->flashdata('success')): ?>
+				<!-- <?php if ($this->session->flashdata('success')): ?>
 				<div class="alert alert-success" role="alert">
 					<?php echo $this->session->flashdata('success'); ?>
 				</div>
-				<?php endif; ?>
+				<?php endif; ?> -->
 
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/user/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
+						<a href="<?php echo site_url('admin/users/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
 					</div>
 					<div class="card-body">
 
 						<form action="<?php base_url('admin/user/add') ?>" method="post" enctype="multipart/form-data" >
-							<div class="form-group">
-								<label for="name">Name*</label>
-								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
-								 type="text" name="name" placeholder="Product name" />
-								<div class="invalid-feedback">
-									<?php echo form_error('name') ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="price">Price*</label>
-								<input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
-								 type="number" name="price" min="0" placeholder="Product price" />
-								<div class="invalid-feedback">
-									<?php echo form_error('price') ?>
-								</div>
-							</div>
-
-
+							
 							<div class="form-group">
 								<label for="name">Photo</label>
-								<input class="form-control-file <?php echo form_error('price') ? 'is-invalid':'' ?>"
+								<input class="form-control-file <?php echo form_error() ? 'is-invalid':'' ?>"
 								 type="file" name="image" />
+								<input type="hidden" name="old_image" />
 								<div class="invalid-feedback">
 									<?php echo form_error('image') ?>
 								</div>
 							</div>
+							
+							<div class="form-group">
+								<label for="name">Username*</label>
+								<input class="form-control <?php echo form_error('username') ? 'is-invalid':'' ?>"
+								 type="text" name="username" placeholder="Username" />
+								<div class="invalid-feedback">
+									<?php echo form_error('username') ?>
+								</div>
+							</div>
 
 							<div class="form-group">
-								<label for="name">Description*</label>
-								<textarea class="form-control <?php echo form_error('description') ? 'is-invalid':'' ?>"
-								 name="description" placeholder="Product description..."></textarea>
+								<label for="name">Password*</label>
+								<input class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>"
+								 type="password" name="password" placeholder="Password" />
 								<div class="invalid-feedback">
-									<?php echo form_error('description') ?>
+									<?php echo form_error('password') ?>
 								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Email*</label>
+								<input class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>"
+								 type="text" name="email" placeholder="Email" />
+								<div class="invalid-feedback">
+									<?php echo form_error('email') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+  								<label for="name">Full Name*</label>
+								<input class="form-control <?php echo form_error('full_name') ? 'is-invalid':'' ?>" 
+								type="text" name="full_name" placeholder="Full Name" >
+								<div class="invalid-feedback">
+									<?php echo form_error('full_name') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+  								<label for="name">Phone*</label>
+								<input class="form-control <?php echo form_error('phone') ? 'is-invalid':'' ?>" 
+								type="text" name="phone" placeholder="Phone" >
+								<div class="invalid-feedback">
+									<?php echo form_error('phone') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+  								<label for="name">Role*</label>
+								  <select name="role" class="form-control">
+									<option value="admin">Admin</option>
+									<option value="superadmin">Superadmin</option>
+								</select>
 							</div>
 
 							<input class="btn btn-success" type="submit" name="btn" value="Save" />

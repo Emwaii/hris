@@ -3,12 +3,8 @@
 
 <head>
 	<?php $this->load->view("admin/_partials/head.php") ?>
-	<link href="<?php echo base_url('css/sb-admin-2.css') ?>" rel="stylesheet">
-	<style>
-	.borderless td, .borderless th {
-	border: none;
-	}
-	</style>
+	<link href="<?php echo base_url('css/sb-admin-2.min.css') ?>" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -23,7 +19,11 @@
 			<div class="container-fluid">
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
-
+				<?php if ($this->session->flashdata('success')): ?>
+				<div class="alert alert-success" role="alert">
+					<?php echo $this->session->flashdata('success'); ?>
+				</div>
+				<?php endif; ?>
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
@@ -32,56 +32,54 @@
 					<div class="card-body">
 
 						<div class="table-responsive">
-						<table class="table borderless" id="dataTable" width="100%" cellspacing="0">
-							
-							<tbody class=" text-dark">
-								<?php foreach($user as $usr)?>
-									<tr>										
-										<th><img src="<?php echo base_url('upload/file/'.$usr->photo) ?>" width="64"/></th>
-									</tr>
-
+							<table class="table table-hover" id="dataTable" width="105%" cellspacing="0">
+								<thead>
 									<tr>
-										<th width="30%" >Name : <?php echo $usr->full_name ?> </th>
-										<!-- <th><?php echo $usr->full_name ?></th> -->
-									</tr>	
-										<th>Price</th>
-										<th>Date Start</th>
-										<th>Date Ended</th>
-										<th>Description</th>
+										<th>Photo</th>
+										<th>Username</th>
+										<!-- <th>Password</th> -->
+										<th>Email</th>
+										<th>Full Name</th>
+										<th>Phone</th>
+										<th>Role</th>
 										<th>Action</th>
 									</tr>
-							
-								<!-- <tbody>
+								</thead>
+								<tbody>
 									<?php foreach ($user as $usr): ?>
 									<tr>
 										<td>
-											<img src="<?php echo base_url('upload/file/'.$product->pim) ?>" width="64"/>
-										</td>
-										<td width="150">
-											<?php echo $product->name ?>
+											<img src="<?php echo base_url('upload/user/'.$usr->photo) ?>" width="64" />
 										</td>
 										<td>
-											<?php echo $product->price ?>
+											<?php echo $usr->username ?>
+										</td>
+										<!-- <td>
+											<?php echo $usr->password ?>
+										</td> -->
+										<td width="250">
+											<?php echo $usr->email ?>
+										</td>
+										<td width="250">
+											<?php echo substr($usr->full_name, 0, 17) ?>
 										</td>
 										<td>
-											<?php echo $product->mulai ?>
+											<?php echo $usr->phone ?>
 										</td>
 										<td>
-											<?php echo $product->selesai ?>
+											<?php echo $usr->role ?>
 										</td>
-										
-										<td class="small">
-											<?php echo substr($product->description, 0, 120) ?>...</td>
-										<td width="200">
-											<a href="<?php echo site_url('admin/project/edit/'.$product->product_id) ?>"
-											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-											<a onclick="deleteConfirm('<?php echo site_url('admin/project/delete/'.$product->product_id) ?>')"
-											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+										<td width="250">
+											<!-- <a href="<?php echo site_url('admin/projects/edit/'.$project->project_id) ?>"
+											 class="btn btn-small"><i class="fas fa-tasks"></i> Task</a> -->
+											<a href="<?php echo site_url('admin/user/edit/'.$usr->user_id) ?>"
+											class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
+											<a onclick="deleteConfirm('<?php echo site_url('admin/user/delete/'.$usr->user_id) ?>')"
+											href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
 										</td>
 									</tr>
 									<?php endforeach; ?>
 
-								</tbody> -->
 								</tbody>
 							</table>
 						</div>

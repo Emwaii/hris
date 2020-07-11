@@ -31,17 +31,11 @@
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
-				<?php if ($this->session->flashdata('success')): ?>
-				<div class="alert alert-success" role="alert">
-					<?php echo $this->session->flashdata('success');?>
-				</div>
-				<?php 
 				
-				endif;?>
 					
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/karyawan/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
+						<a href="<?php echo site_url('admin/karyawan/') ?>"style="text-decoration:none;"><i class="fas fa-arrow-left"></i> Back</a>
 					</div>
 					<div class="card-body">
 						<?php echo form_open_multipart('admin/karyawan/add');?>
@@ -51,14 +45,14 @@
 							<div class="col-md-6 mb-3">
 								<label for="nama_lengkap">Nama Lengkap<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('nama_lengkap') ? 'is-invalid':'' ?>" 
-								type="text" name="nama_lengkap" placeholder="Nama Lengkap" />
+								type="text" name="nama_lengkap" autocomplete="off" placeholder="Nama Lengkap" />
 							
 							</div>
 
 							<div class="col-md-6 mb-3">
 								<label for="tanggal_masuk">Tanggal Masuk<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('tanggal_masuk') ? 'is-invalid':'' ?>"
-								 type="text" id="tanggal_masuk" name="tanggal_masuk" placeholder="Tanggal Masuk">
+								 type="text" id="tanggal_masuk" name="tanggal_masuk"  autocomplete="off" placeholder="Tanggal Masuk">
 								
 							</div>
 							</div>	
@@ -67,13 +61,13 @@
 							<div class="col-md-6 mb-3">
 								<label for="pendidikan">Pendidikan<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('pendidikan') ? 'is-invalid':'' ?>" 
-								type="text" name="pendidikan" placeholder="Pendidikan Terakhir"/>
+								type="text" name="pendidikan" autocomplete="off" placeholder="Pendidikan Terakhir"/>
 								 
 							</div>
 							<div class="col-md-6 mb-3">
 								<label for="univ">Universitas<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('univ') ? 'is-invalid':'' ?>" 
-								type="text" name="univ" placeholder="Universitas"/>
+								type="text" name="univ" autocomplete="off" placeholder="Universitas"/>
 								
 							</div>
 							</div>
@@ -82,14 +76,14 @@
 							<div class="col-md-3 mb-3">
 								<label for="ttl">Tempat Lahir<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>"
-								 type="text" name="tempat_lahir" placeholder="Tempat Lahir">
+								 type="text" name="tempat_lahir" autocomplete="off" placeholder="Tempat Lahir">
 								
 							</div>
 
 							<div class="col-md-3 mb-3">
 								<label for="ttl">Tanggal Lahir<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('tgl_lahir') ? 'is-invalid':'' ?>" 
-								id="tgl_lahir" type="text" name="tgl_lahir" placeholder="Tanggal lahir">
+								id="tgl_lahir" type="text" name="tgl_lahir" autocomplete="off" placeholder="Tanggal lahir">
 								
 							</div>
 
@@ -97,7 +91,7 @@
 							<div class="col-md-6 mb-3">
 								<label for="no_ktp">No KTP<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('no_ktp') ? 'is-invalid':'' ?>" 
-								type="number" name="no_ktp" placeholder="Nomor Karyawan"/>
+								type="number" name="no_ktp" autocomplete="off" placeholder="Nomor KTP"/>
 								
 							</div>	
 							</div>
@@ -106,14 +100,14 @@
 							<div class="col-md-6 mb-3">
 								<label for="nama_ayah">Nama Ayah<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('nama_ayah') ? 'is-invalid':'' ?>" 
-								type="text" name="nama_ayah" placeholder="Nama Ayah"/>
+								type="text" name="nama_ayah" autocomplete="off" placeholder="Nama Ayah"/>
 								 
 							</div>
 
 							<div class="col-md-6 mb-3">
 								<label for="nama_ibu">Nama Ibu<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('nama_ibu') ? 'is-invalid':'' ?>" 
-								type="text" name="nama_ibu" placeholder="Nama Ibu"/>
+								type="text" name="nama_ibu" autocomplete="off" placeholder="Nama Ibu"/>
 								 
 							</div>
 							</div>
@@ -121,13 +115,15 @@
 							<div class="row">							
 							<div class="col-md-6 mb-3">
 								<label for="nama_ss">Nama Suami/Istri</label>
-								<input class="form-control "type="text" name="nama_ss" placeholder="Nama Suami/Istri"/>
+								<input class="form-control "type="text" name="nama_ss" autocomplete="off" 
+								placeholder="Nama Suami/Istri"/>
 								
 							</div>	
 
 							<div class="col-md-6 mb-3">
 								<label for="no_paspor">No Passport</label>
-								<input class="form-control " type="text" name="no_paspor" placeholder="Nomor Passport"/>
+								<input class="form-control " type="text" autocomplete="off"
+								 name="no_paspor" placeholder="Nomor Passport"/>
 								 
 							</div>
 							</div>
@@ -135,28 +131,49 @@
 							<div class="row">							
 							<div class="col-md-6 mb-3">
 								<label for="no_bpjs">No BPJS</label>
-								<input class="form-control "	type="number" name="no_bpjs" placeholder="Nomor BPJS"/>
+								<input class="form-control " type="number" name="no_bpjs" autocomplete="off" 
+								placeholder="Nomor BPJS"/>
 								 
 							</div>
 
 							<div class="col-md-6 mb-3">
 								<label for="no_npwp">No NPWP</label>
-								<input class="form-control"	type="number" name="no_npwp" placeholder="Nomor NPWP"/>
+								<input class="form-control"	type="number" name="no_npwp" autocomplete="off" 
+								placeholder="Nomor NPWP"/>
 								 
 							</div>
 							</div>
 						
+							<div class="row">							
+							<div class="col-md-6 mb-3">
+								<label for="no_bpjs">Jenis Karyawan<?php echo"<font color ='red'>*</font>"?></label>
+							<select class="form-control" autocomplete="off" name="jenis_karyawan">
+								<option disable selected>Pilih...</option>
+								<option value="kontrak">Kontrak</option>
+								<option value="probation">Probation</option>
+								<!-- <option value="Lainnya">Lainnya</option> -->
+							</select>
+								 
+							</div>
+
+							<div class="col-md-6 mb-3">
+							<label for="tanggal_habis">Tanggal Habis Kontrak<?php echo"<font color ='red'>*</font>"?></label>
+								<input class="form-control" type="text" id="tanggal_habis" name="tanggal_habis"  autocomplete="off" placeholder="Habis Kontrak">
+								 
+							</div>
+							</div>
+
 							<div class = "row">
 							<div class="col-md-6 mb-3">
 								<label for="alamat">Alamat KTP</label>
 								<textarea class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" 
-								name="alamat" placeholder="Alamat KTP..."></textarea>
+								name="alamat" autocomplete="off" placeholder="Alamat KTP..."></textarea>
 								
 							</div>
 							<div class="col-md-6 mb-3">
 								<label for="alamat">Alamat Sekarang</label>
 								<textarea class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" 
-								name="alamat_now" placeholder="Alamat Sekarang..."></textarea>
+								name="alamat_now" autocomplete="off" placeholder="Alamat Sekarang..."></textarea>
 								
 							</div>
 							</div>
@@ -164,42 +181,42 @@
 							<div class="row">
 								<div class="col-md-2 mb-3 ml-0">
 								
-								<input type="text" class="form-control" name="city" placeholder="Kota" >
+								<input type="text" class="form-control"  autocomplete="off" name="city" placeholder="Kota" >
 								<div class="invalid-feedback">
 									Please provide a valid city.
 								</div>
 								</div>
 								<div class="col-md-2 mb-3 ml-0">
 								
-								<input type="text" class="form-control" name="state" placeholder="Provinsi" >
+								<input type="text" class="form-control" autocomplete="off" name="state" placeholder="Provinsi" >
 								<div class="invalid-feedback">
 									Please provide a valid state.
 								</div>
 								</div>
 								<div class="mb-3 col-md-2 ml-0">
 								
-								<input type="number" class="form-control" name="zip" placeholder="Kode pos" >
+								<input type="number" class="form-control" autocomplete="off" name="zip" placeholder="Kode pos" >
 								<div class="invalid-feedback">
 									Please provide a valid zip code.
 								</div>
 								</div>
 								<div class="col-md-2 mb-3 ml-0">
 								
-								<input type="text" class="form-control" name="city_now" placeholder="Kota" >
+								<input type="text" class="form-control" autocomplete="off" name="city_now" placeholder="Kota" >
 								<div class="invalid-feedback">
 									Please provide a valid city.
 								</div>
 								</div>
 								<div class="col-md-2 mb-3 ml-0">
 								
-								<input type="text" class="form-control" name="state_now" placeholder="Provinsi" >
+								<input type="text" class="form-control" autocomplete="off" name="state_now" placeholder="Provinsi" >
 								<div class="invalid-feedback">
 									Please provide a valid state.
 								</div>
 								</div>
 								<div class="mb-3 col-md-2 ml-0">
 								
-								<input type="number" class="form-control" name="zip_now" placeholder="Kode pos" >
+								<input type="number" class="form-control" autocomplete="off" name="zip_now" placeholder="Kode pos" >
 								<div class="invalid-feedback">
 									Please provide a valid zip code.
 								</div>
@@ -211,38 +228,36 @@
 							<div class="mb-3 col-md-6">
 								<label for="email">Email Kantor<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('email_kantor') ? 'is-invalid':'' ?>" 
-								type="text" name="email_kantor" placeholder="Email"/>
+								type="text" name="email_kantor" autocomplete="off" placeholder="Email"/>
 								 
 							</div> 							
 							<div class="mb-3 col-md-6">
 								<label for="email">Email Pribadi<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('email_pribadi') ? 'is-invalid':'' ?>" 
-								type="text" name="email_pribadi" placeholder="Email"/>
+								type="text" name="email_pribadi" autocomplete="off" placeholder="Email"/>
 								
 							</div>
 							</div>
 										
-
+			
 							<div class="form-group mt-3">
-								<label for="name">Photo</label>
-								<input class="form-control-file <?php echo form_error('nama_lengkap') ? 'is-invalid':'' ?>"
-								 type="file" name="image">
-								<div class="invalid-feedback">
-									<?php echo form_error('nama_lengkap') ?>
-								</div>
+								<label for="image">Photo</label>
+								<input class="form-control-file " type="file" name="image">
 							</div>
 
 							<div class="form-group mt-3">
-								<label for="name">CV</label>
-								<input class="form-control-file <?php echo form_error('nama_lengkap') ? 'is-invalid':'' ?>"
-								 type="file" name="cv">
-								<div class="invalid-feedback">
-									<?php echo form_error('nama_lengkap') ?>
-								</div>
+								<label for="image">Photo KTP</label>
+								<input class="form-control-file " type="file" name="fktp">
+							</div>
+
+							<div class="form-group mt-3">
+								<label for="cv">CV</label>
+								<input class="form-control-file  " type="file" name="cv">
+								
 							</div>
 
 							<div class="form-group">
-								<label for="dokumen">Kontrak Kerja</label>
+								<label for="kontrak_kerja">Kontrak Kerja</label>
 								<input class="form-control-file " type="file" name="kontrak_kerja" />
 							</div>
 
@@ -306,6 +321,19 @@
     scrollInput : false,
 	});	
 </script>
+<script>
+	$('#tanggal_habis').datetimepicker({
+	timepicker: false,
+	datepicker: true,
+	format: 'd-m-Y',
+	weeks: true,
+	autoclose: true,
+	todayHighlight: true,
+	scrollMonth : false,
+    scrollInput : false,
+	});	
+</script>
+
 <script>
 $(document).ready(function(){
 	var i=1;

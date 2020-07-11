@@ -124,4 +124,13 @@ class Product_model extends CI_Model
 		}
 	}
 
+    public function get($id = null)
+    {
+        $this->db->from('products');
+        if($id != null) {
+            $this->db->where('product_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
 }

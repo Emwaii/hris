@@ -16,48 +16,53 @@ class Jabatan extends CI_Controller
     public function index()
     {
         $data["jabatan"] = $this->jabatan_model->getAll();
-        // $this->load->view("admin/client/list", $data);
+        $this->load->view("admin/payroll/jabatan", $data);
     }
 
     public function add()
     {
         $jabatan = $this->jabatan_model;
         $validation = $this->form_validation;
-        $validation->set_rules($karyawan->rules());
+        $validation->set_rules($jabatan->rules());
 
-        // if ($validation->run()) {
-        //     $client->save();
-        //     $this->session->set_flashdata('success', 'Berhasil disimpan');
-        // }
+        if ($validation->run()) {
+            $jabatan->save();
+            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            redirect('admin/jabatan');
 
-        // $this->load->view("admin/client/new_form");
+        }
+
+        // $this->load->view("admin/payroll/jabatan");
     }
 
     public function edit($id = null)
     {
-        if (!isset($id)) redirect('admin/projects_status');
+        // if (!isset($id)) redirect('admin/projects_status');
        
-        $jabatan = $this->jabatan;
+        $jabatan = $this->jabatan_model;
         $validation = $this->form_validation;
-        $validation->set_rules($karyawan->rules());
+        $validation->set_rules($jabatan->rules());
 
-        // if ($validation->run()) {
-        //     $client->update();
-        //     $this->session->set_flashdata('success', 'Berhasil disimpan');
-        // }
+        if ($validation->run()) {
+            $jabatan->update();
+            $this->session->set_flashdata('success', 'Berhasil diubah');
+            redirect('admin/jabatan');
+
+        }
 
         $data["jabatan"] = $jabatan->getById($id);
-        if (!$data["jabatan"]) show_404();
+        // if (!$data["jabatan"]) show_404();
         
-        // $this->load->view("admin/client/edit_form", $data);
+        $this->load->view("admin/payroll/jabatan", $data);
     }
 
-    // public function delete($id=null)
-    // {
-    //     if (!isset($id)) show_404();
+    public function delete($id=null)
+    {
+        if (!isset($id)) show_404();
         
-    //     if ($this->jabatan_model->delete($id)) {
-    //         redirect(site_url('admin/projects_status'));
-    //     }
-    // }
+        if ($this->jabatan_model->delete($id)) {
+            $this->session->set_flashdata('success', 'Berhasil dihapus..');
+            redirect(site_url('admin/jabatan'));
+        }
+    }
 }

@@ -19,23 +19,28 @@
 			<div class="container-fluid">
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
-
+				<?php if ($this->session->flashdata('success')): ?>
+				<div class="alert alert-success" role="alert">
+					<?php echo $this->session->flashdata('success') ; ?>
+					<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+				</div>
+				<?php endif; ?>
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/client/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+						<a href="<?php echo site_url('admin/client/add') ?>" style="text-decoration:none;"><i class="fas fa-plus"></i> Add New</a>
 					</div>
 					<div class="card-body">
 
 						<div class="table-responsive">
-							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+							<table class="table table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
 										<th>Photo</th>
-										<th>Name</th>
+										<th>Nama</th>
 										<th>Email</th>
-										<th>Indusry</th>
-										<th>Address</th>
+										<th>Perusahaan</th>
+										<th>Alamat</th>
 										<th>Action</th>
 									</tr>
 								</thead>

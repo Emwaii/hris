@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+<link rel="icon" type="image/png" href="<?= base_url('assets/img/icon.png')?>" >
+
 <style type="text/css">
 .bg-col{
     background-color: #f7f7f7   ;  
@@ -49,7 +51,7 @@
                 <form action="<?= site_url('admin/login') ?>" method="POST">
                     <div class="form-group">
                         <label for="email">Username</label>
-                        <input type="text" class="form-control" name="email" placeholder="Username" required />
+                        <input type="text" class="form-control" name="username" placeholder="Username" required />
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -65,7 +67,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-5">
-                        <input type="submit" class="btn bg-col4 w-100 text-light" value="Login" />
+                        <input type="submit" name="login" class="btn bg-col4 w-100 text-light" value="Login" />
                     </div>
 
                 </form>

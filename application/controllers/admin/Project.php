@@ -28,7 +28,8 @@ class Project extends CI_Controller
 
         if ($validation->run()) {
             $product->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'Berhasil disimpan..');
+            redirect('admin/project');
         }
         $client = $this->client_model->getAll();
         $data = ['client' => $client];
@@ -45,7 +46,8 @@ class Project extends CI_Controller
 
         if ($validation->run()) {
             $product->update();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'Berhasil diubah..');
+            redirect('admin/project');
         }
         $client = $this->client_model->getAll();
         $data =['client' => $client, 'project' => $product->getById($id)];
@@ -59,6 +61,7 @@ class Project extends CI_Controller
         if (!isset($id)) show_404();
         
         if ($this->product_model->delete($id)) {
+            $this->session->set_flashdata('success', 'Berhasil dihapus..');
             redirect(site_url('admin/project'));
         }
     }

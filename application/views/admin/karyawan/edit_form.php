@@ -5,7 +5,14 @@
 	<?php $this->load->view("admin/_partials/head.php") ?>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<link href="<?php echo base_url('css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
+	<link href="<?php echo base_url('css/jquery.datetimepicker.min.css') ?>" rel="stylesheet">
+	<style>
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+		}
+	</style>
 </head>
 
 <body id="page-top">
@@ -16,23 +23,30 @@
 		<?php $this->load->view("admin/_partials/sidebar.php") ?>
 
 		<div id="content-wrapper">
-
+			
 			<div class="container-fluid">
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
-
-				<?php if ($this->session->flashdata('success')): ?>
-				<div class="alert alert-success" role="alert">
-					<?php echo $this->session->flashdata('success'); ?>
+				
+				<!-- <?php if ($this->session->flashdata('success')){ ?>
+				
+				    <div class="alert alert-success" role="alert">
+					<?php echo $this->session->flashdata('success');
+					
+					// redirect('admin/karyawan/edit',"refresh");
+					?>
+					
 				</div>
-				<?php endif; ?>
+				<?php } ?> -->
 
+				
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/karyawan/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
+
+						<a href="<?php echo site_url('admin/karyawan/') ?>" style="text-decoration:none;"><i class="fas fa-arrow-left"></i> Back</a>
 					</div>
 					<div class="card-body">
-
+						<!-- <?php echo form_open_multipart('admin/karyawan/edit');?> -->
 						<form action="<?php base_url('admin/karyawan/edit') ?>" method="post" enctype="multipart/form-data" >
 						
 						<input type="hidden" name="id" value="<?php echo $karyawan->karyawan_id?>" />
@@ -135,12 +149,31 @@
 								 
 							</div>
 							</div>
-						
+												
+							<div class="row">							
+							<div class="col-md-6 mb-3">
+								<label for="no_bpjs">Jenis Karyawan<?php echo"<font color ='red'>*</font>"?></label>
+							<select class="form-control" autocomplete="off" name="jenis_karyawan">
+								<option disable selected>Pilih...</option>
+								<option value="kontrak"<?php if($karyawan->jenis_karyawan=="kontrak") echo 'selected="selected"'; ?>>Kontrak</option>
+								<option value="probation"<?php if($karyawan->jenis_karyawan=="probation") echo 'selected="selected"'; ?>>Probation</option>
+								<!-- <option value="Lainnya">Lainnya</option> -->
+							</select>
+								 
+							</div>
+
+							<div class="col-md-6 mb-3">
+							<label for="tanggal_habis">Tanggal Habis Kontrak<?php echo"<font color ='red'>*</font>"?></label>
+								<input class="form-control" type="text" id="tanggal_habis" name="tanggal_habis"  autocomplete="off" placeholder="<?= $karyawan->tgl_habis?>">
+								 
+							</div>
+							</div>
+
 							<div class = "row">
 							<div class="col-md-6 mb-3">
 								<label for="alamat">Alamat KTP</label>
 								<textarea class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" 
-								name="alamat" placeholder="Alamat KTP..."> <?php echo $karyawan->alamat?></textarea>
+								name="alamat" placeholder="Alamat KTP..."><?php echo $karyawan->alamat?></textarea>
 								
 							</div>
 							<div class="col-md-6 mb-3">
@@ -212,48 +245,64 @@
 							</div>
 							</div>
 
-							<div class="form-group">
-							<label for="jenis_kelamin">Jenis Kelamin*</label>
+							<div class="row">
+							<div class="col-md-6 mb-3">
+							<label for="jenis_kelamin">Jenis Kelamin<?php echo"<font color ='red'>*</font>"?></label>
 							<select class="form-control <?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" 
-							name="jenis_kelamin"  placeholder="<?php echo $karyawan->jenis_kelamin?>">
-								<option selected>Pilih...</option>
-								<option value="Laki - laki">Laki - laki</option>
-								<option value="Perempuan">Perempuan</option>
-								<option value="Lainnya">Lainnya</option>
+							name="jenis_kelamin">
+							<option disable selected>Pilih...</option>
+							<option value="Laki - laki" <?php if($karyawan->jenis_kelamin=="Laki - laki") echo 'selected="selected"'; ?>>Laki - laki</option>
+							<option value="Perempuan" <?php if($karyawan->jenis_kelamin=="Perempuan") echo 'selected="selected"'; ?>>Perempuan</option>
+							<option value="Lainnya">Lainnya</option>
 							</select>
 							<div class="invalid-feedback">
 									<?php echo form_error('jenis_kelamin') ?>
 								</div>
 							</div>							
 
-							<div class="form-group">
+							<div class="col-md-6 mb-3">
 							<label for="jabatan">Jabatan</label>
 							<select class="form-control" name="jbtn">
-								<option selected>Pilih...</option>
-								<?php foreach ($jabatan as $jb) {
-										echo '<option value="'.$jb->jabatan_id.'">'.$jb->jabatan_name.'</option>';
-								}?>
+								<option disable selected>Pilih...</option>
+								<?php foreach ($jabatan as $jb) {?>
+									
+								<option value="<?php echo $jb->jabatan_id ?>" <?php if($karyawan->jabatan_id==$jb->jabatan_id) echo 'selected="selected"'; ?> ><?php echo $jb->jabatan_name ?></option>
+								<?php } ?>
 							</select>
 							</div>							
-			
-
-							<div class="form-group mt-3">
-								<label for="name">Photo</label>
-								<input class="form-control-file " type="file" name="image">
 							</div>
 
 							<div class="form-group mt-3">
-								<label for="name">CV</label>
+								<label for="name">Photo</label><br>
+								<img src="<?php echo base_url('upload/karyawan/'.$karyawan->image) ?>" width="100"><br><br>	
+								<input type="hidden" name="old_image" value="<?php echo $karyawan->image ?>"/>
+								<input class="form-control-file " type="file" name="image">
+
+							</div>
+
+							<div class="form-group mt-3">
+								<label for="name">Photo KTP</label><br>
+								<input type="hidden" name="old_fktp" value="<?php echo $karyawan->fktp ?>"/>
+								<input class="form-control-file " type="file" name="fktp">
+
+							</div>
+
+							<div class="form-group mt-3">
+								<label for="cv">CV</label>
 								<input class="form-control-file " type="file" name="cv">
+								<input type="hidden" name="old_cv" value="<?php echo $karyawan->cv ?>" />
+
 							</div>
 
 							<div class="form-group">
-								<label for="dokumen">Kontrak Kerja</label>
+								<label for="kontrak">Kontrak Kerja</label>
 								<input class="form-control-file " type="file" name="kontrak_kerja" />
+								<input type="hidden" name="old_kontrak" value="<?php echo $karyawan->kontrak_kerja ?>" />
+
 							</div>	
 
 							
-							<input class="btn btn-success" type="submit" name="btn" value="Save" />
+							<input class="btn btn-success" id="btn" type="submit" name="btn" value="Save" />
 						</form>
 
 					</div>
@@ -275,7 +324,6 @@
 		</div>
 		<!-- /#wrapper -->
 
-
 		<?php $this->load->view("admin/_partials/scrolltop.php") ?>
 
 		<?php $this->load->view("admin/_partials/js.php") ?>
@@ -283,7 +331,46 @@
 </body>
 
 </html>
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+<script src="<?php echo base_url('css/jquery.datetimepicker.full.min.js') ?>"></script>
+<script>
+	$('#tgl_lahir').datetimepicker({
+	timepicker: false,
+	datepicker: true,
+	format: 'd-m-Y',
+	weeks: true,
+	autoclose: true,
+	todayHighlight: true,
+	scrollMonth : false,
+    scrollInput : false,
+	});	
+</script>
+<script>
+	$('#tanggal_habis').datetimepicker({
+	timepicker: false,
+	datepicker: true,
+	format: 'd-m-Y',
+	weeks: true,
+	autoclose: true,
+	todayHighlight: true,
+	scrollMonth : false,
+    scrollInput : false,
+	});	
+</script>
+<script>
+	$('#tanggal_masuk').datetimepicker({
+	timepicker: false,
+	datepicker: true,
+	format: 'd-m-Y',
+	weeks: true,
+	autoclose: true,
+	todayHighlight: true,
+	scrollMonth : false,
+    scrollInput : false,
+	});	
+</script>
 <script>
 $(document).ready(function(){
 	var i=1;
@@ -297,4 +384,14 @@ $(document).ready(function(){
 		$('#row'+button_id+'').remove();
 	});
 });
+</script>
+<script>
+	$('form').on('focus', 'input[type=number]', function (e) {
+	$(this).on('wheel.disableScroll', function (e) {
+	e.preventDefault()
+	})
+	})
+	$('form').on('blur', 'input[type=number]', function (e) {
+	$(this).off('wheel.disableScroll')
+	})
 </script>

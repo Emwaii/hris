@@ -114,4 +114,13 @@ class Client_model extends CI_Model
 		}
 	}
 
+    public function get($id = null)
+    {
+        $this->db->from('client');
+        if($id != null) {
+            $this->db->where('client_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
 }

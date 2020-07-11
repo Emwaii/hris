@@ -122,7 +122,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 .navbar-nav .nav-item .nav-link .badge {
   position: absolute;
   margin-left: 0.75rem;
-  top: 0.3rem;
+  top: 0.6rem;
   font-weight: 400;
   font-size: 0.5rem;
 }
@@ -196,7 +196,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
     width: 225px;
   }
   .sidebar .nav-item .nav-link span {
-    font-size: 1rem;
+    font-size: 14px;
     display: inline;
   }
   .sidebar .nav-item .dropdown-menu {

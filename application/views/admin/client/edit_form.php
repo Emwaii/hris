@@ -26,47 +26,47 @@
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
-				<?php if ($this->session->flashdata('success')): ?>
+				<!-- <?php if ($this->session->flashdata('success')): ?>
 				<div class="alert alert-success" role="alert">
 					<?php echo $this->session->flashdata('success'); ?>
 				</div>
-				<?php endif; ?>
+				<?php endif; ?> -->
 
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/client/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
+						<a href="<?php echo site_url('admin/client/') ?>" style="text-decoration:none;"><i class="fas fa-arrow-left"></i> Back</a>
 					</div>
 					<div class="card-body">
 						<form action="<?php base_url('admin/client/edit') ?>" method="post" enctype="multipart/form-data" >
 						<input type="hidden" name="id" value="<?php echo $client->client_id?>"/>
 							<div class="form-group">
-								<label for="idc">ID Card*</label>
+								<label for="idc">ID Card<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('idc') ? 'is-invalid':'' ?>"
-								 type="number" name="idc" placeholder="ID Card" value="<?php echo $client->id_card?>" />
+								 type="number" name="idc" placeholder="KTP/SIM/Passport/dsb" value="<?php echo $client->id_card?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('idc') ?>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="name">Name*</label>
+								<label for="name">Nama<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
-								 type="text" name="name" placeholder="Full name" value="<?php echo $client->nama?>"/>
+								 type="text" name="name" placeholder="Nama client" value="<?php echo $client->nama?>"/>
 								<div class="invalid-feedback">
 									<?php echo form_error('name') ?>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="notlp">Phone Number*</label>
+								<label for="notlp">Nomor Telepon<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('notlp') ? 'is-invalid':'' ?>"
-								 type="number" name="notlp" placeholder="Phone number" value="<?php echo $client->no_telp?>" />
+								 type="number" name="notlp" placeholder="Nomor telepon" value="<?php echo $client->no_telp?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('ntlp') ?>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="email">Email*</label>
+								<label for="email">Email<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>"
 								 type="email" name="email" placeholder="Email" value="<?php echo $client->email?>" />
 								<div class="invalid-feedback">
@@ -75,20 +75,21 @@
 							</div>
 
 							<div class="form-group">
-								<label for="industri">Industry</label>
-								<input class="form-control "type="text" name="industri" placeholder="Industry name" 
+								<label for="industri">Perusahaan</label>
+								<input class="form-control "type="text" name="industri" placeholder="Nama perusahaan" 
 								value="<?php echo $client->perusahaan?>"/>
 							</div>
 
 							<div class="form-group">
-								<label for="alamat">Address</label>
-								<textarea class="form-control " name="alamat" placeholder="Address..."><?php echo $client->alamat?></textarea>
+								<label for="alamat">Alamat Perusahaan</label>
+								<textarea class="form-control " name="alamat" placeholder="Alamat perusahaaan..."><?php echo $client->alamat?></textarea>
 							</div>
 
 							<div class="form-group mt-3">
 								<label for="name">Photo</label>
 								<input class="form-control-file" type="file" name="image" value="<?php echo $client->image?>"/>
-								
+								<input type="hidden" name="old_image" value="<?php echo $client->image ?>" />
+
 							</div>
 
 							
@@ -99,7 +100,7 @@
 					</div>
 
 					<div class="card-footer small text-muted">
-						* required fields
+					<?php echo"<font color ='red'>*</font>"?> required fields
 					</div>
 
 

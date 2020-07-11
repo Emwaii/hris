@@ -27,7 +27,8 @@ class User extends CI_Controller
 
         if ($validation->run()) {
             $user->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'Berhasil disimpan..');
+            redirect('admin/user');
         }
 
         $this->load->view("admin/user/new_form");
@@ -43,7 +44,8 @@ class User extends CI_Controller
 
         if ($validation->run()) {
             $user->update();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'Berhasil diubah..');
+            redirect('admin/user');
         }
 
         $data["user"] = $user->getById($id);
@@ -57,6 +59,7 @@ class User extends CI_Controller
         if (!isset($id)) show_404();
         
         if ($this->user_model->delete($id)) {
+            $this->session->set_flashdata('success', 'Berhasil dihapus..');
             redirect(site_url('admin/user'));
         }
     }

@@ -27,15 +27,15 @@
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
-				<?php if ($this->session->flashdata('success')): ?>
+				<!-- <?php if ($this->session->flashdata('success')): ?>
 				<div class="alert alert-success" role="alert">
 					<?php echo $this->session->flashdata('success'); ?>
 				</div>
-				<?php endif; ?>
+				<?php endif; ?> -->
 
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/client/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
+						<a href="<?php echo site_url('admin/client/') ?>" style="text-decoration:none;"><i class="fas fa-arrow-left"></i> Back</a>
 					</div>
 					<div class="card-body">
 
@@ -43,24 +43,24 @@
 							<div class="form-group">
 								<label for="idc">ID Card<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('idc') ? 'is-invalid':'' ?>"
-								 type="number" name="idc" placeholder="ID Card" />
+								 type="number" name="idc" placeholder="KTP/SIM/Passport/dsb" />
 								<div class="invalid-feedback">
 									<?php echo form_error('idc') ?>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="name">Name<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="name">Nama<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
-								 type="text" name="name" placeholder="Full name" />
+								 type="text" name="name" placeholder="Nama client" />
 								<div class="invalid-feedback">
 									<?php echo form_error('name') ?>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="notlp">Phone Number<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="notlp">Nomor Telepon<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('notlp') ? 'is-invalid':'' ?>"
-								 type="number" name="notlp" placeholder="Phone number" />
+								 type="number" name="notlp" placeholder="Nomor telepon" />
 								<div class="invalid-feedback">
 									<?php echo form_error('ntlp') ?>
 								</div>
@@ -76,13 +76,13 @@
 							</div>
 
 							<div class="form-group">
-								<label for="industri">Industry</label>
-								<input class="form-control "type="text" name="industri" placeholder="Industry name" />
+								<label for="industri">Perusahaan</label>
+								<input class="form-control "type="text" name="industri" placeholder="Nama perusahaan" />
 							</div>
 
 							<div class="form-group">
-								<label for="alamat">Address</label>
-								<textarea class="form-control " name="alamat" placeholder="Address..."></textarea>
+								<label for="alamat">Alamat Perusahaan</label>
+								<textarea class="form-control " name="alamat" placeholder="Alamat perusahaan..."></textarea>
 							</div>
 
 							<div class="form-group mt-3">

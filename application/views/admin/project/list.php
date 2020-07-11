@@ -13,30 +13,35 @@
 	<div id="wrapper">
 
 		<?php $this->load->view("admin/_partials/sidebar.php") ?>
-
+		
 		<div id="content-wrapper">
 
 			<div class="container-fluid">
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
-
+				<?php if ($this->session->flashdata('success')): ?>
+				<div class="alert alert-success" role="alert">
+					<?php echo $this->session->flashdata('success') ; ?>
+					<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+				</div>
+				<?php endif; ?>
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/project/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+						<a href="<?php echo site_url('admin/project/add') ?>" style="text-decoration:none;"><i class="fas fa-plus"></i> Add New</a>
 					</div>
 					<div class="card-body">
 
 						<div class="table-responsive">
-							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+							<table class="table table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
 										<th>Photo</th>
-										<th>Name</th>
+										<th>Nama Project</th>
 										<th>Price</th>
-										<th>Date Start</th>
-										<th>Date Ended</th>
-										<th>Description</th>
+										<th>Mulai</th>
+										<th>Selesai</th>
+										<th>Deskripsi</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -49,14 +54,14 @@
 										<td width="150">
 											<?php echo $product->name ?>
 										</td>
-										<td>
-											<?php echo $product->price ?>
+										<td width="100">
+											<?php echo "Rp.", number_format($product->price) ?>
 										</td>
-										<td>
-											<?php echo $product->mulai ?>
+										<td width="100">
+											<?php echo date('d F Y', strtotime($product->mulai)) ?>
 										</td>
-										<td>
-											<?php echo $product->selesai ?>
+										<td width="100">
+											<?php echo date('d F Y', strtotime($product->selesai)) ?>
 										</td>
 										
 										<td class="small">

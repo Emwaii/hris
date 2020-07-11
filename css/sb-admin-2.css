@@ -4803,16 +4803,11 @@ input[type="button"].btn-block {
 }
 
 .badge {
-  display: inline-block;
-  padding: 0.25em 0.4em;
-  font-size: 75%;
-  font-weight: 700;
-  line-height: 1;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: 0.35rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  font-weight: normal;
+  padding: 6px 12px;
+  color: white !important;
+  display: block;
+  width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -9911,7 +9906,7 @@ a:focus {
 }
 
 .text-xs {
-  font-size: .7rem;
+  font-size: .8rem;
 }
 
 .text-lg {
@@ -10242,9 +10237,15 @@ a:focus {
   color: #858796;
 }
 
-.sidebar {
+/* .sidebar {
   width: 6.5rem;
   min-height: 100vh;
+} */
+
+.sidebar {
+  width: 90px !important;
+  background-color: #212529;
+  min-height: calc(100vh - 56px);
 }
 
 .sidebar .nav-item {
@@ -10255,10 +10256,16 @@ a:focus {
   margin-bottom: 1rem;
 }
 
-.sidebar .nav-item .nav-link {
+/* .sidebar .nav-item .nav-link {
   text-align: center;
   padding: 0.75rem 1rem;
   width: 6.5rem;
+} */
+
+.sidebar .nav-item .nav-link {
+  text-align: center;
+  padding: 0.75rem 1rem;
+  width: 90px;
 }
 
 .sidebar .nav-item .nav-link span {
@@ -10622,6 +10629,12 @@ a:focus {
 
 .sidebar-dark.toggled #sidebarToggle::after {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar.fixed-top {
+  top: 56px;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
 }
 
 .btn-circle {
@@ -11156,7 +11169,7 @@ form.user .btn-user {
   clip: rect(0, 900px, 0, 0);
   animation: noise-anim-2 3s infinite linear alternate-reverse;
 }
-
+/* 
 footer.sticky-footer {
   padding: 2rem 0;
   flex-shrink: 0;
@@ -11169,4 +11182,69 @@ footer.sticky-footer .copyright {
 
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
+} */
+footer.sticky-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: calc(100% - 90px);
+  height: 80px;
+  background-color: #e9ecef;
 }
+
+footer.sticky-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: calc(100% - 90px);
+  height: 80px;
+  background-color: #e9ecef;
+}
+
+footer.sticky-footer .copyright {
+  line-height: 1;
+  font-size: 0.8rem;
+}
+
+@media (min-width: 768px) {
+  footer.sticky-footer {
+    width: calc(100% - 225px);
+  }
+}
+
+body.sidebar-toggled footer.sticky-footer {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  body.sidebar-toggled footer.sticky-footer {
+    width: calc(100% - 90px);
+  }
+}
+
+/*tambahan*/
+
+body.fixed-nav #content-wrapper {
+  margin-top: 56px;
+  padding-left: 90px;
+}
+
+body.fixed-nav.sidebar-toggled #content-wrapper {
+  padding-left: 0;
+}
+
+@media (min-width: 768px) {
+  body.fixed-nav #content-wrapper {
+    padding-left: 225px;
+  }
+  body.fixed-nav.sidebar-toggled #content-wrapper {
+    padding-left: 90px;
+  }
+}
+

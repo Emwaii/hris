@@ -30,16 +30,18 @@ class Karyawan_model extends CI_Model
     public $email_pribadi;
     public $jenis_kelamin;
     public $jabatan_id;
+    public $fktp;
     public $cv = "default.docx";
     public $kontrak_kerja = "default.docx";
     public $image = "default.jpg";
+    
     
     public function rules(){
         return [
             ['field' => 'nama_lengkap',
             'label' => 'Full Name',
             'rules' => 'required'],
-            
+
             ['field' => 'alamat',
             'label' => 'Alamat',
             'rules' => 'required'],
@@ -83,7 +85,7 @@ class Karyawan_model extends CI_Model
             ['field' => 'email_kantor',
             'label' => 'Email Kantor',
             'rules' => 'required'],
-
+ 
             ['field' => 'nama_ibu',
             'label' => 'ibu',
             'rules' => 'required']
@@ -95,7 +97,7 @@ class Karyawan_model extends CI_Model
         // return $this->db->get($this->_table)->result();
         return $this->db->query("SELECT 
         karyawan.karyawan_id, 
-        karyawan.nama_lengkap, 
+        karyawan.nama_lengkap as namakr, 
         karyawan.tanggal_masuk, 
         karyawan.pendidikan,
         karyawan.universitas,
@@ -121,10 +123,14 @@ class Karyawan_model extends CI_Model
         karyawan.jenis_kelamin,
         karyawan.jabatan_id as kj,         
         karyawan.cv,
+        karyawan.jenis_karyawan,
+        karyawan.tgl_habis,
         karyawan.kontrak_kerja,
         karyawan.image,  
+        karyawan.fktp,
         jabatan.jabatan_id,
-        jabatan.jabatan_name as jn 
+        jabatan.jabatan_name as jn,
+        jabatan.gajipokok as gp  
         FROM karyawan,jabatan where karyawan.jabatan_id = jabatan.jabatan_id")->result();
     }
     
@@ -163,9 +169,12 @@ class Karyawan_model extends CI_Model
         $this->email_pribadi = $post["email_pribadi"];
         $this->jabatan_id = $post["jbtn"];
         $this->jenis_kelamin = $post["jenis_kelamin"];
+        $this->jenis_karyawan = $post["jenis_karyawan"];
+        $this->tgl_habis = $post["tanggal_habis"];
         $this->image = $this->_uploadImage();
         $this->cv = $this->_cv();
         $this->kontrak_kerja = $this->_kontrak();
+        $this->fktp = $this->_uploadfktp();
                  
         $this->db->insert($this->_table, $this);
         //$this->db->_error_message();
@@ -175,48 +184,80 @@ class Karyawan_model extends CI_Model
     public function update()
     {
         $post = $this->input->post();
-        $this->karyawan_id = $post["id"];                             //update belum
+        $this->karyawan_id = $post["id"];
         $this->nama_lengkap = $post["nama_lengkap"];
-        $this->no_karyawan = $post["no_karyawan"];
-        $this->jenis_kelamin = $post["jenis_kelamin"];
-        $this->email = $post["email"];
-        $this->alamat= $post["alamat"];
+        $this->tanggal_masuk = $post["tanggal_masuk"];
+        $this->pendidikan = $post["pendidikan"];
+        $this->universitas = $post["univ"];
+        $this->ttl = $post["tempat_lahir"];
+        $this->tgl_lahir=$post["tgl_lahir"];
+        $this->id_card = $post["no_ktp"];
+        $this->nama_ayah = $post["nama_ayah"];
+        $this->nama_ibu = $post["nama_ibu"];
+        $this->nama_ss = $post["nama_ss"];
+        $this->no_pasport = $post["no_paspor"];
+        $this->no_bpjs = $post["no_bpjs"];
+        $this->no_npwp = $post["no_npwp"];
+        $this->alamat = $post["alamat"];
         $this->city = $post["city"];
         $this->state = $post["state"];
         $this->zip = $post["zip"];
+        $this->alamat_now = $post["alamat_now"];
+        $this->city_now = $post["city_now"];
+        $this->state_now = $post["state_now"];
+        $this->zip_now = $post["zip_now"];
+        $this->email_kantor = $post["email_kantor"];
+        $this->email_pribadi = $post["email_pribadi"];
         $this->jabatan_id = $post["jbtn"];
+        $this->jenis_kelamin = $post["jenis_kelamin"];
         $this->jenis_karyawan = $post["jenis_karyawan"];
-        $this->tanggal_masuk = $post["tanggal_masuk"];
-		
-		// if (!empty($files["dokumen"]["name"])) {
-        //     $this->dokumen = $this->_uploadDoc();
-        // } else {
-        //     $this->dokumen = $post["old_doc"];
-		// }
-
-        if (!empty($files["image"]["name"])) {
+        $this->tgl_habis = $post["tanggal_habis"];
+        
+        if (!empty($_FILES["image"]["name"])) {
             $this->image = $this->_uploadImage();
         } else {
             $this->image = $post["old_image"];
-		}
+        }
+
+        if (!empty($_FILES["fktp"]["name"])) {
+            $this->fktp = $this->_uploadfktp();
+        } else {
+            $this->fktp = $post["old_fktp"];
+        }
+        
+		if (!empty($_FILES["cv"]["name"])) {
+            $this->cv = $this->_cv();
+        } else {
+            $this->cv = $post["old_cv"];
+        }
+        
+        if (!empty($_FILES["kontrak_kerja"]["name"])) {
+            $this->kontrak_kerja = $this->_kontrak();
+        } else {
+            $this->kontrak_kerja = $post["old_kontrak"];
+        }
+        
+       
   
         $this->db->update($this->_table, $this, array('karyawan_id' => $post['id']));
     }
 
     public function delete($id)
     {
-		$this->_deleteImage($id);                               // delete belum
+        $this->_deleteImage($id);
+        $this->_deletecv($id);
+        $this->_deletekontrak($id);                               // delete belum
         return $this->db->delete($this->_table, array("karyawan_id" => $id));
 	}
-	
+    
+    
 	private function _uploadImage()
 	{
 		$config['upload_path']          = './upload/karyawan/';
 		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
-        $config['file_name']            = $this->karyawan_id;
-        $config['encrypt_name']         = true;
-		$config['overwrite']			= true;
-		$config['max_size']             = 1024; // 1MB
+        // $config['file_name']            = $karyawan->nama_lengkap."";
+        $config['overwrite']			= true;
+		$config['max_size']             = 2048; // 1MB
 		// $config['max_width']            = 1024;
 		// $config['max_height']           = 768;
 
@@ -224,22 +265,41 @@ class Karyawan_model extends CI_Model
 
 		if ($this->upload->do_upload('image')) {
 			return $this->upload->data("file_name");
-		}
+        }
+        
 		//print_r($this->upload->display_errors());
 		return "default.jpg";
-	}
-
+    }
     
-    private function _cv()
-	{           
+    private function _uploadfktp()
+	{
 		$config['upload_path']          = './upload/karyawan/';
 		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
-		$config['file_name']            = $this->karyawan_id;
-        $config['encrypt_name']         = true;
+        // $config['file_name']            = $karyawan->nama_lengkap."";
         $config['overwrite']			= true;
 		$config['max_size']             = 2048; // 1MB
 		// $config['max_width']            = 1024;
 		// $config['max_height']           = 768;
+
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('fktp')) {
+			return $this->upload->data("file_name");
+        }
+        
+		//print_r($this->upload->display_errors());
+		return "default.jpg";
+	}
+    
+    private function _cv()
+	{   
+		$config['upload_path']          = './upload/karyawan/';
+		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
+		//$config['file_name']            = $nama_cv;        
+        $config['overwrite']			 = true;
+		$config['max_size']             = 2048; // 1MB
+		// $configig['max_width']            = 1024;
+		// $configig['max_height']           = 768;
        
         $this->load->library('upload', $config);
         
@@ -251,12 +311,11 @@ class Karyawan_model extends CI_Model
     }
 
     private function _kontrak()
-	{           
+	{   
 		$config['upload_path']          = './upload/karyawan/';
 		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
-		$config['file_name']            = $this->karyawan_id;
-        $config['encrypt_name']         = true;
-        $config['overwrite']			= true;
+		//$config['file_name']            = $config;
+        $config['overwrite']			  = true;
 		$config['max_size']             = 2048; // 1MB
 		// $config['max_width']            = 1024;
 		// $config['max_height']           = 768;
@@ -274,18 +333,46 @@ class Karyawan_model extends CI_Model
 	{
 		$karyawan = $this->getById($id);
 		if ($karyawan->image != "default.jpg") {
-			$filename = explode(".", $karyawan->foto)[0];
+			$filename = explode(".", $karyawan->image)[0];
 			return array_map('unlink', glob(FCPATH."upload/karyawan/$filename.*"));
 		}
     }
-    private function _deleteDoc($id)
+
+    private function _deletefktp($id)
+	{
+		$karyawan = $this->getById($id);
+		if ($karyawan->fktp != "default.jpg") {
+			$filename = explode(".", $karyawan->fktp)[0];
+			return array_map('unlink', glob(FCPATH."upload/karyawan/$filename.*"));
+		}
+    }
+
+    private function _deletecv($id)
 	{
 		$karyawan = $this->getById($id);                                        // belum
-		if ($karyawan->image != "default.docx") {
-			$filename = explode(".", $karyawan->dokumen)[0];
-			return array_map('unlink', glob(FCPATH."upload/file/$filename.*"));
+		if ($karyawan->cv != "default.docx") {
+			$filename = explode(".", $karyawan->cv)[0];
+			return array_map('unlink', glob(FCPATH."upload/karyawan/$filename.*"));
+		}
+
+    } 
+    private function _deletekontrak($id)
+	{
+		$karyawan = $this->getById($id);                                        // belum
+		if ($karyawan->kontrak_kerja != "default.docx") {
+			$filename = explode(".", $karyawan->kontrak_kerja)[0];
+			return array_map('unlink', glob(FCPATH."upload/karyawan/$filename.*"));
 		}
 
     }           
 
+    public function get($id = null)
+    {
+        $this->db->from('karyawan');
+        if($id != null) {
+            $this->db->where('karyawan_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
 }

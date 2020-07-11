@@ -27,7 +27,9 @@ class Client extends CI_Controller
 
         if ($validation->run()) {
             $client->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'Berhasil disimpan..');
+            redirect('admin/client');
+
         }
 
         $this->load->view("admin/client/new_form");
@@ -43,7 +45,8 @@ class Client extends CI_Controller
 
         if ($validation->run()) {
             $client->update();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'Berhasil diubah..');
+            redirect('admin/client');
         }
 
         $data["client"] = $client->getById($id);
@@ -57,6 +60,7 @@ class Client extends CI_Controller
         if (!isset($id)) show_404();
         
         if ($this->client_model->delete($id)) {
+            $this->session->set_flashdata('success', 'Berhasil dihapus..');
             redirect(site_url('admin/client'));
         }
     }
