@@ -131,7 +131,7 @@ class Karyawan_model extends CI_Model
         jabatan.jabatan_id,
         jabatan.jabatan_name as jn,
         jabatan.gajipokok as gp  
-        FROM karyawan,jabatan where karyawan.jabatan_id = jabatan.jabatan_id")->result();
+        FROM karyawan left join jabatan on karyawan.jabatan_id = jabatan.jabatan_id")->result();
     }
     
     public function getById($id)
@@ -169,8 +169,16 @@ class Karyawan_model extends CI_Model
         $this->email_pribadi = $post["email_pribadi"];
         $this->jabatan_id = $post["jbtn"];
         $this->jenis_kelamin = $post["jenis_kelamin"];
-        $this->jenis_karyawan = $post["jenis_karyawan"];
-        $this->tgl_habis = $post["tanggal_habis"];
+
+
+        if($post["jenis_karyawan"] == "tetap"){
+            $this->jenis_karyawan = $post["jenis_karyawan"];
+            $this->tgl_habis = null;
+        }else{
+            $this->jenis_karyawan = $post["jenis_karyawan"];
+            $this->tgl_habis = $post["tanggal_habis"];
+        }
+
         $this->image = $this->_uploadImage();
         $this->cv = $this->_cv();
         $this->kontrak_kerja = $this->_kontrak();
@@ -183,7 +191,7 @@ class Karyawan_model extends CI_Model
 
     public function update()
     {
-        $post = $this->input->post();
+       $post  = $this->input->post();
         $this->karyawan_id = $post["id"];
         $this->nama_lengkap = $post["nama_lengkap"];
         $this->tanggal_masuk = $post["tanggal_masuk"];
@@ -236,9 +244,7 @@ class Karyawan_model extends CI_Model
         } else {
             $this->kontrak_kerja = $post["old_kontrak"];
         }
-        
        
-  
         $this->db->update($this->_table, $this, array('karyawan_id' => $post['id']));
     }
 
@@ -256,6 +262,7 @@ class Karyawan_model extends CI_Model
 		$config['upload_path']          = './upload/karyawan/';
 		$config['allowed_types']        = 'gif|jpg|png|pdf|doc|docx';
         // $config['file_name']            = $karyawan->nama_lengkap."";
+        $config['encrypt_name']         = true;
         $config['overwrite']			= true;
 		$config['max_size']             = 2048; // 1MB
 		// $config['max_width']            = 1024;

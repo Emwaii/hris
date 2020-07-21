@@ -28,7 +28,7 @@
 
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/users/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
+						<a href="<?php echo site_url('admin/user/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
 					</div>
 					<div class="card-body">
 
@@ -45,7 +45,7 @@
 							</div>
 							
 							<div class="form-group">
-								<label for="name">Username*</label>
+								<label for="name">Username<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('username') ? 'is-invalid':'' ?>"
 								 type="text" name="username" placeholder="Username" />
 								<div class="invalid-feedback">
@@ -54,7 +54,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="name">Password*</label>
+								<label for="name">Password<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>"
 								 type="password" name="password" placeholder="Password" />
 								<div class="invalid-feedback">
@@ -63,7 +63,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="name">Email*</label>
+								<label for="name">Email<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>"
 								 type="text" name="email" placeholder="Email" />
 								<div class="invalid-feedback">
@@ -72,7 +72,7 @@
 							</div>
 
 							<div class="form-group">
-  								<label for="name">Full Name*</label>
+  								<label for="name">Full Name<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('full_name') ? 'is-invalid':'' ?>" 
 								type="text" name="full_name" placeholder="Full Name" >
 								<div class="invalid-feedback">
@@ -81,7 +81,7 @@
 							</div>
 
 							<div class="form-group">
-  								<label for="name">Phone*</label>
+  								<label for="name">Phone<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('phone') ? 'is-invalid':'' ?>" 
 								type="text" name="phone" placeholder="Phone" >
 								<div class="invalid-feedback">
@@ -90,20 +90,20 @@
 							</div>
 
 							<div class="form-group">
-  								<label for="name">Role*</label>
+  								<label for="name">Role<?php echo"<font color ='red'>*</font>"?></label>
 								  <select name="role" class="form-control">
 									<option value="admin">Admin</option>
 									<option value="superadmin">Superadmin</option>
 								</select>
 							</div>
 
-							<input class="btn btn-success" type="submit" name="btn" value="Save" />
+							<input class="btn btn-success w-100" type="submit" name="btn" value="Save" />
 						</form>
 
 					</div>
 
 					<div class="card-footer small text-muted">
-						* required fields
+					<?php echo"<font color ='red'>*</font>"?> required fields
 					</div>
 
 

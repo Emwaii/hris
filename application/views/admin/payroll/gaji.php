@@ -46,15 +46,15 @@
 								<thead>
 									<tr>
 										<th style="text-align:center">No</th>
-										<th style="text-align:center" >Jenis Tunjangan</th>
-										<th style="text-align:center">Jumlah</th>
+										<th style="text-align:center">Type of Allowance</th>
+										<th style="text-align:center">Amount</th>
 										<th style="text-align:center">Action</th>
 									</tr>
 								</thead>
 								<tbody>
 									<?php $i=1; foreach ($gaji as $gj): ?>
 									<tr>
-										<td width="50">
+										<td width="30" style="text-align:center">
 										<?php echo $i++?>
 										</td>
 										<td width="200">
@@ -64,10 +64,10 @@
 											<?php echo "Rp.", number_format($gj->jumlah) ?>
 										</td>
 										
-										<td width="200" style="text-align:center">
-											<a href="#" class="btn btn-small" data-toggle="modal" data-target="<?= "#modaledit-".$gj->id?>"><i class="fas fa-edit"></i> Edit</a>
-											<a onclick="deleteConfirm('<?php echo site_url('admin/gaji/delete/'.$gj->id) ?>')"
-											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+										<td width="70" style="text-align:center">
+											<a href="#" class="btn btn-small btn-info" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Edit" data-toggle="modal" data-target="<?= "#modaledit-".$gj->id?>"><i class="fas fa-edit"></i></a>
+											<a onclick="deleteConfirm('<?php echo site_url('admin/tunjangan/delete/'.$gj->id) ?>')"
+											 href="#!" class="btn btn-small btn-danger" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Delete"><i class="fas fa-trash"></i></a>
 									</td>
 									</tr>
 									<?php endforeach; ?>
@@ -95,12 +95,24 @@
 	<?php $this->load->view("admin/_partials/modal.php") ?>
 
 	<?php $this->load->view("admin/_partials/js.php") ?>
-
+	<script>
+	$(document).ready(function(){
+	$('[data-tooltip="tooltip"]').tooltip();   
+	});
+	</script>
 	<script>
 	function deleteConfirm(url){
 		$('#btn-delete').attr('href', url);
 		$('#deleteModal').modal();
 	}
+	</script>
+	<script>
+		if ( window.history.replaceState ) {
+		window.history.replaceState( null, null, window.location.href );
+
+		}
+		// document.getElementById('lname').value = "<?php echo $_POST['lname'];?>";
+
 	</script>
 </body>
 
@@ -110,7 +122,7 @@
   <div class="modal-dialog  modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-	  	<h4 class="modal-title">Tambah Data</h4>
+	  	<h4 class="modal-title">Add New Data</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -119,22 +131,23 @@
 
       <div class="modal-body ">
 	  <div class="form-group">
-		<label for="name">Nama Tunjangan<?php echo"<font color ='red'>*</font>"?></label>
+		<label for="name">Allowance<?php echo"<font color ='red'>*</font>"?></label>
 			<input class="form-control <?php echo form_error('jngaji') ? 'is-invalid':'' ?>"
-				type="text" name="jngaji" placeholder="Nama Tunjangan" required/>
+				type="text" name="jngaji" placeholder="Allowance Name" required/>
 			<div class="invalid-feedback">
 			</div>
 		</div>
 		<div class="form-group">
-		<label for="name">Jumlah<?php echo"<font color ='red'>*</font>"?></label>
-			<input class="form-control"	type="text" name="jumlah" placeholder="Jumlah" required/>
+		<label for="name">Amount<?php echo"<font color ='red'>*</font>"?></label>
+			<input class="form-control"	type="text" name="jumlah" placeholder="Amount" required/>
 			<div class="invalid-feedback">
 			</div>
 		</div>
       </div>
 	  <div class="modal-footer">
-		<button type="submit" class="btn btn-success" name="btn" value="Save">Save changes</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		<button type="submit" class="btn btn-success" name="btn" value="Save">Save</button>
+
    		 </div>
 		
     </div>
@@ -150,7 +163,7 @@
   <div class="modal-dialog  modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-	  	<h4 class="modal-title">Tambah Data</h4>
+	  	<h4 class="modal-title">Edit Data</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -160,22 +173,23 @@
 
       <div class="modal-body ">
 	  <div class="form-group">
-		<label for="name">Nama Tunjangan<?php echo"<font color ='red'>*</font>"?></label>
+		<label for="name">Allowance<?php echo"<font color ='red'>*</font>"?></label>
 			<input class="form-control <?php echo form_error('jngaji') ? 'is-invalid':'' ?>"
 				type="text" name="jngaji" placeholder="Nama Tunjangan" value="<?=$g->jenis_gaji?>"required/>
 			<div class="invalid-feedback">
 			</div>
 		</div>
 		<div class="form-group">
-		<label for="name">Jumlah<?php echo"<font color ='red'>*</font>"?></label>
+		<label for="name">Amount<?php echo"<font color ='red'>*</font>"?></label>
 			<input class="form-control"	type="text" name="jumlah" placeholder="Jumlah" value="<?=$g->jumlah?>" required/>
 			<div class="invalid-feedback">
 			</div>
 		</div>
       </div>
 	  <div class="modal-footer">
-		<button type="submit" class="btn btn-success" name="btn" value="Save">Update</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		<button type="submit" class="btn btn-success" name="btn" value="Save">Save changes</button>
+
    		 </div>
 		
     	</div>

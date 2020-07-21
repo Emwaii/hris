@@ -114,15 +114,17 @@ hr.style2 {
 				
 					
                 <div class="container">
+
                 <?php if ($this->session->flashdata('success')): ?>
 				<center>
                 <div class="alert alert-success" role="alert">
-                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
 
 					<?php echo $this->session->flashdata('success') ; ?>
 				</div>
                 </center>
 				<?php endif; ?>
+                
                 <div class="row mt-5">
                     <div class="col-12 col-md-7 mx-auto bg-col p-5" style=" border-radius:10px;">
                     <?php echo form_open_multipart('guest/tetap');?>
@@ -149,7 +151,7 @@ hr.style2 {
                             <div class="form-group">
 							<select required class="form-control bg-transparent border-right-0 border-left-0 border-top-0"  style="height: 55px;border-radius: 0;border-bottom: 2px solid grey;color:black;" name="jname" id="jname">
 								<option disable selected value="">Choose One...</option>
-								<?php foreach ($ilowo as $jb) {?>									
+								<?php foreach ($plus as $jb) {?>									
 								<option value="<?php echo $jb->id_ilowongan ?>"><?php echo ucfirst($jb->ilowongan_name) ?></option>
 								<?php } ?>
 							</select>
@@ -180,7 +182,7 @@ hr.style2 {
                                 
                                 <textarea class="form-control bg-transparent border-right-0 border-left-0 border-top-0"  
                                 style="height: 70px;border-radius: 0;border-bottom: 2px solid grey;color:black;"name="alasan" 
-                                placeholder="Why should we consider you?..." required></textarea>
+                                placeholder="Why should we consider you?" required></textarea>
                             </div>
                             <div class="form-group mb-5">
                                 <input type="submit" name="submit" class="btnn w-100" value="Submit" />

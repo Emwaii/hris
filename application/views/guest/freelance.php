@@ -205,7 +205,7 @@ hr.style2 {
                                 
                                 <textarea class="form-control bg-transparent border-right-0 border-left-0 border-top-0"  
                                 style="height: 70px;border-radius: 0;border-bottom: 2px solid grey;color:black;"name="alasan" 
-                                placeholder="Why should we consider you?..." required></textarea>
+                                placeholder="Why should we consider you?" required></textarea>
                             </div>
                             <div class="form-group mb-5">
                                 <input type="submit" name="submit" class="btnn w-100" value="Submit" />

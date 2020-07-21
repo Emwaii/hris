@@ -57,7 +57,8 @@ class Guest extends CI_Controller
 
         //$lang= $this->language_model->getAll();
         $ilowo= $this->ilowongan_model->getAll();
-        $data =['ilowo'=>$ilowo];
+        $plus = $this->plus();
+        $data =['ilowo'=>$ilowo,'plus'=>$plus];
         $this->load->view("guest/inhouse.php",$data);
         // $this->load->view("guest/inhouse.php");
     }
@@ -99,58 +100,7 @@ class Guest extends CI_Controller
         readfile($filename); 
     }
     
-    public function delete1($id=null)
-    {
-            
-        if ($this->freelance_model->delete($id)) {
-            $this->session->set_flashdata('success', 'Berhasil dihapus..');
-            redirect(site_url('admin/freelance/dtp'));
-        }
-    }
-
-    public function delete2($id=null)
-    {
-            
-        if ($this->freelance_model->delete($id)) {
-            $this->session->set_flashdata('success', 'Berhasil dihapus..');
-            redirect(site_url('admin/freelance/graphic'));
-        }
-    }
-
-    public function delete3($id=null)
-    {
-            
-        if ($this->freelance_model->delete($id)) {
-            $this->session->set_flashdata('success', 'Berhasil dihapus..');
-            redirect(site_url('admin/freelance/interpreter'));
-        }
-    }
-
-    public function delete4($id=null)
-    {
-            
-        if ($this->freelance_model->delete($id)) {
-            $this->session->set_flashdata('success', 'Berhasil dihapus..');
-            redirect(site_url('admin/freelance/subtitler'));
-        }
-    }
-
-    public function delete5($id=null)
-    {
-            
-        if ($this->freelance_model->delete($id)) {
-            $this->session->set_flashdata('success', 'Berhasil dihapus..');
-            redirect(site_url('admin/freelance/transcriber'));
-        }
-    }
-
-    
-    public function delete6($id=null)
-    {
-            
-        if ($this->freelance_model->delete($id)) {
-            $this->session->set_flashdata('success', 'Berhasil dihapus..');
-            redirect(site_url('admin/freelance/translator'));
-        }
+    public function plus(){
+        return $this->db->query("SELECT `id_ilowongan`, `ilowongan_name`, `ilowongan_alias`, `is_active` FROM `ilowongan` WHERE is_active = 1")->result();
     }
 }

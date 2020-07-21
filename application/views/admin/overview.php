@@ -91,7 +91,7 @@
 
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
-                <a class="card-body"  href="<?php echo site_url('admin/inhouse') ?>">
+                <a class="card-body"  href="#">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Applicant Inhouse</div>
@@ -161,9 +161,9 @@
 
 <!-- Area Chart -->
 <div class="col-xl-8 col-lg-7">
-  <div class="card shadow mb-4">
-    <!-- Card Header - Dropdown -->
-    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+  <div class="card shadow mb-4"> 
+    <!-- style="height:415px;" -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" >
     <?php foreach ($thnow as $th): ?>
 			<?php $thn= $th->tahun ?>
 			<?php endforeach; ?>
@@ -174,7 +174,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
           <div class="dropdown-header">Dropdown Menu:</div>
-          <a class="dropdown-item" href="<?php echo base_url('admin/project')?>">Open</a>
+          <!-- <a class="dropdown-item" href="<?php echo base_url('admin/project')?>">Open</a> -->
           <a class="dropdown-item" data-toggle="collapse" href="#jumchart" role="button" aria-expanded="false" aria-controls="jumchart">Hide</a>
           <!-- <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a> -->
@@ -215,7 +215,7 @@
         <thead class="">
             <tr>
               <th class="align-middle" style="text-align:center">No</th>
-              <th class="align-middle" style="text-align:center">Nama Karyawan</th>
+              <th class="align-middle" style="text-align:center">Employee Name</th>
               <th class="align-middle" style="text-align:center">Status</th>
             </tr>
         </thead>
@@ -229,11 +229,11 @@
                    <?php echo substr($kar->namakr, 0, 15) ?>
               </td>
               <td>
-                  <?php $stat = "<span class='badge badge-info custom'>Belum</span>";?>
+                  <?php $stat = "<span class='badge badge-info custom'>Unpaid</span>";?>
                     <?php foreach($payrol as $pay){
                         if ($kar->karyawan_id == $pay->karyawan_id){
-                        if(($pay->status == "terbayar") && (date('F',strtotime($pay->tanggal)) == date('F'))){$stat = "<span class='badge badge-success custom'>Terbayar</span>";}
-                        else{$stat = "<span class='badge badge-info custom'>Belum</span>";}
+                        if(($pay->status == "terbayar") && (date('F',strtotime($pay->tanggal)) == date('F'))){$stat = "<span class='badge badge-success custom'>Paid</span>";}
+                        else{$stat = "<span class='badge badge-info custom'>Unpaid</span>";}
                         }
                     } echo $stat;?>
               </td>
@@ -274,7 +274,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
           <div class="dropdown-header">Dropdown Menu:</div>
-          <a class="dropdown-item" href="<?php echo base_url('admin/project')?>">Open</a>
+          <!-- <a class="dropdown-item" href="<?php echo base_url('admin/project')?>">Open</a> -->
           <a class="dropdown-item" data-toggle="collapse" href="#mbuh" role="button" aria-expanded="false" aria-controls="mbuh">Hide</a>
           <!-- <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a> -->
@@ -294,7 +294,7 @@
   <div class="card shadow mb-4">
     <!-- Card Header - Dropdown -->
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-      <h6 class="m-0 font-weight-bold text-primary">List karyawan</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Employee's List</h6>
       <div class="dropdown no-arrow">
         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -309,15 +309,15 @@
       </div>
     </div>
     <!-- Card Body -->
-    <div class="card-body  collapse show multi-collapse" id="karlist">
+    <div class="card-body collapse show multi-collapse" id="karlist">
       <div class="table-renponsive ">
         <table class="table table-hover table-sm table-striped example" id="kartable" width="100%">
         <thead class="">
             <tr>
               <th class="align-middle" style="text-align:center">No</th>
-              <th class="align-middle" style="text-align:center">Nama Karyawan</th>
-              <th class="align-middle" style="text-align:center">Habis Kontrak</th>
-              <th class="align-middle" style="text-align:center">Jenis Karyawan</th>
+              <th class="align-middle" style="text-align:center">Employee Name</th>
+              <th class="align-middle" style="text-align:center">Expiration Date</th>
+              <th class="align-middle" style="text-align:center">Type of Employee</th>
             </tr>
         </thead>
         <tbody>
@@ -334,7 +334,7 @@
               </td>
               <td>
                    <?php if($kar->jk == "kontrak"){
-                     echo "<span class='badge badge-info' style='height: 22px;'>Kontrak</span>";
+                     echo "<span class='badge badge-info' style='height: 22px;'>Contract</span>";
                    }else{
                     echo "<span class='badge badge-warning' style='height: 22px;'>Probation</span>";
                    }?>

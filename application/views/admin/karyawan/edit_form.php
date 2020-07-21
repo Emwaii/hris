@@ -53,14 +53,14 @@
 
 						<div class="row">
 							<div class="col-md-6 mb-3">
-								<label for="nama_lengkap">Nama Lengkap<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="nama_lengkap">Fullname<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('nama_lengkap') ? 'is-invalid':'' ?>" 
 								type="text" name="nama_lengkap" placeholder="Nama Lengkap" value="<?php echo $karyawan->nama_lengkap?>"/>
 							
 							</div>
 
 							<div class="col-md-6 mb-3">
-								<label for="tanggal_masuk">Tanggal Masuk<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="tanggal_masuk">First Date of Work<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('tanggal_masuk') ? 'is-invalid':'' ?>"
 								 type="text" id="tanggal_masuk" name="tanggal_masuk" placeholder="Tanggal Masuk" value="<?php echo $karyawan->tanggal_masuk?>">
 								
@@ -69,7 +69,7 @@
 		
 							<div class="row">
 							<div class="col-md-6 mb-3">
-								<label for="pendidikan">Pendidikan<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="pendidikan">Academic Background<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('pendidikan') ? 'is-invalid':'' ?>" 
 								type="text" name="pendidikan" placeholder="Pendidikan Terakhir" value="<?php echo $karyawan->pendidikan?>"/>
 								 
@@ -84,14 +84,14 @@
 
 							<div class="row">
 							<div class="col-md-3 mb-3">
-								<label for="ttl">Tempat Lahir<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="ttl">Place of Birth<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('tempat_lahir') ? 'is-invalid':'' ?>"
 								 type="text" name="tempat_lahir" placeholder="Tempat Lahir" value="<?php echo $karyawan->ttl?>">
 								
 							</div>
 
 							<div class="col-md-3 mb-3">
-								<label for="ttl">Tanggal Lahir<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="ttl">Date of Birth<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('tgl_lahir') ? 'is-invalid':'' ?>" 
 								id="tgl_lahir" type="text" name="tgl_lahir" placeholder="Tanggal lahir" value="<?php echo $karyawan->tgl_lahir?>">
 								
@@ -99,7 +99,7 @@
 
 							
 							<div class="col-md-6 mb-3">
-								<label for="no_ktp">No KTP<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="no_ktp">ID Card Number<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('no_ktp') ? 'is-invalid':'' ?>" 
 								type="number" name="no_ktp" placeholder="Nomor Karyawan" value="<?php echo $karyawan->id_card?>"/>
 								
@@ -108,14 +108,14 @@
 
 							<div class="row">							
 							<div class="col-md-6 mb-3">
-								<label for="nama_ayah">Nama Ayah<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="nama_ayah">Father's Name<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('nama_ayah') ? 'is-invalid':'' ?>" 
 								type="text" name="nama_ayah" placeholder="Nama Ayah" value="<?php echo $karyawan->nama_ayah?>"/>
 								 
 							</div>
 
 							<div class="col-md-6 mb-3">
-								<label for="nama_ibu">Nama Ibu<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="nama_ibu">Mother's Name<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('nama_ibu') ? 'is-invalid':'' ?>" 
 								type="text" name="nama_ibu" placeholder="Nama Ibu" value="<?php echo $karyawan->nama_ibu?>"/>
 								 
@@ -124,13 +124,13 @@
 
 							<div class="row">							
 							<div class="col-md-6 mb-3">
-								<label for="nama_ss">Nama Suami/Istri</label>
+								<label for="nama_ss">Spouse Name</label>
 								<input class="form-control "type="text" name="nama_ss" placeholder="Nama Suami/Istri" value="<?php echo $karyawan->nama_ss?>"/>
 								
 							</div>	
 
 							<div class="col-md-6 mb-3">
-								<label for="no_paspor">No Passport</label>
+								<label for="no_paspor">Passport Number</label>
 								<input class="form-control " type="text" name="no_paspor" placeholder="Nomor Passport" value="<?php echo $karyawan->no_pasport?>"/>
 								 
 							</div>
@@ -138,46 +138,27 @@
 
 							<div class="row">							
 							<div class="col-md-6 mb-3">
-								<label for="no_bpjs">No BPJS</label>
+								<label for="no_bpjs">BPJS Number</label>
 								<input class="form-control "	type="number" name="no_bpjs" placeholder="Nomor BPJS" value="<?php echo $karyawan->no_bpjs?>"/>
 								 
 							</div>
 
 							<div class="col-md-6 mb-3">
-								<label for="no_npwp">No NPWP</label>
+								<label for="no_npwp">NPWP Number</label>
 								<input class="form-control"	type="number" name="no_npwp" placeholder="Nomor NPWP" value="<?php echo $karyawan->no_bpjs?>"/>
 								 
 							</div>
 							</div>
-												
-							<div class="row">							
-							<div class="col-md-6 mb-3">
-								<label for="no_bpjs">Jenis Karyawan<?php echo"<font color ='red'>*</font>"?></label>
-							<select class="form-control" autocomplete="off" name="jenis_karyawan">
-								<option disable selected>Pilih...</option>
-								<option value="kontrak"<?php if($karyawan->jenis_karyawan=="kontrak") echo 'selected="selected"'; ?>>Kontrak</option>
-								<option value="probation"<?php if($karyawan->jenis_karyawan=="probation") echo 'selected="selected"'; ?>>Probation</option>
-								<!-- <option value="Lainnya">Lainnya</option> -->
-							</select>
-								 
-							</div>
-
-							<div class="col-md-6 mb-3">
-							<label for="tanggal_habis">Tanggal Habis Kontrak<?php echo"<font color ='red'>*</font>"?></label>
-								<input class="form-control" type="text" id="tanggal_habis" name="tanggal_habis"  autocomplete="off" placeholder="<?= $karyawan->tgl_habis?>">
-								 
-							</div>
-							</div>
-
+							
 							<div class = "row">
 							<div class="col-md-6 mb-3">
-								<label for="alamat">Alamat KTP</label>
+								<label for="alamat">ID Card Address</label>
 								<textarea class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" 
 								name="alamat" placeholder="Alamat KTP..."><?php echo $karyawan->alamat?></textarea>
 								
 							</div>
 							<div class="col-md-6 mb-3">
-								<label for="alamat">Alamat Sekarang</label>
+								<label for="alamat">Address Now</label>
 								<textarea class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" 
 								name="alamat_now" placeholder="Alamat Sekarang..."><?php echo $karyawan->alamat_now?></textarea>
 								
@@ -232,22 +213,21 @@
 						
 							<div class="row">
 							<div class="mb-3 col-md-6">
-								<label for="email">Email Kantor<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="email">Work Email<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('email_kantor') ? 'is-invalid':'' ?>" 
 								type="text" name="email_kantor" placeholder="Email Kantor" value="<?php echo $karyawan->email_kantor?>"/>
 								 
 							</div> 							
 							<div class="mb-3 col-md-6">
-								<label for="email">Email Pribadi<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="email">Personal Email<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('email_pribadi') ? 'is-invalid':'' ?>" 
 								type="text" name="email_pribadi" placeholder="Email Pribadi" value="<?php echo $karyawan->email_pribadi?>"/>
 								
 							</div>
 							</div>
-
 							<div class="row">
 							<div class="col-md-6 mb-3">
-							<label for="jenis_kelamin">Jenis Kelamin<?php echo"<font color ='red'>*</font>"?></label>
+							<label for="jenis_kelamin">Gender<?php echo"<font color ='red'>*</font>"?></label>
 							<select class="form-control <?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" 
 							name="jenis_kelamin">
 							<option disable selected>Pilih...</option>
@@ -261,7 +241,7 @@
 							</div>							
 
 							<div class="col-md-6 mb-3">
-							<label for="jabatan">Jabatan</label>
+							<label for="jabatan">Position</label>
 							<select class="form-control" name="jbtn">
 								<option disable selected>Pilih...</option>
 								<?php foreach ($jabatan as $jb) {?>
@@ -270,6 +250,24 @@
 								<?php } ?>
 							</select>
 							</div>							
+							</div>
+							<div class="row">							
+							<div class="col-md-6 mb-3">
+								<label for="no_bpjs">Type of Employee<?php echo"<font color ='red'>*</font>"?></label>
+							<select class="form-control" autocomplete="off" name="jenis_karyawan">
+								<option disable selected>Pilih...</option>
+								<option value="kontrak"<?php if($karyawan->jenis_karyawan=="kontrak") echo 'selected="selected"'; ?>>Kontrak</option>
+								<option value="probation"<?php if($karyawan->jenis_karyawan=="probation") echo 'selected="selected"'; ?>>Probation</option>
+								<!-- <option value="Lainnya">Lainnya</option> -->
+							</select>
+								 
+							</div>
+
+							<div class="col-md-6" hidden id="habis">
+							<label for="tanggal_habis">Employment Contract Expiration Date<?php echo"<font color ='red'>*</font>"?></label>
+								<input class="form-control" type="text" id="tanggal_habis" name="tanggal_habis" placeholder="dd-mm-yyyy"  autocomplete="off">
+								 
+							</div>
 							</div>
 
 							<div class="form-group mt-3">
@@ -281,7 +279,7 @@
 							</div>
 
 							<div class="form-group mt-3">
-								<label for="name">Photo KTP</label><br>
+								<label for="name">Photo ID Card</label><br>
 								<input type="hidden" name="old_fktp" value="<?php echo $karyawan->fktp ?>"/>
 								<input class="form-control-file " type="file" name="fktp">
 
@@ -295,14 +293,15 @@
 							</div>
 
 							<div class="form-group">
-								<label for="kontrak">Kontrak Kerja</label>
+								<label for="kontrak">Employment Contract</label>
 								<input class="form-control-file " type="file" name="kontrak_kerja" />
 								<input type="hidden" name="old_kontrak" value="<?php echo $karyawan->kontrak_kerja ?>" />
 
 							</div>	
 
 							
-							<input class="btn btn-success" id="btn" type="submit" name="btn" value="Save" />
+								<input class="btn btn-success w-100" id="btn" type="submit" name="btn" value="Save changes" />
+							
 						</form>
 
 					</div>

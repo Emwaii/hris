@@ -59,10 +59,12 @@ class Login extends CI_Controller
                 
                 // </script>";
             } else {
-                echo "<script>
-                    alert('login gagal, periksa username / password anda');
-                    window.location='".site_url('admin/login')."';
-                </script>";
+                $this->session->set_flashdata('ihii', 'Oopsie woopsie something wrong, try checking your username or password again');
+                redirect('admin/login');
+                // echo "<script>
+                //     alert('login gagal, periksa username / password anda');
+                //     window.location='".site_url('admin/login')."';
+                // </script>";
             }
         }
         

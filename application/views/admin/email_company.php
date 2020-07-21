@@ -3,6 +3,8 @@
 
 <head>
 	<?php $this->load->view("admin/_partials/head.php") ?>
+	<link href="<?php echo base_url('css/sb-admin-2.min.css') ?>" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -15,12 +17,13 @@
 		<div id="content-wrapper">
 
 			<div class="container-fluid">
-
+				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 				<?php //$this->load->view("admin/_partials/breadcrumb.php") ?>
 
 				<?php if ($this->session->flashdata('success')): ?>
-				<div id="notifikasi" class="alert alert-success" role="alert">
-					<?php echo $this->session->flashdata('success'); ?>
+				<div class="alert alert-success" role="alert">
+					<?php echo $this->session->flashdata('success') ; ?>
+					<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
 				</div>
 				<?php endif; ?>
 
@@ -31,22 +34,22 @@
 					</div>
 					<div class="card-body">
                     <?php foreach ($email as $email): ?>
-						<form action="<?php echo base_url(); ?>index.php/admin/email/edit" method="post" enctype="multipart/form-data" >
+						<form action="<?php echo base_url(); ?>admin/email/edit" method="post" enctype="multipart/form-data" >
 
-							<input type="hidden" name="id" value="<?php echo $email->email_id ?>" />
+							<input type="hidden" name="id" value="<?php echo $email->email ?>" />
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="form-group">
 									<label for="name">Protocol</label>
 									<input class="form-control"
-									type="text" name="protocol" value="<?php echo $email->protocol ?>" />
+									type="text" name="protocol" value="<?php echo $email->protocol ?>" readonly/>
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="form-group">
 										<label for="name">Host</label>
 										<input class="form-control"
-										type="text" name="smtp_host" value="<?php echo $email->smtp_host ?>" />
+										type="text" name="smtp_host" value="<?php echo $email->smtp_host ?>" readonly/>
 									</div>
 								</div>
 							</div>
@@ -63,7 +66,7 @@
 									<div class="form-group">
 										<label for="name">Port</label>
 										<input class="form-control"
-										type="text" name="smtp_port" value="<?php echo $email->smtp_port ?>" />
+										type="text" name="smtp_port" value="<?php echo $email->smtp_port ?>" readonly/>
 									</div>
 								</div>
 							</div>
@@ -96,14 +99,14 @@
 									<div class="form-group">
 										<label for="name">Mailtype</label>
 										<input class="form-control"
-										type="text" name="mailtype" value="<?php echo $email->mailtype ?>" />
+										type="text" name="mailtype" value="<?php echo $email->mailtype ?>" readonly/>
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="form-group">
 										<label for="name">Charset</label>
 										<input class="form-control"
-										type="text" name="charset" value="<?php echo $email->charset ?>" />
+										type="text" name="charset" value="<?php echo $email->charset ?>" readonly/>
 									</div>
 								</div>
 							</div>

@@ -32,17 +32,17 @@
 					<div class="card-body">
 
 						<div class="table-responsive">
-							<table class="table table-hover" id="dataTable" width="105%" cellspacing="0">
+							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
-										<th>Photo</th>
-										<th>Username</th>
+										<th style="text-align:center">Photo</th>
+										<th style="text-align:center">Username</th>
 										<!-- <th>Password</th> -->
-										<th>Email</th>
-										<th>Full Name</th>
-										<th>Phone</th>
-										<th>Role</th>
-										<th>Action</th>
+										<th style="text-align:center">Email</th>
+										<th style="text-align:center">Full Name</th>
+										<th style="text-align:center">Phone</th>
+										<th style="text-align:center">Role</th>
+										<th style="text-align:center">Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -57,10 +57,10 @@
 										<!-- <td>
 											<?php echo $usr->password ?>
 										</td> -->
-										<td width="250">
+										<td >
 											<?php echo $usr->email ?>
 										</td>
-										<td width="250">
+										<td >
 											<?php echo substr($usr->full_name, 0, 17) ?>
 										</td>
 										<td>
@@ -69,13 +69,12 @@
 										<td>
 											<?php echo $usr->role ?>
 										</td>
-										<td width="250">
-											<!-- <a href="<?php echo site_url('admin/projects/edit/'.$project->project_id) ?>"
-											 class="btn btn-small"><i class="fas fa-tasks"></i> Task</a> -->
+										<td width="90" style="text-align:center">
+											
 											<a href="<?php echo site_url('admin/user/edit/'.$usr->user_id) ?>"
-											class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
+											class="btn btn-small btn-info" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Edit"><i class="fas fa-edit"></i></a>
 											<a onclick="deleteConfirm('<?php echo site_url('admin/user/delete/'.$usr->user_id) ?>')"
-											href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+											href="#!" class="btn btn-small btn-danger" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Delete"><i class="fas fa-trash"></i></a>
 										</td>
 									</tr>
 									<?php endforeach; ?>
@@ -103,7 +102,11 @@
 	<?php $this->load->view("admin/_partials/modal.php") ?>
 
 	<?php $this->load->view("admin/_partials/js.php") ?>
-
+	<script>
+	$(document).ready(function(){
+	$('[data-tooltip="tooltip"]').tooltip();   
+	});
+	</script>
 	<script>
 	function deleteConfirm(url){
 		$('#btn-delete').attr('href', url);

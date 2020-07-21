@@ -47,20 +47,20 @@
 					</form>
 					<!-- <form action="<?php base_url('admin/absen/rekap') ?>" method="post" enctype="multipart/form-data" > -->
 
-						<div class="table-responsive  mt-2">
+						<div class="table-responsive   pr-3">
 							<table class="table table-hover table-sm table-striped" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
 										<th class="align-middle" rowspan="2"  style="text-align:center">No</th>
-										<th class="align-middle" rowspan="2" style="text-align:center">Nama</th>
-										<!-- <th class="align-middle" rowspan="2" style="text-align:center">Tanggal</th> -->
-										<th class="align-middle" colspan="3" style="text-align:center">Keterangan</th>
-										<th class="align-middle" rowspan="2" style="text-align:center">Action</th>
+										<th class="align-middle" rowspan="2" style="text-align:center">Name</th>
+										<th class="align-middle" rowspan="2" style="text-align:center">Month</th>
+										<th class="align-middle" colspan="3" style="text-align:center">Information</th>
+										<!-- <th class="align-middle" rowspan="2" style="text-align:center">Bulan</th> -->
 									</tr>
 									<tr>
-										<th style="text-align:center">Tahunan</th>
-										<th style="text-align:center">Lembur</th>
-										<th style="text-align:center">Lainnya</th>
+										<th style="text-align:center">Annual Leave</th>
+										<th style="text-align:center">Overtime</th>
+										<th style="text-align:center">Others</th>
 										<!-- <th style="text-align:center">A</th> -->
 									</tr>
 								</thead>
@@ -73,6 +73,10 @@
 										</td>
 										<td width="100" style="text-align:left">
 											<?php foreach($karyawan as $kr){ if($ab->karyawan_id==$kr->karyawan_id) echo $kr->namakr;} ?>
+										</td>
+										<td width="100">
+										<?php echo isset($_POST['tgl']) ? $_POST['tgl'] : '' ?>
+											
 										</td>
 										<!-- <td width="150">
 											<?php echo date('d F Y', strtotime($ab->tanggal)) ?>
@@ -90,12 +94,7 @@
 											<?php echo $ab->lainnya ?>
 										</td>
 																				
-										<td width="100">
-											<a href="<?php echo site_url('admin/absen/edit/'.$ab->id) ?>"
-											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-											<a onclick="deleteConfirm('<?php echo site_url('admin/absen/delete/'.$ab->id) ?>')"
-											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
-										</td>
+										
 									</tr>
 									<?php endforeach; ?>
 
@@ -104,12 +103,12 @@
 						</div>
 					</div>
 				</div>
-				<div class="card-footer small text-muted">
-				<?php echo"<font color ='red'>M</font>"?> = Masuk,
-				<?php echo"<font color ='red'>S</font>"?> = Sakit,
-				<?php echo"<font color ='red'>I</font>"?> = Ijin,
-				<?php echo"<font color ='red'>A</font>"?> = Alpha
-					</div>
+				<!-- <div class="card-footer small text-muted">
+				<?php //echo"<font color ='red'>M</font>"?> = Masuk,
+				<?php //echo"<font color ='red'>S</font>"?> = Sakit,
+				<?php //echo"<font color ='red'>I</font>"?> = Ijin,
+				<?php //echo"<font color ='red'>A</font>"?> = Alpha
+					</div> -->
 
 			</div>
 			<!-- /.container-fluid -->
@@ -151,6 +150,15 @@
 	});
 	$("#tgl[value='']").datepicker("setDate", "-0d"); 
 
+
+	</script>
+	
+	<script>
+		if ( window.history.replaceState ) {
+		window.history.replaceState( null, null, window.location.href );
+
+		}
+		document.getElementById('tgl').value = "<?php echo $_POST['tgl'];?>";
 
 	</script>
 </body>

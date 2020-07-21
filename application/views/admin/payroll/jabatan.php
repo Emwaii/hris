@@ -46,15 +46,15 @@
 								<thead>
 									<tr>
 										<th style="text-align:center">No</th>
-										<th style="text-align:center">Nama Jabatan</th>
-										<th style="text-align:center">Gaji Pokok</th>
+										<th style="text-align:center">Position</th>
+										<th style="text-align:center">Basic Salary</th>
 										<th style="text-align:center">Action</th>
 									</tr>
 								</thead>
 								<tbody>
 									<?php $i=1; foreach ($jabatan as $gj): ?>
 									<tr>
-										<td width="50" style="text-align:center">
+										<td width="30" style="text-align:center">
 										<?php echo $i++?>
 										</td>
 										<td width="200">
@@ -64,10 +64,10 @@
 											<?php echo "Rp.", number_format($gj->gajipokok) ?>
 										</td>
 										
-										<td width="200" style="text-align:center">
-											<a href="#" class="btn btn-small" data-toggle="modal" data-target="<?= "#modaledit-".$gj->jabatan_id?>"><i class="fas fa-edit"></i> Edit</a>
+										<td width="70" style="text-align:center">
+											<a href="#" data-toggle="modal" data-target="<?= "#modaledit-".$gj->jabatan_id?>" class="btn btn-small btn-info" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Edit"><i class="fas fa-edit"></i></a>
 											<a onclick="deleteConfirm('<?php echo site_url('admin/jabatan/delete/'.$gj->jabatan_id) ?>')"
-											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+											 href="#!" class="btn btn-small btn-danger" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Delete"><i class="fas fa-trash"></i></a>
 										</>
 									</tr>
 									<?php endforeach; ?>
@@ -95,7 +95,11 @@
 	<?php $this->load->view("admin/_partials/modal.php") ?>
 
 	<?php $this->load->view("admin/_partials/js.php") ?>
-
+	<script>
+	$(document).ready(function(){
+	$('[data-tooltip="tooltip"]').tooltip();   
+	});
+	</script>
 	<script>
 	function deleteConfirm(url){
 		$('#btn-delete').attr('href', url);
@@ -110,7 +114,7 @@
   <div class="modal-dialog  modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-	  	<h4 class="modal-title">Tambah Data</h4>
+	  	<h4 class="modal-title">Add New Data</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -119,22 +123,23 @@
 
       <div class="modal-body ">
 	  <div class="form-group">
-		<label for="name">Nama Jabatan<?php echo"<font color ='red'>*</font>"?></label>
+		<label for="name">Position<?php echo"<font color ='red'>*</font>"?></label>
 			<input class="form-control <?php echo form_error('jname') ? 'is-invalid':'' ?>"
-				type="text" name="jname" placeholder="Nama Jabatan" required/>
+				type="text" name="jname" placeholder="Position Name" required/>
 			<div class="invalid-feedback">
 			</div>
 		</div>
 		<div class="form-group">
-		<label for="name">Gaji Pokok<?php echo"<font color ='red'>*</font>"?></label>
-			<input class="form-control"	type="text" name="jpokok" placeholder="Jumlah" required/>
+		<label for="name">Basic Salary<?php echo"<font color ='red'>*</font>"?></label>
+			<input class="form-control"	type="text" name="jpokok" placeholder="Amount" required/>
 			<div class="invalid-feedback">
 			</div>
 		</div>
       </div>
 	  <div class="modal-footer">
-		<button type="submit" class="btn btn-success" name="btn" value="Save">Save changes</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		<button type="submit" class="btn btn-success" name="btn" value="Save">Save</button>
+
    		 </div>
 		
     </div>
@@ -150,7 +155,7 @@
   <div class="modal-dialog  modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-	  	<h4 class="modal-title">Tambah Data</h4>
+	  	<h4 class="modal-title">Edit Data</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -160,22 +165,23 @@
 
       <div class="modal-body ">
 	  <div class="form-group">
-		<label for="name">Nama Jabatan<?php echo"<font color ='red'>*</font>"?></label>
+		<label for="name">Position<?php echo"<font color ='red'>*</font>"?></label>
 			<input class="form-control <?php echo form_error('jname') ? 'is-invalid':'' ?>"
-				type="text" name="jname" placeholder="Nama Tunjangan" value="<?=$g->jabatan_name?>"required/>
+				type="text" name="jname" placeholder="Position Name" value="<?=$g->jabatan_name?>"required/>
 			<div class="invalid-feedback">
 			</div>
 		</div>
 		<div class="form-group">
-		<label for="name">Jumlah<?php echo"<font color ='red'>*</font>"?></label>
-			<input class="form-control"	type="text" name="jpokok" placeholder="Jumlah" value="<?=$g->gajipokok?>" required/>
+		<label for="name">Basic Salary<?php echo"<font color ='red'>*</font>"?></label>
+			<input class="form-control"	type="text" name="jpokok" placeholder="Amount" value="<?=$g->gajipokok?>" required/>
 			<div class="invalid-feedback">
 			</div>
 		</div>
       </div>
 	  <div class="modal-footer">
-		<button type="submit" class="btn btn-success" name="btn" value="Save">Update</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		<button type="submit" class="btn btn-success" name="btn" value="Save">Save changes</button>
+
    		 </div>
 		
     	</div>

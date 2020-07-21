@@ -36,7 +36,7 @@ class User extends CI_Controller
 
     public function edit($id = null)
     {
-        if (!isset($id)) redirect('admin/user');
+        // if (!isset($id)) redirect('admin/user');
        
         $user = $this->user_model;
         $validation = $this->form_validation;
@@ -49,7 +49,7 @@ class User extends CI_Controller
         }
 
         $data["user"] = $user->getById($id);
-        if (!$data["user"]) show_404();
+        // if (!$data["user"]) show_404();
         
         $this->load->view("admin/user/edit_form", $data);
     }

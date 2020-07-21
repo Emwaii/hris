@@ -20,6 +20,13 @@ textarea:hover{
     border-bottom: 2px solid #3f3d56;
 
 }
+.dropright:hover .dropdown-menu{
+  display: block;
+}
+
+.dropdown-item:active{
+	background-color:transparent;
+}
 </style>
 </head>
 
@@ -44,30 +51,38 @@ textarea:hover{
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="#" class="float-right" style="text-decoration:none;"><i class="fas fa-print ml-2"></i> Rekap</a>
+						<a href="<?php echo site_url().'admin/inhouse/delinhouse?id='.$this->input->get('id');?>" class="float-left text-danger" style="text-decoration:none;"><i class="fas fa-trash "></i> Trash</a>
+
+						<a target="_blank" href="<?= site_url().'admin/inhouse/exp_inhouse?id='.$this->input->get('id');?>" class="float-right" style="text-decoration:none;"><i class="fas fa-print ml-2"></i> Rekap</a>
 
 					</div>
 					<div class="card-body">
-					<!-- <form  class="form" id="lowongan" action="<?php //echo site_url().'admin/inhouse'?>" method="post">
-					<div class="row ml-1 ">
-					<label>Pilih Lowongan : </label>
-					<div class="form-group">
-					<select  class="form-control ml-2" name="lname" id="lname" onchange="$('#lowongan').submit()" >
-						<option disable selected value="">Choose One...</option>
-						<?php //foreach ($ilowongan as $jb) {?>									
-						<option value="<?php// echo $jb->id_ilowongan ?>"><?php echo ucfirst($jb->ilowongan_name) ?></option>
-						<?php //} ?>
-					</select>
-					</div>	
-					<div class="mb-3 col-md-2 ">
-					<input class="btn btn-success" type="submit" name="btn" value="Save"/>
+					<form class="form-inline"  method="post" enctype="multipart/form-data">
+					<div class="form-group mb-2">
+						<label>Choose date :</label>
+						<input type="text" id="dari" required name="dari" autocomplete="off" class="form-control ml-2 mr-1 border-bottom-1 border-right-0 border-left-0 border-top-0" style=" border-radius: 0; text-align:center;" placeholder="Date Start">
+						<div class="input-group-prepend">
+							<div class="input-group-text border-1" style=" border-radius: 0;">~</div>
+						</div>
+						<input type="text" id="sampai" required name="sampai" autocomplete="off" class="form-control ml-1 border-bottom-1 border-right-0 border-left-0 border-top-0" style=" border-radius: 0; text-align:center;" placeholder="Date End">						<!-- </div> -->
+					</div>
+					<div class="btn-group dropright mb-2 ml-2">
+					<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Delete Option
+					</button>
+					<div class="dropdown-menu" style="padding:0; border:0; background-color: transparent">
+						<div class="dropdown-item ml-1" style="padding:0;">
+							<input class="btn btn-warning" type="submit" formaction="<?php echo site_url().'admin/inhouse/movetrash?id='.$this->input->get('id');?>" name="btn" value="Move to Trash"/>
+							<input class="btn btn-danger" type="submit" formaction="<?php echo site_url().'admin/inhouse/permanent?id='.$this->input->get('id');?>" name="btn" value="Delete Permanent"/>
+						</div>
 					</div>
 					</div>
-					</form> -->
-					<!-- <hr> -->
+					</form>
+
+					<hr>
 					
 						<div class="table-responsive">
-							<table class="table table-hover table-striped table-sm" id="dataTable" width="100%" cellspacing="0">
+							<table class="table table-hover table-sm table-striped table-sm" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
 										<th style="text-align:center" >#</th>
@@ -75,6 +90,7 @@ textarea:hover{
 										<th style="text-align:center">Whatsapp</th>
 										<th style="text-align:center">Domicile</th>
 										<th style="text-align:center">Job Name</th>
+										<th style="text-align:center">Date Submitted</th>
 										<th style="text-align:center">Reason</th>
 										
 										<th style="text-align:center">Action</th>
@@ -83,32 +99,50 @@ textarea:hover{
 								<tbody>
 
 									<?php $i=1; foreach ($lisn as $ab): ?>
-									<!-- <?= $order?> -->
 									<tr class="">
-										<td width="50" style="text-align:center" class="">
+									<?php if($ab->approve == "1"){?>
+										<td width="30" style="text-align:center" class="bg-success">
 										<?php echo $i++ ?>
 										</td>
-										<td width="200">
+									<?php }else{?>
+										<td width="30" style="text-align:center" class="">
+										<?php echo $i++ ?>
+										</td>
+									<?php }?>
+										<td >
 											<?php echo ucfirst($ab->namai)?>
 										</td>
-										<td width="150" style="text-align:center">
+										<td >
 											<?php echo $ab->nowa ?>
 										</td>
-										<td width="150" style="text-align:center">
+										<td>
 											<?php echo ucfirst($ab->domisili) ?>
 										</td>
-										<td width="200" style="text-align:center">
+										<td >
 											<?php echo ucfirst($ab->inama) ?>
+										</td>
+										<td >
+										<?php echo date("d F Y",strtotime($ab->tanggal_submit)) ?>
 										</td>
 										<td class="large">
 											<?php echo ucfirst(substr($ab->alasan, 0, 50)) ?>
 										</td>
 																				
-										<td width="90">
-										<a href="#" class="btn btn-small btn-success" data-toggle="modal"  data-placement="bottom" data-tooltip="tooltip" 
+										<td width="140" style="text-align:center">
+										<?php if($ab->approve == "1"){?>
+											<a onclick="cancel('<?php echo site_url('admin/inhouse/cancel/'.$ab->id_inhouse) ?>')"
+											href="#!" class="btn btn-small btn-danger" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Cancel" ><i class="fa fa-times"></i></a>	
+										<?php }else{?>
+											<a onclick="approve('<?php echo site_url('admin/inhouse/approve/'.$ab->id_inhouse) ?>')"
+											href="#!" class="btn btn-small btn-success" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Mark"><i class="fa fa-check"></i></a>
+										<?php }?>
+
+										<a href="#" class="btn btn-small btn-info" data-toggle="modal"  data-placement="bottom" data-tooltip="tooltip" 
 										title="Detail" data-target="<?= "#modaldetail-".$ab->id_inhouse?>" style="width: 41px;" tooltip><i class="fas fa-info"></i></a>
-										<a onclick="deleteConfirm('<?php echo site_url('guest/delete2/'.$ab->id_inhouse) ?>')"
+										<a href="#" class="btn btn-small btn-danger" data-toggle="modal" data-placement="bottom" data-tooltip="tooltip" title="Delete" data-target="<?= "#modaldel-".$ab->id_inhouse?>" style="width: 41px;" tooltip><i class="fa fa-trash"></i></a>
+										<!-- <a onclick="deleteConfirm('<?php echo site_url('admin/inhouse/delete/'.$ab->id_inhouse) ?>')"
 										href="#!" class="btn btn-small btn-danger" data-placement="bottom" data-tooltip="tooltip" title="Delete" ><i class="fa fa-trash"></i></a>
+										 -->
 										</td>
 									</tr>
 									<?php endforeach; ?>
@@ -143,39 +177,95 @@ textarea:hover{
 		$('#btn-delete').attr('href', url);
 		$('#deleteModal').modal();
 	}
+
+	function approve(url){
+		$('#btn-approve').attr('href', url);
+		$('#approvemodal').modal();
+	}
+	function cancel(url){
+		$('#btn-cancel').attr('href', url);
+		$('#cancelmodal').modal();
+	}
 	</script>
+	<script>
+	$(document).ready(function(){
+	$('[data-tooltip="tooltip"]').tooltip();   
+	});
+	</script>
+	<script>
+       $(".alert").delay(4000).slideUp(200, function() {
+            $(this).alert('close');
+        });
+   </script>
 	<script src="<?php echo base_url('js/bootstrap-datepicker.min.js') ?>"></script>
 	
-	
-	<script>
+	<!-- <script>
 		if ( window.history.replaceState ) {
 		window.history.replaceState( null, null, window.location.href );
-
 		}
 		document.getElementById('lname').value = "<?php echo $_POST['lname'];?>";
-
-	</script>
+	</script> -->
 	<script>
 	
+		$('#dari').datepicker( {
+			format: "dd MM yyyy",
+			// minViewMode: 1,
+			changeMonth: true,
+			autoclose: true,
+			todayHighlight:true,
+			daysOfWeekHighlighted:'0'
+		});
+		
+		$('#sampai').datepicker( {
+			format: "dd MM yyyy",
+			// minViewMode: 1,
+			changeMonth: true,
+			autoclose: true,
+			todayHighlight:true,
+			daysOfWeekHighlighted:'0'
+		});
+	</script>
+	<script>
+		$('#tgl').datepicker({
+			format: "MM/yyyy",
+			minViewMode: 1,
+			changeMonth: true,
+			autoclose: true,
+			orientation:"auto",
 
-	$('#tgl').datepicker({
-		format: "MM/yyyy",
-		minViewMode: 1,
-		changeMonth: true,
-		autoclose: true,
-		orientation:"auto",
-
-	}).on('changeDate', function(e){
-	$('#tanggalan').submit();
-	});
-	$("#tgl[value='']").datepicker("setDate", "-0d"); 
-
-
+		}).on('changeDate', function(e){
+		$('#tanggalan').submit();
+		});
+		$("#tgl[value='']").datepicker("setDate", "-0d"); 
 	</script>
 	</body>
 
 </html>
+<!-- ########################## Delete ################################ -->
 
+<?php foreach($lisn as $g):?>
+
+<div class="modal fade bd-example-modal-sm" id="<?="modaldel-".$g->id_inhouse?>" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+	  	<h4 class="modal-title">Delete Options </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+		<div class="modal-body">Deleted data permanently cannot be restored/retrieved
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+			<a id="btn-trash" class="btn btn-warning" href="<?php echo site_url('admin/inhouse/trash/'.$g->id_inhouse) ?>" >Move to trash</a>
+			<a id="btn-permanen" class="btn btn-danger" href="<?php echo site_url('admin/inhouse/delete/'.$g->id_inhouse) ?>">Delete permanent</a>
+    	</div>
+	</div>
+  </div>
+</div>
+<?php endforeach;?>
+<!-- ########################## Detail ################################ -->
 <?php foreach($lisn as $g):?>
 <div class="modal fade bd-example-modal-lg" id="<?="modaldetail-".$g->id_inhouse?>" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
@@ -258,12 +348,12 @@ textarea:hover{
 			Management File 
 			</div>
 			<div class="card-body ">
-			<a href="<?php echo site_url('admin/inhouse/viewimage/'.$g->id_inhouse) ?>"
+			<a target="_blank" href="<?php echo site_url('admin/inhouse/viewimage/'.$g->id_inhouse) ?>"
 			class="btn btn-small btn-success " ><i class="fas fa-file-image"></i></i> Photo</a>
 			
-			<a href="<?php echo site_url('admin/inhouse/viewfilecv/'.$g->id_inhouse) ?>"
+			<a target="_blank" href="<?php echo site_url('admin/inhouse/viewfilecv/'.$g->id_inhouse) ?>"
 			class="btn btn-small btn-success " ><i class="fas fa-file-alt"></i> Curriculum vitae</a>
-			<a href="<?php echo site_url('admin/inhouse/viewfileporto/'.$g->id_inhouse) ?>"
+			<a target="_blank" href="<?php echo site_url('admin/inhouse/viewfileporto/'.$g->id_inhouse) ?>"
 			class="btn btn-small btn-success " ><i class="fas fa-file-alt"></i> Portofolio</a>
 				
 			</div>

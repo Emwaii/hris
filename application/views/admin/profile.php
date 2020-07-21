@@ -22,7 +22,7 @@ width: 220px;
 box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 text-align: center;
 }
-.card {
+/* .card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -32,8 +32,9 @@ text-align: center;
     background-clip: border-box;
     border: 1px solid #e3e6f0;
     border-radius: 0.35rem;
-}
+} */
 .card-body {
+	
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1.25rem;

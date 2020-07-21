@@ -6,7 +6,17 @@ class Ilowongan_model extends CI_Model
 
     public $id_ilowongan;
     public $ilowongan_name;
+    public $ilowongan_alias;
+    public $is_active;
 
+    public function rules()
+    {
+        return [
+            ['field' => 'lname',
+            'label' => 'Nama lowongan',
+            'rules' => 'required']
+        ];
+    }
    
     public function getAll()
     {
@@ -22,7 +32,8 @@ class Ilowongan_model extends CI_Model
         $post = $this->input->post();
         $this->id_ilowongan= null;
         $this->ilowongan_name = $post["lname"];
-		
+        $this->ilowongan_alias = $post["aname"];
+		$this->is_active = $post["active"];
 		$this->db->insert($this->_table, $this);
     }
 
@@ -31,7 +42,8 @@ class Ilowongan_model extends CI_Model
         $post = $this->input->post();
         $this->id_ilowongan = $post["id"];
         $this->ilowongan_name = $post["lname"];
-	
+        $this->ilowongan_alias = $post["aname"];
+        $this->is_active = $post["active"];
         $this->db->update($this->_table, $this, array('id_ilowongan' => $post['id']));
     }
 

@@ -14,6 +14,9 @@ hr.style13  {
   background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
 }
+.bb{
+  border-bottom: 1px dotted grey;
+}
 </style>
 </head>
 <body id="page-top">
@@ -66,50 +69,72 @@ hr.style13  {
 							
 							</div>
             
-							<div class="col-md-4 mb-2 ml-5 ">
-                <label for="pendidikan">No KTP :</label>
-								<input class="form-control-plaintext " disabled type="text" name="pendidikan" placeholder="Pendidikan Terakhir" value="<?php echo "  ".$in->id_card?>"/>
-								<label for="tanggal_masuk">Jabatan :</label>
-								<input class="form-control-plaintext " disabled type="text" id="tanggal_masuk" name="tanggal_masuk" placeholder="Tanggal Masuk" value="<?php echo "  ". $in->jn?>">
-                <label for="pendidikan">Tempat, Tanggal Lahir : </label>
-								<input class="form-control-plaintext " disabled type="text" name="pendidikan" placeholder="Pendidikan Terakhir" value="<?php echo "  ". $in->ttl.",".date('d F Y',strtotime($in->tgl_lahir))?>"/>
-                <label for="pendidikan">E-mail :</label>
-								<input class="form-control-plaintext " disabled type="text" name="pendidikan" placeholder="Pendidikan Terakhir" value="<?php echo "  ". $in->email_kantor?>"/>
+							<div class="col-md-4 mb-2 ml-5">
+                <label for="pendidikan">ID Card Number</label>
+								<input class="form-control-plaintext border-bottom mb-1" disabled type="text" name="pendidikan" placeholder="Pendidikan Terakhir" value="<?php echo $in->id_card?>"/>
+								<label for="tanggal_masuk">Position</label>
+								<input class="form-control-plaintext border-bottom mb-1" disabled type="text" id="tanggal_masuk" name="tanggal_masuk" placeholder="Tanggal Masuk" value="<?php echo $in->jn?>">
+                <label for="pendidikan">Place/Date of Birth</label>
+								<input class="form-control-plaintext border-bottom mb-1" disabled type="text" name="pendidikan" placeholder="Pendidikan Terakhir" value="<?php echo $in->ttl.",".date('d F Y',strtotime($in->tgl_lahir))?>"/>
+                <label for="pendidikan">Email</label>
+								<input class="form-control-plaintext border-bottom mb-1" disabled type="text" name="pendidikan" placeholder="Pendidikan Terakhir" value="<?php echo  $in->email_kantor?>"/>
                 
-                <label for="pendidikan">Alamat :</label>
+                <label for="pendidikan" >Address</label>
                 <p class="text-secondary ml-2"><?php echo $in->alamat_now?>,<br> 
                      <?php echo $in->city_now.", ".$in->state_now.", ".$in->zip_now?><br> 
                 </p>
+                <hr>
               </div>
+
+              <div class="col-md-4 ml-4 mt-5 mb-3" >
+              <center> 
+              <div class="card border-0" style="width: 14rem;">
+                  <?php if($in->jenis == "kontrak"){?>
+                    <img class="card-img-top img-responsive" src="<?php echo base_url('assets/img/contract.png') ?>" alt="Card image cap" >
+                  <?php }elseif($in->jenis == "probation"){?>
+                    <img class="card-img-top img-responsive" src="<?php echo base_url('assets/img/probation.png') ?>" alt="Card image cap" >
+                  <?php }else{?>
+                    <img class="card-img-top img-responsive" src="<?php echo base_url('assets/img/inhouse.png') ?>" alt="Card image cap" >
+                  <?php }?>
+               
+                  <!-- <img class="card-img-top img-responsive" src="<?php echo base_url('upload/karyawan/'.$in->image) ?>" alt="Card image cap" > -->
+
+                  <!-- <div class="card-footer" style="text-align:center">
+                    <small class="text-secondary" ><?= $in->namakr?></small>
+                  </div> -->
+                </div>
+                </center>
+							
+							</div>
 
 							</div>
               <!-- <hr class="style13">	 -->
 
 							<div class="row">
 							<div class="col-md-6 mb-3">
-              <label for="pendidikan">Jenis Kelamin      :</label>
-								<input class="form-control-plaintext " disabled type="text" name="pendidikan"  value="<?php echo "  ".$in->jenis_kelamin?>"/>	
-							  <label for="pendidikan">Pendidikan       :</label>
-								<input class="form-control-plaintext " disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->pendidikan?>"/>
-                <label for="pendidikan">Nama Ayah        :</label>
-								<input class="form-control-plaintext " disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->nama_ayah?>"/>	
-                <label for="pendidikan">Nama Ibu         :</label>
-								<input class="form-control-plaintext " disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->nama_ibu?>"/>	
-                <label for="pendidikan">Nama Suami/Istri :</label>
-								<input class="form-control-plaintext " disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->nama_ss?>"/>	
+              <label for="pendidikan">Gender</label>
+								<input class="form-control-plaintext border-bottom mb-1" disabled type="text" name="pendidikan"  value="<?php echo "  ".$in->jenis_kelamin?>"/>	
+							  <label for="pendidikan">Academic Background</label>
+								<input class="form-control-plaintext border-bottom mb-1" disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->pendidikan?>"/>
+                <label for="pendidikan">Father's Name</label>
+								<input class="form-control-plaintext border-bottom mb-1" disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->nama_ayah?>"/>	
+                <label for="pendidikan">Mother's Name</label>
+								<input class="form-control-plaintext border-bottom mb-1" disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->nama_ibu?>"/>	
+                <label for="pendidikan">Spouse Name</label>
+								<input class="form-control-plaintext border-bottom mb-1" disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->nama_ss?>"/>	
 							
               </div>
 							<div class="col-md-6 mb-3">
-                <label for="pendidikan">No Passport :</label>
-								<input class="form-control-plaintext " disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->no_pasport?>"/>	
-                <label for="pendidikan">No BPJS :</label>
-								<input class="form-control-plaintext " disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->no_bpjs?>"/>	
-                <label for="pendidikan">No NPWP :</label>
-								<input class="form-control-plaintext " disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->no_npwp?>"/>	
-                <label for="pendidikan">Email Kantor :</label>
-								<input class="form-control-plaintext " disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->email_kantor?>"/>	
-                <label for="pendidikan">Email Pribadi :</label>
-								<input class="form-control-plaintext " disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->email_pribadi?>"/>	
+                <label for="pendidikan">Passport Number</label>
+								<input class="form-control-plaintext border-bottom mb-1" disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->no_pasport?>"/>	
+                <label for="pendidikan">BPJS Number</label>
+								<input class="form-control-plaintext border-bottom mb-1" disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->no_bpjs?>"/>	
+                <label for="pendidikan">NPWP Number</label>
+								<input class="form-control-plaintext border-bottom mb-1" disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->no_npwp?>"/>	
+                <label for="pendidikan">Work Email</label>
+								<input class="form-control-plaintext border-bottom mb-1" disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->email_kantor?>"/>	
+                <label for="pendidikan">Personal Email</label>
+								<input class="form-control-plaintext border-bottom mb-1" disabled type="text" name="pendidikan"  value="<?php echo "  ". $in->email_pribadi?>"/>	
 							
 							</div>
 
@@ -118,17 +143,17 @@ hr.style13  {
               <div class="form-group border-top mt-3 mb-3">
               <div class="card mt-3">
               <div class="card-header">
-              Manajemen File 
+              Management File 
              </div>
               <div class="card-body ">
               <a href="<?php echo site_url('admin/detail/donlodcv/'.$in->karyawan_id) ?>"
-                class="btn btn-small btn-success " ><i class="fas fa-file-download"></i> Download CV</a>
+                class="btn btn-small btn-success " ><i class="fas fa-file-download"></i> Download Curriculum vitae</a>
                 <a href="<?php echo site_url('admin/detail/donlodkontrak/'.$in->karyawan_id) ?>"
-                class="btn btn-small btn-success " ><i class="fas fa-file-download"></i> Download Kontrak Kerja</a>
+                class="btn btn-small btn-success " ><i class="fas fa-file-download"></i> Download Employment Contract</a>
                 <a href="<?php echo site_url('admin/detail/donlodgambar/'.$in->karyawan_id) ?>"
                 class="btn btn-small btn-success" ><i class="fas fa-file-image"></i> Download Photo</a>
                 <a href="<?php echo site_url('admin/detail/donlodktp/'.$in->karyawan_id) ?>"
-                class="btn btn-small btn-success" ><i class="fas fa-file-image"></i> Download Photo KTP</a>
+                class="btn btn-small btn-success" ><i class="fas fa-file-image"></i> Download Photo ID Card</a>
                    
               </div>
             </div>

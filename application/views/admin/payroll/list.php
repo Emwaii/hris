@@ -8,7 +8,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<style>
 		.custom {
-			width: 100px !important;
+			width: 110px !important;
 		}
 	</style>
 	
@@ -46,8 +46,8 @@
 									<tr>
 										<th class="align-middle" style="text-align:center">No</th>
 										<th class="align-middle" style="text-align:center">Status</th>
-										<th class="align-middle" style="text-align:center">Nama Karyawan</th>
-										<th class="align-middle" style="text-align:center">Bulan</th>
+										<th class="align-middle" style="text-align:center">Employee Name</th>
+										<th class="align-middle" style="text-align:center">Month</th>
 										<th class="align-middle" style="text-align:center">Action</th>
 									</tr>
 									
@@ -60,20 +60,20 @@
 											<!-- <input type="hidden" id="id" value="<?= $kar->karyawan_id?>"> -->
 										</td>
 
-										<td width="120">
-										<?php $stat = "<h5><span class='badge badge-info'>Belum</span></h5>";?>
+										<td width="200">
+										<?php $stat = "<h5><span class='badge badge-info'>Unpaid</span></h5>";?>
 											<?php foreach($payrol as $pay){
 												 if ($kar->karyawan_id == $pay->karyawan_id){
-													if(($pay->status == "terbayar") && (date('F',strtotime($pay->tanggal)) == date('F'))){$stat = "<h5><span class='badge badge-success'>Terbayar</span></h5>";}
-													else{$stat = "<h5><span class='badge badge-info'>Belum</span></h5>";}
+													if(($pay->status == "terbayar") && (date('F',strtotime($pay->tanggal)) == date('F'))){$stat = "<h5><span class='badge badge-success'>Paid</span></h5>";}
+													else{$stat = "<h5><span class='badge badge-info'>Unpaid</span></h5>";}
 												 }
 											} echo $stat; //date('F',strtotime($pay->tanggal));?>
 										</td>
 										
-										<td  width="200">
+										<td>
 											<?php echo "&nbsp;&nbsp;&nbsp".$kar->namakr ?>
 										</td>
-										<td  width="120">
+										<td>
 											<?php echo "&nbsp;&nbsp;&nbsp".date('F') ?>
 											<!-- <?php if (date('Y',strtotime($kar->tanggal_masuk)) == "2020"){
 												echo "true";
@@ -82,16 +82,16 @@
 										
 										<td width="150" style="text-align:center" >
 										
-										<?php $invo = "<a href='#' class='btn btn-small btn-info custom' id='gaj' data-toggle='modal' data-target='#modal$kar->karyawan_id'><i class='fas fa-dollar-sign'></i> Gaji</a>"?>
+										<?php $invo = "<a href='#' class='btn btn-small btn-info custom' id='gaj' data-toggle='modal' data-target='#modal$kar->karyawan_id'><i class='fas fa-dollar-sign'></i> Pay</a>"?>
 										<?php foreach ($payrol as $p):?>
 											<?php if($kar->karyawan_id == $p->karyawan_id):?>
 											<?php if(($p->status == "terbayar") && (date('F',strtotime($p->tanggal)) == date('F')))://echo "true";?>
 												<a href="<?php echo base_url().'admin/slip?id='.$kar->karyawan_id?>" 
-												class="btn btn-small btn-success custom" id="invo"><i class="fas fa-file-invoice-dollar" id="fonta"></i> Slip Gaji</a>
-												<?php $invo = "<a href='#' class='btn btn-small custom btn-info ' id='gaj' data-toggle='modal' data-target='#modal$kar->karyawan_id' hidden><i class='fas fa-dollar-sign'></i> Gaji</a>"?>
+												class="btn btn-small btn-success custom" id="invo"><i class="fas fa-file-invoice-dollar" id="fonta"></i> Salary slip</a>
+												<?php $invo = "<a href='#' class='btn btn-small custom btn-info ' id='gaj' data-toggle='modal' data-target='#modal$kar->karyawan_id' hidden><i class='fas fa-dollar-sign'></i> Pay</a>"?>
 												
 											<?php else:?>
-											<?php $invo = "<a href='#' class='btn btn-small custom btn-info' id='gaj' data-toggle='modal' data-target='#modal$kar->karyawan_id' ><i class='fas fa-dollar-sign'></i> Gaji</a>"?>
+											<?php $invo = "<a href='#' class='btn btn-small custom btn-info' id='gaj' data-toggle='modal' data-target='#modal$kar->karyawan_id' ><i class='fas fa-dollar-sign'></i> Pay</a>"?>
 											
 											<?php endif; ?>
 											<?php endif; ?>
@@ -136,13 +136,13 @@
 	<div class="modal-dialog modal-lg ">
 	<div class="modal-content">
 	<div class="modal-header bg-light">
-	<h4 class="modal-title">Penggajian Karyawan</h4>
+	<h4 class="modal-title">Payroll Employee</h4>
 	<button type="button" class="close" data-dismiss="modal" aria-label="close">
 		<span aria-hidden="true">&times;</span>
 	</button>
 	</div>
 	<div class="modal-header">
-		<labe><b>ID Penggajian : </b> <?php $idp = "PY-".date("dmY").substr(md5(time()), 0, 4); echo $idp;?></labe>
+		<labe><b>ID Salary : </b> <?php $idp = "PY-".date("dmY").substr(md5(time()), 0, 4); echo $idp;?></labe>
 	</div>
 	<form action="<?php echo base_url(); ?>admin/payroll/add" method="post" enctype="multipart/form-data" >
 
@@ -166,23 +166,23 @@
 
 		 <div class="row ">
 			<div class="mb-3 col-md-6">
-			<label for="tanggal">Tanggal</label>
+			<label for="tanggal">Date</label>
 			<input class="form-control" type="text" name="tgl"  disabled value="<?= date('F Y')?>">
 			</div>
 
 			<div class="mb-3 col-md-6">
-			<label for="nkr">Nama Karyawan</label>
+			<label for="nkr">Employee Name</label>
 			<input class="form-control" type="text" name="namakr" disabled value="<?= $kay->namakr?>">
 			</div>
 		</div>
 		
 		<div class="row">
 			<div class="mb-3 col-md-6">
-			<label for="jbkr">Jabatan </label>
+			<label for="jbkr">Position </label>
 			<input class="form-control" type="text" name="jb" disabled value="<?= $kay->jn?>">
 			</div>
 			<div class="mb-3 col-md-6">
-			<label for="gp">Gaji Pokok</label>
+			<label for="gp">Basic Salary</label>
 			<input class="form-control" type="text" name="gp" disabled value="<?php $pokok =$kay->gp; echo "Rp. ".number_format($pokok)?>">
 			<input type="hidden" name="gaji"  value="<?= $trp+$mkn+$pokok?>">
 
@@ -194,11 +194,11 @@
 		<div class="row ">
 		
 			<div class="mb-3 col-md-6">
-			<label for="jbkr">Tunjangan Transportasi </label>
+			<label for="jbkr">Transportation Allowance</label>
 			<input class="form-control" type="text" name="trans" disabled value="<?= " Rp. ".number_format($trp)?>">
 			</div>
 			<div class="mb-3 col-md-6">
-			<label for="gp">Tunjangan Konsumsi</label>
+			<label for="gp">Consumption Allowance</label>
 			<input class="form-control" type="text" name="konsum" disabled value="<?= " Rp. ".number_format($mkn)?>">
 			</div>
 		</div>
@@ -209,7 +209,7 @@
 				
 			</div>
 			<div class="mb-3 col-md-6">
-			<label>Total Gaji : </label><h1><span id="akhir" class="font-weight-bold"><?=" Rp. ".number_format( $trp+$mkn+$pokok);?></span></h1>
+			<label>Total Earnings : </label><h1><span id="akhir" class="font-weight-bold"><?=" Rp. ".number_format( $trp+$mkn+$pokok);?></span></h1>
 						</div>
 		</div>
 		<div class="modal-footer">

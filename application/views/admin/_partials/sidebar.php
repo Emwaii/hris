@@ -93,11 +93,11 @@
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <i class="fas fa-fw fa-user-plus"></i>
-            <span>Recruitment Inhouse</span>
+            <span>Recruitment In-House</span>
         </a>
         <div class="dropdown-menu animate slideIn" aria-labelledby="pagesDropdown">
         <?php foreach ($query->result() as $row):?>
-        <a class="dropdown-item" href="<?= site_url().'admin/inhouse?id='.$row->id_ilowongan?>"><?= $row->ilowongan_alias?></a>
+        <a class="dropdown-item" href="<?= site_url().'admin/inhouse/list?id='.$row->id_ilowongan?>"><?= $row->ilowongan_alias?></a>
        
         <?php endforeach;?>
         </div>
@@ -119,11 +119,11 @@
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <i class="fas fa-fw fa-users"></i>
-            <span>Karyawan</span>
+            <span>Employee</span>
         </a>
         <div class="dropdown-menu animate slideIn" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/karyawan/add') ?>">Add Karyawan</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/karyawan') ?>">List Karyawan</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/karyawan/add') ?>">Add Employee</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/karyawan') ?>">Employee's List</a>
             <!-- <a class="dropdown-item" href="<?php echo site_url('admin/karyawan/detail') ?>">List Karyawan</a> -->
 
         </div>
@@ -159,11 +159,11 @@
         <a class="nav-link dropdown-toggle " href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <i class="fas fa-fw fa-calendar-check"></i>
-            <span>Cuti Karyawan</span></a>
+            <span>Employee Day Off</span></a>
             <div class="dropdown-menu animate slideIn" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/cuti/add') ?>">Input cuti karyawan</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/cuti') ?>">List Cuti</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/cuti/rekap') ?>">Rekap Cuti</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/cuti/add') ?>">Input Employee Day Off</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/cuti') ?>">Day Off List</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/cuti/rekap') ?>">Recap Day Off</a>
 
         </div>
     </li>
@@ -174,9 +174,9 @@
             <i class="fas fa-fw fa-money-bill-wave"></i>
             <span>Payroll</span></a>
             <div class="dropdown-menu animate slideIn" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/payroll') ?>">Penggajian Karyawan</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/tunjangan') ?>">Tunjangan</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/jabatan') ?>">Jabatan</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/payroll') ?>">Employee Payroll</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/tunjangan') ?>">Allowance</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/jabatan') ?>">Position</a>
         </div>
     </li>
     
@@ -187,8 +187,8 @@
             <i class="fas fa-fw fa-user"></i>
             <span>Users</span></a>
             <div class="dropdown-menu animate slideIn" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/user/add') ?>">Tambah User</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/user') ?>">List User</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/user/add') ?>">Add User</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/user') ?>">User's List</a>
         </div>
       </li>
 
@@ -198,9 +198,9 @@
             <i class="fas fa-fw fa-cog"></i>
             <span>Settings</span></a>
             <div class="dropdown-menu animate slideIn" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/menu') ?>">Settings menu</a>
-            <!-- <a class="dropdown-item" href="<?php echo site_url('admin/tunjangan') ?>">Tunjangan</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/jabatan') ?>">Jabatan</a> -->
+            <a class="dropdown-item" href="<?php echo site_url('admin/ilowongan') ?>">Opening In-House</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/hlowongan') ?>">Banner Opening</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/email') ?>">Email</a>
 
             <!-- #################### test ##################### -->
             </div>

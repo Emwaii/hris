@@ -38,13 +38,11 @@ class Forgot_password extends CI_Controller {
                 $this->db->insert('user_token', $user_token);
                 $this->_sendEmail($token, 'forgot');
 
-                $this->session->set_flashdata('ihi', '<div class="alert alert-success" role="alert">
-                Please check your email to reset your password !</div>');
+                $this->session->set_flashdata('ihi', 'Please check your email to reset your password !');
                 redirect('admin/forgot_password');
                 
             } else {
-                $this->session->set_flashdata('ihi', '<div class="alert alert-danger" role="alert">
-                Email is not registered !</div>');
+                $this->session->set_flashdata('ihii', 'Email is not registered !');
                 redirect('admin/forgot_password');
             }
         }
@@ -97,13 +95,11 @@ class Forgot_password extends CI_Controller {
                 $this->session->set_userdata('reset_email', $email);
                 $this->changePass();
             } else {
-                $this->session->set_flashdata('ihi', '<div class="alert alert-danger" role="alert">
-                Reset password failed ! Wrong token</div>');
+                $this->session->set_flashdata('ihii', 'Reset password failed ! Wrong token');
                 redirect('admin/login');
             }
         } else {
-            $this->session->set_flashdata('ihi', '<div class="alert alert-danger" role="alert">
-                Reset password failed ! Wrong email</div>');
+            $this->session->set_flashdata('ihii', 'Reset password failed ! Wrong email');
                 redirect('admin/login');
         }
     }
@@ -129,8 +125,7 @@ class Forgot_password extends CI_Controller {
 
             $this->session->unset_userdata('reset_email');
 
-            $this->session->set_flashdata('ihi', '<div class="alert alert-success" role="alert">
-                Password has been changed! please login</div>');
+            $this->session->set_flashdata('ihi', 'Password has been changed! please login');
                 redirect('admin/login');
         }
         

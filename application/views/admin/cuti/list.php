@@ -31,13 +31,13 @@
 				<div class="card mb-3">
 					<div class="card-header">
 						<a href="<?php echo site_url('admin/cuti/add') ?>" style="text-decoration:none;"><i class="fas fa-plus"></i> Add New</a>
-						<a href="<?php echo site_url('admin/cuti/rekap') ?>" style="text-decoration:none;" class="float-right"><i class="fas fa-file ml-2"></i> Show Rekap</a>
+						<a href="<?php echo site_url('admin/cuti/rekap') ?>" style="text-decoration:none;" class="float-right"><i class="fas fa-file ml-2"></i> Show Recap</a>
 
 					</div>
 					<div class="card-body">
 					<form  class="form" id="tanggalan" action="<?php echo site_url('admin/cuti');?>" method="post" enctype="multipart/form-data">
 					<div class="row ml-1 ">
-					<label>Pilih Bulan : </label>
+					<label>Choose Month : </label>
 						<div class="mb-3 col-sm-2">
 						<input class="form-control" autocomplete="off" style="text-align:center" type="text" name="tgl" id="tgl"  value="<?php echo isset($_POST['tgl']) ? $_POST['tgl'] : '' ?>">	
 					
@@ -49,15 +49,15 @@
 					</form>
 					<hr>
 					
-						<div class="table-responsive">
-							<table class="table table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
+						<div class="table-responsive pr-3">
+							<table class="table table-hover table-sm table-striped" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
 										<th style="text-align:center" >No</th>
-										<th style="text-align:center">Nama</th>
-										<th style="text-align:center">Tanggal</th>
-										<th style="text-align:center">Jenis Cuti</th>
-										<th style="text-align:center">Keterangan</th>
+										<th style="text-align:center">Name</th>
+										<th style="text-align:center">Date</th>
+										<th style="text-align:center">Type of Leave</th>
+										<th style="text-align:center">Explanation</th>
 										<th style="text-align:center">Action</th>
 									</tr>
 								</thead>
@@ -69,24 +69,24 @@
 										<td width="20" style="text-align:center">
 										<?php echo $i++ ?>
 										</td>
-										<td width="200">
+										<td>
 											<?php echo ucfirst($ab->namakr)?>
 										</td>
-										<td width="150" style="text-align:center">
+										<td style="text-align:center">
 											<?php echo date('d F Y', strtotime($ab->tanggal)) ?>
 										</td>
-										<td width="150" style="text-align:center">
-											<?php echo ucfirst($ab->jenis_cuti) ?>
+										<td style="text-align:center">
+											<?php if($ab->jenis_cuti == "tahunan"){echo "Annual Leave";}elseif($ab->jenis_cuti == "lembur"){echo "Overtime";}else{echo "Others";} ?>
 										</td>
-										<td width="150">
+										<td>
 											<?php echo ($ab->keterangan) ?>
 										</td>
 																				
-										<td width="200" style="text-align:center">
+										<td width="90" style="text-align:center">
 											<a href="<?php echo site_url('admin/cuti/edit/'.$ab->id) ?>"
-											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
+											class="btn btn-small btn-info" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Edit"><i class="fas fa-edit"></i></a>
 											<a onclick="deleteConfirm('<?php echo site_url('admin/cuti/delete/'.$ab->id) ?>')"
-											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+											 href="#!" class="btn btn-small btn-danger" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Delete"><i class="fas fa-trash"></i></a>
 										</td>
 									</tr>
 									<?php endforeach; ?>
@@ -96,11 +96,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card-footer small text-muted">
-				<?php echo"<font color ='red'>M</font>"?> = Masuk,
-				<?php echo"<font color ='red'>T</font>"?> = Tidak Masuk
 				
-					</div>
 
 			</div>
 			<!-- /.container-fluid -->
@@ -126,6 +122,11 @@
 		$('#deleteModal').modal();
 	}
 	</script>
+	<script>
+	$(document).ready(function(){
+	$('[data-tooltip="tooltip"]').tooltip();   
+	});
+	</script>
 	<script src="<?php echo base_url('js/bootstrap-datepicker.min.js') ?>"></script>
 	<!-- <script>
 	
@@ -136,6 +137,19 @@
 			autoclose: true
 		});
 	</script> -->
+	<script>
+       $(".alert").delay(4000).slideUp(200, function() {
+            $(this).alert('close');
+        });
+   </script>
+	<script>
+		if ( window.history.replaceState ) {
+		window.history.replaceState( null, null, window.location.href );
+
+		}
+		document.getElementById('tgl').value = "<?php echo $_POST['tgl'];?>";
+
+	</script>
 	
 	<script>
 	

@@ -33,14 +33,14 @@
 					<div class="card-body">
 
 						<div class="table-responsive">
-							<table class="table table-hover table-striped" id="dataTable" width="109%" cellspacing="0">
+							<table class="table table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
 								<thead class=" ">
 									<tr>
 										<th>Photo</th>
-										<th>Nama </th>
+										<th>Name </th>
 										<th>Email</th>
-										<th>Jabatan</th>
-										<th>Tanggal Masuk</th>
+										<th>Position</th>
+										<th>First Date of Work	</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -66,13 +66,13 @@
 											<?php echo date('d F Y', strtotime($kry->tanggal_masuk)) ?>
 										</td>
 										
-										<td width="270">
+										<td width="120">
 											<a href="<?php echo base_url().'admin/detail?id='.$kry->karyawan_id?>" 
-												class="btn btn-small text-success custom" id="invo"><i class="fas fa-file-invoice-dollar" id="fonta"></i> Detail</a>
+											class="btn btn-small btn-success" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Detail"><i class="fas fa-info"></i></a>
 											<a href="<?php echo site_url('admin/karyawan/edit/'.$kry->karyawan_id) ?>"
-											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
+											class="btn btn-small btn-info" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Edit"><i class="fas fa-edit"></i></a>
 											<a onclick="deleteConfirm('<?php echo site_url('admin/karyawan/delete/'.$kry->karyawan_id) ?>')"
-											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+											 href="#!" class="btn btn-small btn-danger" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Delete"><i class="fas fa-trash"></i></a>
 										</td>
 									</tr>
 									<?php endforeach; ?>
@@ -113,6 +113,11 @@
             $(this).alert('close');
         });
    </script>
+   <script>
+	$(document).ready(function(){
+	$('[data-tooltip="tooltip"]').tooltip();   
+	});
+	</script>
 </body>
 
 </html>

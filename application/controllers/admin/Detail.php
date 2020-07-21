@@ -67,7 +67,7 @@ class Detail extends CI_Controller {
 		karyawan.nama_ss,karyawan.no_pasport, karyawan.no_bpjs,karyawan.no_npwp, 
 		karyawan.alamat, karyawan.city, karyawan.state, karyawan.zip, karyawan.alamat_now, 
 		karyawan.city_now, karyawan.state_now, karyawan.zip_now, karyawan.email_kantor, 
-		karyawan.email_pribadi,karyawan.jenis_kelamin,karyawan.jabatan_id as kj,karyawan.cv, 
+		karyawan.email_pribadi,karyawan.jenis_kelamin,karyawan.jenis_karyawan as jenis,karyawan.jabatan_id as kj,karyawan.cv, 
 		karyawan.kontrak_kerja,karyawan.image, jabatan.jabatan_id, jabatan.jabatan_name as jn,
 		jabatan.gajipokok as gp FROM karyawan join jabatan on karyawan.jabatan_id = jabatan.jabatan_id 
 		where karyawan.karyawan_id = "'.$id.'"')->result();

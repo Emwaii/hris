@@ -7,8 +7,8 @@
 }
 @media (min-width: 992px) {
   .animate {
-    animation-duration: 0.3s;
-    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.5s;
+    -webkit-animation-duration: 0.5s;
     animation-fill-mode: both;
     -webkit-animation-fill-mode: both;
   }
@@ -47,9 +47,18 @@
   -webkit-animation-name: slideIn;
   animation-name: slideIn;
 }
-dropdown-item{
-  background-color:  #212529;
+/* a.navbar-brand:hover{
+  background-color: #d4d5d6;
+} */
+.dropdown:hover .dropdown-menu{
+  display: block;
 }
+a.dropdown-item:active{
+	background-color: #d4d5d6;
+}
+/* dropdown-item{
+  background-color:  #212529;
+} */
 
 </style>
 
@@ -62,12 +71,10 @@ dropdown-item{
     
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-6 ">
-    <a class="navbar-brand ml-3 mr-4 float-right" href="<?php echo site_url('guest') ?>">
-    Home
-     </a>
+    <a class="navbar-brand ml-3 mr-4 float-right" href="<?php echo site_url('guest') ?>">Home</a>
     
         <li class=" nav-item dropdown no-arrow">
-            <a class="navbar-brand dropdown-toggle " href="<?php site_url('guest')?>" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            <a class="navbar-brand dropdown-toggle " href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
                 Employee Recruitment 
             </a>

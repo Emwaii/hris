@@ -93,7 +93,7 @@
             }
           ?>
 
-          <center><h4><b>SLIP GAJI KARYAWAN</b></h4></center>
+          <center><h4><b>Salary Slip</b></h4></center>
           <hr>
           <table class="table table-sm mb-4 table-striped table-borderless">
             <?php foreach($invo as $iv):?>
@@ -102,18 +102,18 @@
               <td width="10%">NIK</td>
               <td>:</td>
               <td><?php echo $iv->idcard; ?></td>
-              <td width="10%">Alamat</td>
+              <td width="10%">Address</td>
               <td>:</td>
               <td><?php echo $iv->cn; ?></td>
-              <td width="10%">Tanggal</td>
+              <td width="10%">Date</td>
               <td>:</td>
               <td><?php echo date('d/m/Y'); ?></td>
             </tr>
             <tr>
-              <td width="10%">Nama</td>
+              <td width="10%">Name</td>
               <td>:</td>
               <td><?php echo $iv->nl; ?></td>
-              <td width="10%">Jabatan</td>
+              <td width="10%">Position</td>
               <td>:</td>
               <td><?php echo $iv->jjn; ?></td>
               <td></td>
@@ -130,8 +130,8 @@
                     <thead class="bg-light">
                     <tr>
                       <th style="text-align: center">No</th>
-                      <th style="text-align: center">Keterangan</th>
-                      <th style="text-align: center">Jumlah</th>
+                      <th style="text-align: center">Information</th>
+                      <th style="text-align: center">Amount</th>
                     </tr>
                     </thead>
                     <?php foreach ($invo as $inv): ?>
@@ -139,24 +139,24 @@
                     <tbody>
                     <tr>
                       <td style="text-align: center"><?php echo "1"?></td>
-                      <td><?php echo "Gaji pokok" ?></td>
+                      <td><?php echo "Basic Salary" ?></td>
                       <td><?php echo "Rp. ".number_format($inv->jgp) ?></td>
                     </tr>
                     <tr>
                       <td style="text-align: center"><?php echo "2"?></td>
-                      <td><?php echo "Tunjangan Transportasi" ?></td>
+                      <td><?php echo "Transportation Allowance" ?></td>
                       <td><?php echo "Rp. ".number_format($trp) ?></td>
                     </tr>
                     <tr>
                       <td style="text-align: center"><?php echo "3"?></td>
-                      <td><?php echo "Tunjangan Konsumsi" ?></td>
+                      <td><?php echo "Consumption Allowance" ?></td>
                       <td><?php echo "Rp. ".number_format($mkn) ?></td>
                     </tr>
                       <?php endif;?>
                     <?php endforeach; ?>
                     
                     <tr> 
-                      <td colspan="2"><h5 class="lead" style="text-align:center"><?php echo "Total yang diterima" ?></h5></td>
+                      <td colspan="2"><h5 class="lead" style="text-align:center"><?php echo "Total Earnings" ?></h5></td>
                       <td><?php echo "Rp. ".number_format($mkn+$trp+$inv->jgp) ?></td>
                     </tr> 
                   </tbody>
@@ -208,13 +208,18 @@
                   return $hasil;
                 }
 
-                $terbilang= ucfirst(terbilang($totaal))." rupiah";
+                $f = new NumberFormatter('en', NumberFormatter::SPELLOUT);
+                $f->format($totaal);
+                
+                // $terbilang= ucfirst(terbilang($totaal))." rupiah";
+                $terbilang= ucfirst($f->format($totaal))." rupiah";
                 ?>
-                <span class="text-secondary">Terbilang : </span><span  class="text-secondary" style="font-style:italic"><?= $terbilang?></spanTerbilang>
+                <span class="text-secondary">Amount in word : </span><span  class="text-secondary" style="font-style:italic"><?= $terbilang?></spanTerbilang>
+
                 </div>
                 <!-- /.col -->
                 <div class="col-12">
-                  <b class="float-right mr-4">Penerima</b><br><br><br>
+                  <b class="float-right mr-4">Recipient</b><br><br><br>
                   <br>
                   <b class="lead float-right"><?= $inv->nl?></b>
                   </div>
