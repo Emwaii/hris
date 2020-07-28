@@ -40,22 +40,22 @@
 						<form action="<?php base_url('admin/cuti/edit') ?>" method="post" enctype="multipart/form-data" >
 						<input type="hidden" name="id" value="<?php echo $cuti->id?>"/>
 						<div>
-								<label for="name">Pilih Karyawan<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="name">Choose Employee<?php echo"<font color ='red'>*</font>"?></label>
 							</div>
 							<div class="form-group input-group">
 								<input type="hidden" name="karyawan_id" id="karyawan_id" value="<?php foreach($karyawan as $kr){	if($cuti->karyawan_id==$kr->karyawan_id) echo $kr->karyawan_id;}?>">
 								<input type="text" name="name_karyawan" placeholder="Nama Karyawan" id="name_karyawan" value="<?php foreach($karyawan as $kr){	if($cuti->karyawan_id==$kr->karyawan_id) echo $kr->namakr;}?>" 
 								class="form-control <?php echo form_error('karyawan_id') ? 'is-invalid':'' ?>">
-								<span class="input-group-btn">
+								<!-- <span class="input-group-btn">
 									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-item">
 										<i class="fa fa-search"></i>
 									</button>
-								</span>
+								</span> -->
 							</div>
 						
 						
 							<div class="form-group">
-								<label for="name">Tanggal Masuk<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="name">Date of Leave<?php echo"<font color ='red'>*</font>"?></label>
 								<input class="form-control <?php echo form_error('mulai') ? 'is-invalid':'' ?>"
 								 type="text" name="mulai" id="mulai" placeholder="Exp. 11-11-2011" value="<?php echo $cuti->tanggal?>"/>
 								 <div class="invalid-feedback">
@@ -64,18 +64,18 @@
 								 </div>
 								
 							<div class="form-group">
-								<label for="absen">Absen<?php echo"<font color ='red'>*</font>"?></label>
+								<label for="absen">Type of Leave<?php echo"<font color ='red'>*</font>"?></label>
 								<div>
 								<label class="custom-control custom-checkbox custom-control-inline">
-								<input type="radio" name="absen" checked="" class="custom-control-input" value="tahunan" <?php echo ($cuti->jenis_cuti == "tahunan" ? 'checked="checked"': ''); ?>><span class="custom-control-label" >Tahunan</span>
+								<input type="radio" name="absen" checked="" class="custom-control-input" value="tahunan" <?php echo ($cuti->jenis_cuti == "tahunan" ? 'checked="checked"': ''); ?>><span class="custom-control-label" >Annual Leave</span>
 								</label>
 								
 								<label class="custom-control custom-checkbox custom-control-inline">
-								<input type="radio" name="absen" class="custom-control-input" value="lembur" <?php echo ($cuti->jenis_cuti == "lembur" ? 'checked="checked"': ''); ?>><span class="custom-control-label" >Lembur</span>
+								<input type="radio" name="absen" class="custom-control-input" value="lembur" <?php echo ($cuti->jenis_cuti == "lembur" ? 'checked="checked"': ''); ?>><span class="custom-control-label" >Overtime</span>
 								</label>
 								
 								<label class="custom-control custom-checkbox custom-control-inline">
-								<input type="radio" name="absen" class="custom-control-input" value="lainnya" <?php echo ($cuti->jenis_cuti == "lainnya" ? 'checked="checked"': ''); ?>><span class="custom-control-label" >Lainnya</span>
+								<input type="radio" name="absen" class="custom-control-input" value="lainnya" <?php echo ($cuti->jenis_cuti == "lainnya" ? 'checked="checked"': ''); ?>><span class="custom-control-label" >Others</span>
 								</label>
 								
 								<!-- <label class="custom-control custom-checkbox custom-control-inline">
@@ -84,11 +84,11 @@
 							</div>
 							</div>
 							<div class="form-group">
-							<label for="alamat">keterangan</label>
-								<textarea class="form-control" name="keterangan" autocomplete="off" placeholder="Keterangan Lembur..."><?= $cuti->keterangan?></textarea>
+							<label for="alamat">Explanation</label>
+								<textarea class="form-control" name="keterangan" autocomplete="off" placeholder="Explanation..."><?= $cuti->keterangan?></textarea>
 							</div>
 
-							<input class="btn btn-success" type="submit" name="btn" value="Save" />
+							<input class="btn btn-success w-100" type="submit" name="btn" value="Save" />
 						</form>
 
 					</div>

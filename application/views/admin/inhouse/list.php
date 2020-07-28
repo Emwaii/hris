@@ -53,7 +53,7 @@ textarea:hover{
 					<div class="card-header">
 						<a href="<?php echo site_url().'admin/inhouse/delinhouse?id='.$this->input->get('id');?>" class="float-left text-danger" style="text-decoration:none;"><i class="fas fa-trash "></i> Trash</a>
 
-						<a target="_blank" href="<?= site_url().'admin/inhouse/exp_inhouse?id='.$this->input->get('id');?>" class="float-right" style="text-decoration:none;"><i class="fas fa-print ml-2"></i> Rekap</a>
+						<a target="_blank" href="<?= site_url().'admin/inhouse/exp_inhouse?id='.$this->input->get('id');?>" class="float-right" style="text-decoration:none;"><i class="fas fa-print ml-2"></i> Recap</a>
 
 					</div>
 					<div class="card-body">

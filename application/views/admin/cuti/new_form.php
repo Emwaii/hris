@@ -38,7 +38,7 @@
 
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/absen/') ?>" style="text-decoration:none;"><i class="fas fa-arrow-left"></i> Back</a>
+						<a href="<?php echo site_url('admin/cuti/') ?>" style="text-decoration:none;"><i class="fas fa-arrow-left"></i> Back</a>
 					</div>
 					<div class="card-body">
 
@@ -134,13 +134,13 @@
         </button>
       </div>
       <div class="modal-body table-responsive">
-        <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-hover table-sm" id="dataTable" width="100%" cellspacing="0">
 			<thead>
 				<tr>
-					<th>No</th>
-					<th>Name</th>
+					<th style="text-align:center">No</th>
+					<th style="text-align:center">Name</th>
 					
-					<th>Actions</th>
+					<th style="text-align:center">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -150,7 +150,7 @@
 					<td witdh="50"><?= $i++?></td>
 					<td width="500"><?php echo $kr->namakr ?></td>
 					
-					<td witdh="100">
+					<td witdh="100" style="text-align:center">
 						<button class="btn btn-xs btn-info" id="select" data-id="<?php echo $kr->karyawan_id ?>"
 						data-name="<?php echo $kr->namakr ?>">
 							<i class="fa fa-check"></i> Select

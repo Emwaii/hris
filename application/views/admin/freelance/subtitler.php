@@ -53,7 +53,7 @@ textarea:hover{
 				<div class="card mb-3">
 					<div class="card-header">
 						<a href="<?php echo base_url('admin/freelance/delsubtitler');?>" class="float-left text-danger" style="text-decoration:none;"><i class="fas fa-trash "></i> Trash</a>
-						<a target="_blank" href="<?php echo base_url('admin/freelance/exp_sub');?>" class="float-right"style="text-decoration:none;"><i class="fas fa-print "></i> Rekap</a>
+						<a target="_blank" href="<?php echo base_url('admin/freelance/exp_sub');?>" class="float-right"style="text-decoration:none;"><i class="fas fa-print "></i> Recap</a>
 					
 					</div>
 

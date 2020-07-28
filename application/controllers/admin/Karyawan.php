@@ -79,6 +79,9 @@ class Karyawan extends CI_Controller
             redirect(site_url('admin/karyawan'));
         }
     }
-
+    public function exp_pay()
+	{		
+        $this->load->view("admin/export_excel/export_payroll");
+	}
     
 }

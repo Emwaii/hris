@@ -35,7 +35,7 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-					<a href="#" style="text-decoration:none;"><i class="fas fa-print"></i> Rekap</a>
+					<a target="_blank" href="<?php echo base_url('admin/karyawan/exp_pay');?>" style="text-decoration:none;"><i class="fas fa-print "></i> Recap</a>
 				</div>
 					<div class="card-body">
 					<!-- <form action="<?php base_url('admin/payroll/gaji') ?>" method="post" enctype="multipart/form-data" > -->
