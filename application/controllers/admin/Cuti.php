@@ -34,7 +34,7 @@ class Cuti extends CI_Controller
 
         if ($validation->run()) {
             $cuti->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan..');
+            $this->session->set_flashdata('success', 'Data has been saved');
             redirect('admin/cuti');
 
         }
@@ -55,7 +55,7 @@ class Cuti extends CI_Controller
 
         if ($validation->run()) {
             $cuti->update();
-            $this->session->set_flashdata('success', 'Berhasil diubah..');
+            $this->session->set_flashdata('success', 'Data has been changed');
             redirect('admin/cuti');
         }
 
@@ -71,7 +71,7 @@ class Cuti extends CI_Controller
         if (!isset($id)) show_404();
         
         if ($this->cuti_model->delete($id)) {
-            $this->session->set_flashdata('success', 'Berhasil dihapus..');
+            $this->session->set_flashdata('success', 'Data has been deleted');
             redirect(site_url('admin/cuti'));
         }
     }

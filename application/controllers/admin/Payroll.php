@@ -35,7 +35,7 @@ class Payroll extends CI_Controller
 
         if ($validation->run()) {
             $payroll->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan..');
+            $this->session->set_flashdata('success', 'Data has been saved');
             redirect('admin/payroll');
 
         }
@@ -54,7 +54,7 @@ class Payroll extends CI_Controller
 
         if ($validation->run()) {
             $payroll->update();
-            $this->session->set_flashdata('success', 'Berhasil diubah..');
+            $this->session->set_flashdata('success', 'Data has been changed');
             redirect('admin/payroll');
         }
 
@@ -69,7 +69,7 @@ class Payroll extends CI_Controller
         if (!isset($id)) show_404();
         
         if ($this->payroll_model->delete($id)) {
-            $this->session->set_flashdata('success', 'Berhasil dihapus..');
+            $this->session->set_flashdata('success', 'Data has been deleted');
             redirect(site_url('admin/payroll'));
         }
     }

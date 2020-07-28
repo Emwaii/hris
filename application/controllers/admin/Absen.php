@@ -42,7 +42,7 @@ class Absen extends CI_Controller
 
         if ($validation->run()) {
             $absen->save();
-            $this->session->set_tempdata('success','Berhasil disimpan..',5);
+            $this->session->set_flashdata('success','Data successfully saved');
             //redirect('admin/absen');
 
         }
@@ -63,7 +63,7 @@ class Absen extends CI_Controller
 
         if ($validation->run()) {
             $absen->update();
-            $this->session->set_flashdata('success', 'Berhasil diubah..');
+            $this->session->set_flashdata('success', 'Data successfully changed');
             redirect('admin/absen');
         }
 
@@ -79,7 +79,7 @@ class Absen extends CI_Controller
         if (!isset($id)) show_404();
         
         if ($this->absen_model->delete($id)) {
-            $this->session->set_flashdata('success', 'Berhasil dihapus..');
+            $this->session->set_flashdata('success', 'Data successfully deleted');
             redirect(site_url('admin/absen'));
         }
     }

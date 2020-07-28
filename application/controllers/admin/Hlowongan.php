@@ -29,7 +29,7 @@ class Hlowongan extends CI_Controller
 
         if ($validation->run()) {
             $lowongan->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'Data has been saved');
             redirect('admin/hlowongan');
 
         }
@@ -47,7 +47,7 @@ class Hlowongan extends CI_Controller
 
         if ($validation->run()) {
             $lowongan->update();
-            $this->session->set_flashdata('success', 'Berhasil diubah..');
+            $this->session->set_flashdata('success', 'Data has been changed');
             redirect('admin/hlowongan');
 
         }
@@ -63,7 +63,7 @@ class Hlowongan extends CI_Controller
         if (!isset($id)) show_404();
         
         if ($this->lowongan_model->delete($id)) {
-            $this->session->set_flashdata('success', 'Berhasil dihapus..');
+            $this->session->set_flashdata('success', 'Data has been deleted');
             redirect(site_url('admin/hlowongan'));
         }
     }

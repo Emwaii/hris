@@ -47,7 +47,7 @@ class Email extends CI_Controller
 
         if ($validation->run()) {
             $email->update();
-            $this->session->set_flashdata('success', 'Berhasil diubah..');
+            $this->session->set_flashdata('success', 'Data has been changed');
         }
 
         $data["email"] = $email->getAll();

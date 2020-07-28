@@ -125,13 +125,13 @@
 							<div class="row">							
 							<div class="col-md-6 mb-3">
 								<label for="nama_ss">Spouse Name</label>
-								<input class="form-control "type="text" name="nama_ss" placeholder="Nama Suami/Istri" value="<?php echo $karyawan->nama_ss?>"/>
+								<input class="form-control "type="text" name="nama_ss" placeholder="Spouse Name" value="<?php echo $karyawan->nama_ss?>"/>
 								
 							</div>	
 
 							<div class="col-md-6 mb-3">
 								<label for="no_paspor">Passport Number</label>
-								<input class="form-control " type="text" name="no_paspor" placeholder="Nomor Passport" value="<?php echo $karyawan->no_pasport?>"/>
+								<input class="form-control " type="text" name="no_paspor" placeholder="Passport Number" value="<?php echo $karyawan->no_pasport?>"/>
 								 
 							</div>
 							</div>
@@ -139,13 +139,13 @@
 							<div class="row">							
 							<div class="col-md-6 mb-3">
 								<label for="no_bpjs">BPJS Number</label>
-								<input class="form-control "	type="number" name="no_bpjs" placeholder="Nomor BPJS" value="<?php echo $karyawan->no_bpjs?>"/>
+								<input class="form-control "	type="number" name="no_bpjs" placeholder="BPJS Number" value="<?php echo $karyawan->no_bpjs?>"/>
 								 
 							</div>
 
 							<div class="col-md-6 mb-3">
 								<label for="no_npwp">NPWP Number</label>
-								<input class="form-control"	type="number" name="no_npwp" placeholder="Nomor NPWP" value="<?php echo $karyawan->no_bpjs?>"/>
+								<input class="form-control"	type="number" name="no_npwp" placeholder="NPWP Number" value="<?php echo $karyawan->no_bpjs?>"/>
 								 
 							</div>
 							</div>
@@ -230,7 +230,7 @@
 							<label for="jenis_kelamin">Gender<?php echo"<font color ='red'>*</font>"?></label>
 							<select class="form-control <?php echo form_error('jenis_kelamin') ? 'is-invalid':'' ?>" 
 							name="jenis_kelamin">
-							<option disable selected>Pilih...</option>
+							<option disable selected>Choose One...</option>
 							<option value="Laki - laki" <?php if($karyawan->jenis_kelamin=="Laki - laki") echo 'selected="selected"'; ?>>Laki - laki</option>
 							<option value="Perempuan" <?php if($karyawan->jenis_kelamin=="Perempuan") echo 'selected="selected"'; ?>>Perempuan</option>
 							<option value="Lainnya">Lainnya</option>
@@ -243,7 +243,7 @@
 							<div class="col-md-6 mb-3">
 							<label for="jabatan">Position</label>
 							<select class="form-control" name="jbtn">
-								<option disable selected>Pilih...</option>
+								<option disable selected>Choose One...</option>
 								<?php foreach ($jabatan as $jb) {?>
 									
 								<option value="<?php echo $jb->jabatan_id ?>" <?php if($karyawan->jabatan_id==$jb->jabatan_id) echo 'selected="selected"'; ?> ><?php echo $jb->jabatan_name ?></option>
@@ -255,7 +255,7 @@
 							<div class="col-md-6 mb-3">
 								<label for="no_bpjs">Type of Employee<?php echo"<font color ='red'>*</font>"?></label>
 							<select class="form-control" autocomplete="off" name="jenis_karyawan">
-								<option disable selected>Pilih...</option>
+								<option disable selected>Choose One...</option>
 								<option value="kontrak"<?php if($karyawan->jenis_karyawan=="kontrak") echo 'selected="selected"'; ?>>Kontrak</option>
 								<option value="probation"<?php if($karyawan->jenis_karyawan=="probation") echo 'selected="selected"'; ?>>Probation</option>
 								<!-- <option value="Lainnya">Lainnya</option> -->

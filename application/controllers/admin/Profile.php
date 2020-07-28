@@ -20,7 +20,7 @@ class Profile extends CI_Controller {
     {
 		$user = $this->user_model;
 		if ($user->updateprofile()) {
-			$this->session->set_flashdata('success', 'Berhasil disimpan');
+			$this->session->set_flashdata('success', 'Data has been saved');
 			redirect (site_url('admin/profile'));
 		}
 		// $user->updateprofile();

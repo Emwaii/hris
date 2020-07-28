@@ -27,7 +27,7 @@ class Jabatan extends CI_Controller
 
         if ($validation->run()) {
             $jabatan->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
+            $this->session->set_flashdata('success', 'Data has been saved');
             redirect('admin/jabatan');
 
         }
@@ -45,7 +45,7 @@ class Jabatan extends CI_Controller
 
         if ($validation->run()) {
             $jabatan->update();
-            $this->session->set_flashdata('success', 'Berhasil diubah');
+            $this->session->set_flashdata('success', 'Data has been changed');
             redirect('admin/jabatan');
 
         }
@@ -61,7 +61,7 @@ class Jabatan extends CI_Controller
         if (!isset($id)) show_404();
         
         if ($this->jabatan_model->delete($id)) {
-            $this->session->set_flashdata('success', 'Berhasil dihapus..');
+            $this->session->set_flashdata('success', 'Data has been deleted');
             redirect(site_url('admin/jabatan'));
         }
     }

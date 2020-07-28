@@ -27,7 +27,7 @@ class Tunjangan extends CI_Controller
 
         if ($validation->run()) {
             $gaji->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan..');
+            $this->session->set_flashdata('success', 'Data has been saved');
             redirect('admin/tunjangan');
 
         }
@@ -46,7 +46,7 @@ class Tunjangan extends CI_Controller
 
         if ($validation->run()) {
             $gaji->update();
-            $this->session->set_flashdata('success', 'Berhasil diubah..');
+            $this->session->set_flashdata('success', 'Data has been changed');
             redirect('admin/tunjangan');
 
         }
@@ -60,7 +60,7 @@ class Tunjangan extends CI_Controller
         if (!isset($id)) show_404();
         
         if ($this->gaji_model->delete($id)) {
-            $this->session->set_flashdata('success', 'Berhasil dihapus..');
+            $this->session->set_flashdata('success', 'Data has been deleted');
             redirect(site_url('admin/tunjangan'));
         }
     }

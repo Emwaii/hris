@@ -38,7 +38,7 @@ hr.style13  {
 					<div class="card-header">
           <a href="<?php echo site_url('admin/karyawan') ?>" style="text-decoration:none;"><i class="fas fa-arrow-left"></i> Back</a>
 
-					<a href="#" class="float-right" id="print"style="text-decoration:none;"><i class="fas fa-print"></i> Print</a>
+					<!-- <a href="#" class="float-right" id="print"style="text-decoration:none;"><i class="fas fa-print"></i> Print</a> -->
       </div>
       <?php foreach($invo as $in):?>
 
