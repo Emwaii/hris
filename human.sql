@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2020 at 08:16 AM
+-- Generation Time: Jul 28, 2020 at 10:23 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -318,12 +318,12 @@ INSERT INTO `karyawan` (`karyawan_id`, `nama_lengkap`, `tanggal_masuk`, `pendidi
 ('5ef9a5f058aad', 'Babang Tamvan', '29-06-2020', 'S1 Informatika', 'Universitas Gajah Madha', 'Jakarta', '15-09-1999', 12345, 'Junaedy', 'Yeti', '', '', '', '', 'Jakarta', 'Jakarta', 'DKI Jakarta', 5, 'Jombor City', 'Yogyakarta', 'DI. Yogyakarta', 55285, 'babangtamvan@email.com', 'babangtamvandanberani@email.com', '-', 2, 'default.docx', 'default.docx', '3894442623.jpg', '', '', 'default.jpg'),
 ('5ef9ac95dc68c', 'Charlie Uchiha', '29-06-2020', 'D3 Sastra Inggris', 'Universitas Teknologi Yogyakarta', 'Jakarta', '22-05-1999', 12345, 'B', 'C', '', '', '', '', 'Yogyakarta', 'yogyakarta', 'DIY', 55285, 'Yogyakarta', 'Yogyakarta', 'DI. Yogyakarta', 55285, 'charlieuchiha@email.com', 'charliesharinggan@mail.com', '-', 2, 'default.docx', 'default.docx', 'Charly-ST12(1).jpg', '', '', 'default.jpg'),
 ('5efaed996f7b3', 'Andika', '30-06-2020', 'S1 Sastra Inggris', 'Universitas Gajah Madha', 'Batang', '17-07-1999', 123, 'Junaedhi', 'Yeti', '', '', '', '', 'Batang', 'Batang', 'Jawa tengah', 51271, 'Yogyakarta', 'Yogyakarta', 'DI. Yogyakarta', 55285, 'andhika@bubar.com', 'andhika@email.com', '-', 2, '1178-2606-1-PB.pdf', 'articleA-10-50-2.pdf', '3894442623.jpg', '', '', 'default.jpg'),
-('5f05551090b4d', 'Noval Akbar', '08-07-2020', 'S1 Informatika', 'Universitas Bisa Aja', 'Batang', '17-11-2010', 33250, 'a', 'b', '', '', '', '', 'Batang', 'Batang', 'Jawa tengah', 51271, 'Yogyakarta', 'Yogyakarta', 'DI. Yogyakarta', 55285, 'noval@email.com', 'novalakbar@mail.com', '-', 2, 'Kumpul_Tugas_Online-06.pdf', '5170411218_Muhamamd_yulianto_TugasAkhir.pdf', 'mimin.jpg', 'kontrak', '08-07-2021', '817452.png'),
+('5f05551090b4d', 'Noval Akbar', '08-07-2020', 'S1 Informatika', 'Universitas Bisa Aja', 'Batang', '17-11-2010', 33250, 'a', 'b', '1', '', '', '', 'Batang', 'Batang', 'Jawa tengah', 51271, 'Yogyakarta', 'Yogyakarta', 'DI. Yogyakarta', 55285, 'noval@email.com', 'novalakbar@mail.com', 'Pilih...', 2, 'Kumpul_Tugas_Online-06.pdf', '5170411218_Muhamamd_yulianto_TugasAkhir.pdf', 'mimin.jpg', 'kontrak', '', '817452.png'),
 ('5f0573281b646', 'Muhmmad yulianto', '08-07-2020', 'S1 Informatika', 'UTY', 'Batang', '17-07-1999', 123, 'a', 'b', '', '', '', '', 'Limpung', 'Batang', 'Jawa tengah', 51271, 'Yogyakarta', 'Yogyakarta', 'DI. Yogyakarta', 55285, 'yulianto@email.com', 'mr.yulianto17@gmail.com', '-', 2, '5170411218_Muhamamd_yulianto_TugasAkhir.pdf', 'Kumpul_Tugas_Online-06.pdf', '3894442623.jpg', 'probation', '08-07-2021', '817452.png'),
 ('5f0c4fc6390f8', 'Ilhman Junaedy', '13-07-2020', 'S1 Sastra Inggris', 'Universitas Sana Sini', 'Brebes', '18-05-1999', 2147483647, 'Edy', 'Yeti', '', '', '', '', 'Batang', 'Batang', 'Jawa tengah', 51271, 'Yogyakarta', 'Yogyakarta', 'DI.Yogyakarta', 55285, 'ilham@email.com', 'ilham@gmail.com', '-', 2, '5170411218_Muhamamd_yulianto_TugasAkhir.pdf', 'Kumpul_Tugas_Online-06.pdf', 'Charly-ST12(1).jpg', 'kontrak', '13-07-2021', '817452.png'),
 ('5f0c5204dbab0', 'Agung Ramadhan', '13-07-2020', 'S1 Informatika', 'Universitas Teknologi Yogyakarta', 'Ngawi', '23-12-1998', 2147483647, 'Edy', 'Yeti', '', '', '', '', 'Ngawi', 'Ngawi', 'Jawa timur', 55000, 'Yogyakarta', 'Yogyakarta', 'DI.Yogyakarta', 55285, 'agung@mail.com', 'agung@email.com', '-', 2, 'e33753eeb987a8a6c5c0613d95717777.pdf', '9e1fba6e5ac165d4b3267ad1ef1bcdd0.pdf', '8fc6042dae9d13613b3f7a65b601dc54.jpg', 'probation', '13-06-2021', 'c71bc443dceeede2814db858392900d7.png'),
 ('5f0c53ad25368', 'Allan Marzuki', '13-07-2020', 'S1 Informatika', 'UTEYE', 'Lombok', '13-02-1999', 2147483647, 'Marzuki', 'Mamah Yeti', '', '', '', '', 'Lombok', 'Lombok', 'NTB', 0, 'Yogyakarta', 'Yogyakarta', 'DI. Yogyakarta', 55285, 'allan@mail.com', 'allan@email.com', '-', 2, 'a866ada2d0b79c49f6ad99212fbc983f.pdf', 'a71dc206537592a5c31a31d422b22569.pdf', 'cc7c1ba9a4105c8f80cbe82d333f518e.jpg', 'tetap', NULL, '8d9e5f44262278fea03d426ae959dfe9.png'),
-('5f0d6d1fdd589', 'Muhammad yulianto', '14-07-2020', 'S1 Informatika', 'UTEYUE', 'Batang', '17-07-1999', 33250, 'a', 'b', '', '', '', '', 'Batang', 'Batang', 'Jawa tengah', 51271, 'Yogyakarta', 'Yogyakarta', 'DI. Yogyakarta', 552855, 'emwai@mail.com', 'mr.yulianto17@gmail.com', '-', 2, '9386e265fb8a448723c238de638fd83c.pdf', 'default.docx', '61c86fd44db58810ae4f340960449ce4.jpg', 'tetap', NULL, '42ea5fcb3cd548ff4129f81dd3de3351.pdf');
+('5f0d6d1fdd589', 'Muhammad yulianto', '14-07-2020', 'S1 Informatika', 'UTEYUE', 'Batang', '17-07-1999', 33250, 'a', 'b', 'c', '1', '1', '1', 'Batang', 'Batang', 'Jawa tengah', 51271, 'Yogyakarta', 'Yogyakarta', 'DI. Yogyakarta', 552855, 'emwai@mail.com', 'mr.yulianto17@gmail.com', 'Laki - laki', 2, '9386e265fb8a448723c238de638fd83c.pdf', 'default.docx', '61c86fd44db58810ae4f340960449ce4.jpg', 'Pilih...', '', '42ea5fcb3cd548ff4129f81dd3de3351.pdf');
 
 -- --------------------------------------------------------
 
@@ -524,7 +524,7 @@ INSERT INTO `rinhouse` (`id_inhouse`, `fullname`, `ttl`, `umur`, `domisili`, `no
 (6, 'Muhammad yulianto', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', 'dfc880b85192598e2d35845de44dc1d1.jpg', '05af5191b2fb41fc2dce5a593f629146.pdf', 'b0add99bc04dbc5cf8a215fbb7cd6b37.pdf', 'hey', 5000000, 4, '2020-07-07 00:00:00', '1', '0'),
 (7, 'Agung', 'Ngawi, 23 Desember 19988', 21, 'Yogyakarta', '088088088', 'e6530e87310b466ed0f8dc8b04b83106.jpg', '237de78a4243a96dbd267bb245ac3ee1.pdf', '9fed0fda86dbdcc681b56dd7c1d9c6ab.pdf', 'lala', 5000000, 3, '2020-07-07 00:00:00', '1', '0'),
 (8, 'Emwai', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', 'default.jpg', 'default.pdf', 'default.pdf', '', 5000000, 9, '2020-07-07 00:00:00', '1', '0'),
-(9, 'Emwai', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', 'default.jpg', 'default.pdf', 'default.pdf', '', 5000000, 1, '2020-07-07 00:00:00', '0', '0'),
+(9, 'Emwai', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', 'default.jpg', 'default.pdf', 'default.pdf', '', 5000000, 1, '2020-07-07 00:00:00', '1', ''),
 (10, 'Emwai', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', 'default.jpg', 'default.pdf', 'default.pdf', 'qwe', 3000000, 3, '2020-07-07 00:00:00', '1', '0'),
 (11, 'Agung', 'Ngawi, 23 Desember 19988', 21, 'Yogyakarta', '123', 'default.jpg', 'default.pdf', 'default.pdf', '', 3000000, 8, '2020-07-07 00:00:00', '1', '1'),
 (12, 'Agung', 'Ngawi, 23 Desember 19988', 21, 'Yogyakarta', '123', 'default.jpg', 'default.pdf', 'default.pdf', '', 5000000, 8, '2020-07-07 00:00:00', '1', '1'),
@@ -538,15 +538,15 @@ INSERT INTO `rinhouse` (`id_inhouse`, `fullname`, `ttl`, `umur`, `domisili`, `no
 (20, 'Muhammad yulianto', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', 'default.jpg', 'default.pdf', 'default.pdf', '', 5000000, 5, '2020-07-07 00:00:00', '1', '0'),
 (21, 'Muhammad yulianto', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', 'default.jpg', 'default.pdf', 'default.pdf', '', 5000000, 5, '2020-07-07 00:00:00', '1', '0'),
 (22, 'Muhammad yulianto', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', '956a83b7319ece39ca520b838c32fb12.jpg', 'ab2305f4fdc254b3eafee0bef92af3c5.pdf', 'fda956f2fe98e08bc08350412f93c6dc.pdf', 'hey kamu', 5000000, 8, '2020-07-07 00:00:00', '0', '1'),
-(23, 'Emwai', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', '47dae7c806870e0b531f9888cc93415c.jpg', '315e66fbc0014c3669f7aaf903d5588c.pdf', '286e029a551488583c0712de856836e1.pdf', 'I want test my skill', 3000000, 1, '2020-07-07 00:00:00', '0', '0'),
-(24, 'Agung', 'Ngawi, 23 Desember 19988', 21, 'Yogyakarta', '085228939407', '2c3b36c965bd578c7710c8c3a67b775a.jpg', '9da600562c338a3915d2939643992feb.pdf', 'a0808cd56f2a84e48db28dcc518948e5.pdf', '.', 5000000, 1, '2020-07-07 00:00:00', '0', '0'),
+(23, 'Emwai', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', '47dae7c806870e0b531f9888cc93415c.jpg', '315e66fbc0014c3669f7aaf903d5588c.pdf', '286e029a551488583c0712de856836e1.pdf', 'I want test my skill', 3000000, 1, '2020-07-07 00:00:00', '0', ''),
+(24, 'Agung', 'Ngawi, 23 Desember 19988', 21, 'Yogyakarta', '085228939407', '2c3b36c965bd578c7710c8c3a67b775a.jpg', '9da600562c338a3915d2939643992feb.pdf', 'a0808cd56f2a84e48db28dcc518948e5.pdf', '.', 5000000, 1, '2020-07-07 00:00:00', '0', ''),
 (25, 'Emwai', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', 'f2655f126710e348180e6364c72ac1d7.jpg', '6c2d7d96e3d64c5baf1ce3d7c8cfd907.pdf', 'b579846c779595c01e5c06ffca282105.pdf', 'i want test myself', 5000000, 2, '2020-07-07 00:00:00', '0', '1'),
 (26, 'Noval', 'Batang, 17 November 2010', 10, 'Batang', '000000000', 'a2f782b8b0210772a49eb4a1efa78a66.jpg', '9b90acacb76c43a8f264768e3a665ef6.pdf', '241998ac3dc26ce5cb9eba2ff755d725.pdf', 'lalala', 3000000, 9, '2020-07-07 21:58:09', '1', '0'),
 (27, 'Emwai', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', '8f12cf922ae28f6176fc1bfe9e05fd3f.jpg', 'bed31da7330044f8f5d6816c1190c678.pdf', 'b291fd80c9b653149897c0eba7868e6f.pdf', 'bla bla bla', 5000000, 7, '2020-07-08 07:41:19', '1', '0'),
 (28, 'Yulianto', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', 'b426e8786d7c489322a6ce7bec6b9358.jpg', '5636a08ab88869d781b23955f23f75fe.pdf', 'a4e331fcd358f75f3e5cd481b828b388.pdf', 'test', 5000000, 4, '2020-07-08 07:45:59', '1', '0'),
 (29, 'Muhammad yulianto', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', '2549a3de83bf1df7cc33d70d6011fd9f.jpg', '9c208ce82f574f211656899e46a78cb5.pdf', '43101f0b421cdd5c0bc49e7e8fe66ebc.pdf', 'bla bla bla bla', 5000000, 6, '2020-07-08 07:51:11', '1', '0'),
 (33, 'Muhammad yulianto', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', '49c504f37bd1554037afd06523025d8a.jpg', 'b65113178c1a807e6eb1a921352f90cc.pdf', '7652d14eb164d33f8dffb0ca4bf4de68.pdf', 'Hallo', 5000000, 8, '2020-07-13 22:51:56', '0', '0'),
-(36, 'Muhammad yulianto', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', '063cae7604718b95cb3f834acaba3bfe.jpg', '08b0e20c726620c5729edf906f9f2d48.pdf', 'b0fc4476a5db5ea4f08d3c3a1cfaffa7.pdf', 'haii', 5000000, 1, '2020-07-14 10:22:47', '0', '');
+(36, 'Muhammad yulianto', 'Batang, 17 juli 1999', 21, 'Yogyakarta', '085228939407', '063cae7604718b95cb3f834acaba3bfe.jpg', '08b0e20c726620c5729edf906f9f2d48.pdf', 'b0fc4476a5db5ea4f08d3c3a1cfaffa7.pdf', 'haii', 5000000, 1, '2020-07-14 10:22:47', '0', '1');
 
 -- --------------------------------------------------------
 
@@ -574,9 +574,6 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `full_name`, `phone`, `role`, `last_login`, `photo`, `created_at`) VALUES
 (6, 'mimin1', 'e1c1eff797379c0b13604e864d6940f0fd4ca634', 'myemwaii@gmail.com', 'Mimin Baik', '0808080808080', 'admin', '2020-07-13 17:10:07', 'mimin.jpg', '2020-07-13 17:10:07'),
 (7, 'superadmin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'miminganteng@email.com', 'Superadmin', '085228939407', 'superadmin', '2020-07-09 06:12:30', 'mimin.jpg', '2020-07-09 06:12:30'),
-(10, 'charlyuchiha', '36988d81163cc909325869489569d2cca5677d7a', 'charlyuchiha@email.com', 'Charly Uchiha', '080808080808', 'admin', '2020-06-30 06:12:39', 'Charly_Uchiha.jpg', '2020-06-30 06:12:39'),
-(11, 'handsomeman', '2891baceeef1652ee698294da0e71ba78a2a4064', 'babangtamvan@email.com', 'Babang tamvan dan berani', '0880880888', 'admin', '2020-06-30 06:16:56', 'Babang_tamvan_dan_berani.jpg', '2020-06-30 06:16:56'),
-(12, 'charieuchiha', '3da541559918a808c2402bba5012f6c60b27661c', 'charlie@email.com', 'Charlie Uchiha', '08500808908', 'admin', '2020-06-30 07:47:32', 'Charlie_Uchiha.jpg', '2020-06-30 07:47:32'),
 (13, 'emwai', '01b307acba4f54f55aafc33bb06bbbf6ca803e9a', 'm.yulianto17@gmail.com', 'Muhammad yulianto', '085228939407', 'admin', '2020-07-13 16:58:44', 'Muhammad_yulianto.jpg', '2020-07-13 16:58:44');
 
 -- --------------------------------------------------------
