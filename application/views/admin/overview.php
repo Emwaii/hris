@@ -263,34 +263,66 @@
 <div class="row">
 
 <!-- Area Chart -->
-<div class="col-xl-4 col-lg-5 ">
+<div class="col-xl-5 col-lg-5 ">
   <div class="card shadow mb-4">
     <!-- Card Header - Dropdown -->
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-      <h6 class="m-0 font-weight-bold text-primary">Coming Soon</h6>
+      <h6 class="m-0 font-weight-bold text-primary">List Job Vacancy</h6>
       <div class="dropdown no-arrow">
         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
           <div class="dropdown-header">Dropdown Menu:</div>
-          <!-- <a class="dropdown-item" href="<?php echo base_url('admin/project')?>">Open</a> -->
-          <a class="dropdown-item" data-toggle="collapse" href="#mbuh" role="button" aria-expanded="false" aria-controls="mbuh">Hide</a>
+          <a class="dropdown-item" href="<?php echo base_url('admin/ilowongan')?>">Open</a>
+          <a class="dropdown-item" data-toggle="collapse" href="#listjob" role="button" aria-expanded="false" aria-controls="listkar">Hide</a>
           <!-- <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a> -->
         </div>
       </div>
     </div>
-     
-      <div class="card-body flex-row collapse multi-collapse" id="mbuh">
-      <!-- <canvas id="chartproject"  width="100%"></canvas> -->
-     
+    <!-- Card Body -->
+    <div class="card-body flex-row collapse show multi-collapse" id="listjob">
+      <div class="table-renponsive ">
+        <table class="table table-hover table-sm table-striped example" id="job" width="100%">
+        <thead class="">
+            <tr>
+              <th class="align-middle" style="text-align:center">No</th>
+              <th class="align-middle" style="text-align:center">Job Vacancy</th>
+              <th class="align-middle" style="text-align:center">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+          <?php $i=1; foreach($lowongan as $low):?>
+          <tr>
+              <td style="text-align:center" >
+                  <?php echo $i++ ?>
+              </td>
+              <td>
+                   <?php echo substr($low->ilowongan_alias, 0, 26) ?>
+              </td>
+              <td>
+                <?php
+                        if ($low->is_active == 1){
+                          echo "<span class='badge badge-success custom'>Active</span>";
+                        }else{
+                          echo "<span class='badge badge-info custom'>Unactive</span>";
+                        }
+                        
+                  ?>
+              </td>
+          </tr>
+          <?php endforeach;?>
+        </tbody>
+        </table>
+      </div>
+      <div></div>
     </div>
   </div>
 </div>
 
 <!-- Pie Chart -->
-<div class="col-xl-8 col-lg-7 ">
+<div class="col-xl-7 col-lg-7 ">
   <div class="card shadow mb-4">
     <!-- Card Header - Dropdown -->
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -391,6 +423,7 @@ $("#toastBasicTrigger").on("click", function(e) {
     $("#toastBasic").toast("show");
 });
 </script>
+
 <script>
 //   $(document).ready(function() {
 //     $('#tabel').DataTable( {
@@ -430,7 +463,21 @@ $(document).ready(function () {
   $('.dataTables_length').addClass('bs-select');
   });
 </script>
-
+<script>
+$(document).ready(function () {
+  $('#job').DataTable({
+    
+        "scrollY": "280px",
+        "scrollCollapse": false,
+        "sDom":'lrtip',
+        "lengthChange": false,
+        "paging":   false,
+        "ordering": true,
+        "info":     false
+  });
+  $('.dataTables_length').addClass('bs-select');
+  });
+</script>
 <script>
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';

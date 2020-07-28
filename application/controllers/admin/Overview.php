@@ -46,6 +46,8 @@ class Overview extends CI_Controller {
 		$karyawan = $this->karyawan_model->getAll();
 		$free = $this->freelance_model->getAll();
 		$list= $this->listkarr();
+		$lowongan= $this->lowongan();
+
 		$data=['januari' => $januari, 'februari' => $februari, 'maret' => $maret,
 		'april' => $april, 'mei' => $mei, 'juni' => $juni,
 		'juli' => $juli, 'agustus' => $agustus, 'september' => $september,
@@ -54,7 +56,7 @@ class Overview extends CI_Controller {
 		'april1' => $april1, 'mei1' => $mei1, 'juni1' => $juni1,
 		'juli1' => $juli1, 'agustus1' => $agustus1, 'september1' => $september1,
 		'oktober1' => $oktober1, 'november1' => $november1, 'desember1' => $desember1,
-		'maxchart' => $maxchart, 'thnow' => $thnow,'karyawan'=>$karyawan,'payrol'=> $payrol,'free'=> $free,'list'=>$list];
+		'maxchart' => $maxchart, 'thnow' => $thnow,'karyawan'=>$karyawan,'lowongan'=>$lowongan,'payrol'=> $payrol,'free'=> $free,'list'=>$list];
         $this->load->view("admin/overview", $data);
 	}
 
@@ -172,5 +174,9 @@ class Overview extends CI_Controller {
         karyawan.tgl_habis,jabatan.jabatan_name as jn FROM karyawan join jabatan on 
         karyawan.jabatan_id = jabatan.jabatan_id where karyawan.jenis_karyawan = 'kontrak' 
         or karyawan.jenis_karyawan = 'probation'")->result();
+	}
+	
+	public function lowongan(){
+        return $this->db->query("SELECT `id_ilowongan`, `ilowongan_name`, `ilowongan_alias`, `is_active` FROM `ilowongan`")->result();
     }
 }
