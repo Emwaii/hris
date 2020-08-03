@@ -113,51 +113,51 @@ class Overview extends CI_Controller {
 
 	public function januari1() 
 	{
-		return $this->db->query("SELECT COUNT(id_inhouse) as sum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=1")->result();
+		return $this->db->query("SELECT COUNT(id_inhouse) as ssum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=1")->result();
 	}
 	public function februari1() 
 	{
-		return $this->db->query("SELECT COUNT(id_inhouse) as sum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=2")->result();
+		return $this->db->query("SELECT COUNT(id_inhouse) as ssum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=2")->result();
 	}
 	public function maret1() 
 	{		
-		return $this->db->query("SELECT COUNT(id_inhouse) as sum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=3")->result();
+		return $this->db->query("SELECT COUNT(id_inhouse) as ssum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=3")->result();
 	}
 	public function april1() 
 	{
-		return $this->db->query("SELECT COUNT(id_inhouse) as sum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=4")->result();
+		return $this->db->query("SELECT COUNT(id_inhouse) as ssum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=4")->result();
 	}
 	public function mei1() 
 	{
-		return $this->db->query("SELECT COUNT(id_inhouse) as sum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=5")->result();
+		return $this->db->query("SELECT COUNT(id_inhouse) as ssum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=5")->result();
 	}
 	public function juni1() 
 	{
-		return $this->db->query("SELECT COUNT(id_inhouse) as sum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=6")->result();
+		return $this->db->query("SELECT COUNT(id_inhouse) as ssum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=6")->result();
 	}
 	public function juli1() 
 	{
-		return $this->db->query("SELECT COUNT(id_inhouse) as sum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=7")->result();
+		return $this->db->query("SELECT COUNT(id_inhouse) as ssum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=7")->result();
 	}
 	public function agustus1() 
 	{
-		return $this->db->query("SELECT COUNT(id_inhouse) as sum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=8")->result();
+		return $this->db->query("SELECT COUNT(id_inhouse) as ssum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=8")->result();
 	}
 	public function september1() 
 	{
-		return $this->db->query("SELECT COUNT(id_inhouse) as sum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=9")->result();
+		return $this->db->query("SELECT COUNT(id_inhouse) as ssum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=9")->result();
 	}
 	public function oktober1() 
 	{
-		return $this->db->query("SELECT COUNT(id_inhouse) as sum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=10")->result();
+		return $this->db->query("SELECT COUNT(id_inhouse) as ssum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=10")->result();
 	}
 	public function november1() 
 	{
-		return $this->db->query("SELECT COUNT(id_inhouse) as sum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=11")->result();
+		return $this->db->query("SELECT COUNT(id_inhouse) as ssum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=11")->result();
 	}
 	public function desember1() 
 	{
-		return $this->db->query("SELECT COUNT(id_inhouse) as sum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=12")->result();
+		return $this->db->query("SELECT COUNT(id_inhouse) as ssum from rinhouse WHERE year(`tanggal_submit`)=year(now()) AND month(`tanggal_submit`)=12")->result();
 	}
 
 	public function maxchart()

@@ -180,7 +180,6 @@
         </div>
     </li>
     
-    <?php if($this->fungsi->user_login()->role == "superadmin") { ?>
       <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'user' ? 'active': '' ?>">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
@@ -200,14 +199,15 @@
             <div class="dropdown-menu animate slideIn" aria-labelledby="pagesDropdown">
             <a class="dropdown-item" href="<?php echo site_url('admin/ilowongan') ?>">Opening In-House</a>
             <a class="dropdown-item" href="<?php echo site_url('admin/hlowongan') ?>">Banner Opening</a>
+           <?php if($this->fungsi->user_login()->role == "superadmin") { ?>
             <a class="dropdown-item" href="<?php echo site_url('admin/email') ?>">Email</a>
-
+            <?php }?>
             <!-- #################### test ##################### -->
             </div>
       </li>
 
    
 
-    <?php }?>
+    
 </ul>
     

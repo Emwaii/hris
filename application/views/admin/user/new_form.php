@@ -92,8 +92,13 @@
 							<div class="form-group">
   								<label for="name">Role<?php echo"<font color ='red'>*</font>"?></label>
 								  <select name="role" class="form-control">
-									<option value="admin">Admin</option>
-									<option value="superadmin">Superadmin</option>
+								  <!-- <option disable selected value="">Choose One...</option> -->
+									<option value="admin" selected>Admin</option>
+									<?php if($this->fungsi->user_login()->role == "admin") { ?>
+										<option value="superadmin" disabled>Superadmin</option>
+									<?php }else{?>
+										<option value="superadmin">Superadmin</option>
+									<?php }?>
 								</select>
 							</div>
 

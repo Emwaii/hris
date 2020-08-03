@@ -537,53 +537,53 @@ var myLineChart = new Chart(ctx, {
 		  '<?php echo $des->jum ?>'
 		<?php endforeach; ?>],
       }, {
-            label: "Total Applicant Inhouse",
-            lineTension: 0.3,
-            backgroundColor: "rgba(255, 145, 0,0.2)",
-            borderColor: "rgba(255, 145, 0,1)",
-            pointRadius: 5,
-            pointBackgroundColor: "rgba(255, 145, 0,1)",
-            pointBorderColor: "rgba(255,255,255,0.8)",
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(255, 145, 0,1)",
-            pointHitRadius: 50,
-            pointBorderWidth: 2,
-            data: [
+      label: "Total Applicant Inhouse",
+      lineTension: 0.3,
+      backgroundColor: "rgba(255, 145, 0,0.2)",
+      borderColor: "rgba(255, 145, 0,1)",
+      pointRadius: 5,
+      pointBackgroundColor: "rgba(255, 145, 0,1)",
+      pointBorderColor: "rgba(255,255,255,0.8)",
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: "rgba(255, 145, 0,1)",
+      pointHitRadius: 50,
+      pointBorderWidth: 2,
+      data: [
     <?php foreach ($januari1 as $jan1): ?>
-		  '<?php echo $jan1->sum ?>',
+		  '<?php echo $jan1->ssum ?>',
 		<?php endforeach; ?>
 		<?php foreach ($februari1 as $feb1): ?>
-		  '<?php echo $feb1->sum ?>',
+		  '<?php echo $feb1->ssum ?>',
 		<?php endforeach; ?>
 		<?php foreach ($maret1 as $mar1): ?>
-		  '<?php echo $mar1->sum ?>',
+		  '<?php echo $mar1->ssum ?>',
 		<?php endforeach; ?>
 		<?php foreach ($april1 as $ap1): ?>
-		  '<?php echo $ap1->sum ?>',
+		  '<?php echo $ap1->ssum ?>',
 		<?php endforeach; ?>
 		<?php foreach ($mei1 as $mei1): ?>
-		  '<?php echo $mei1->sum ?>',
+		  '<?php echo $mei1->ssum ?>',
 		<?php endforeach; ?>
 		<?php foreach ($juni1 as $jun1): ?>
-		  '<?php echo $jun1->sum ?>',
+		  '<?php echo $jun1->ssum ?>',
 		<?php endforeach; ?>
 		<?php foreach ($juli1 as $jul1): ?>
-		  '<?php echo $jul1->sum ?>',
+		  '<?php echo $jul1->ssum ?>',
 		<?php endforeach; ?>
 		<?php foreach ($agustus1 as $ag1): ?>
-		  '<?php echo $ag1->sum ?>',
+		  '<?php echo $ag1->ssum ?>',
 		<?php endforeach; ?>
 		<?php foreach ($september1 as $sep1): ?>
-		  '<?php echo $sep1->sum ?>',
+		  '<?php echo $sep1->ssum ?>',
 		<?php endforeach; ?>
 		<?php foreach ($oktober1 as $ok1): ?>
-		  '<?php echo $ok1->sum ?>',
+		  '<?php echo $ok1->ssum ?>',
 		<?php endforeach; ?>
 		<?php foreach ($november1 as $nov1): ?>
-		  '<?php echo $nov1->sum ?>',
+		  '<?php echo $nov1->ssum ?>',
 		<?php endforeach; ?>
 		<?php foreach ($desember1 as $des1): ?>
-		  '<?php echo $des1->sum ?>'
+		  '<?php echo $des1->ssum ?>'
 		<?php endforeach; ?>],
 
             // Changes this dataset to become a line

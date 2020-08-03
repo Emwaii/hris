@@ -98,9 +98,14 @@
 							<div class="form-group">
   								<label for="name">Role<?php echo"<font color ='red'>*</font>"?></label>
 								  <select name="role" class="form-control">
-									<option value="admin"<?php if($user->role == "admin") echo 'selected="selected"'; ?>>Admin</option>
-									<option value="superadmin" <?php if($user->role == "superadmin") echo 'selected="selected"'; ?>>Superadmin</option>
-								</select>
+								  	<?php if($this->fungsi->user_login()->role == "admin") { ?>
+										<option value="admin"<?php if($user->role == "admin") echo 'selected="selected"'; ?>>Admin</option>
+										<option value="superadmin" disabled <?php if($user->role == "superadmin") echo 'selected="selected"'; ?>>Superadmin</option>
+									<?php }else{?>
+										<option value="admin"<?php if($user->role == "admin") echo 'selected="selected"'; ?>>Admin</option>
+										<option value="superadmin" <?php if($user->role == "superadmin") echo 'selected="selected"'; ?>>Superadmin</option>
+									<?php }?>
+									</select>
 							</div>
 
 							<input class="btn btn-success w-100" type="submit" name="btn" value="Save changes" />

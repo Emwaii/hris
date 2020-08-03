@@ -70,11 +70,18 @@
 											<?php echo $usr->role ?>
 										</td>
 										<td width="90" style="text-align:center">
-											
-											<a href="<?php echo site_url('admin/user/edit/'.$usr->user_id) ?>"
-											class="btn btn-small btn-info" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Edit"><i class="fas fa-edit"></i></a>
-											<a onclick="deleteConfirm('<?php echo site_url('admin/user/delete/'.$usr->user_id) ?>')"
-											href="#!" class="btn btn-small btn-danger" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Delete"><i class="fas fa-trash"></i></a>
+										<?php if(($this->fungsi->user_login()->role == "admin") && ($usr->role == "superadmin") )  { ?>
+										<a href="<?php echo site_url('admin/user/edit/'.$usr->user_id) ?>"
+										class="btn btn-small btn-info disabled" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Edit"><i class="fas fa-edit"></i></a>
+										<a onclick="deleteConfirm('<?php echo site_url('admin/user/delete/'.$usr->user_id) ?>')"
+										href="#!" class="btn btn-small btn-danger disabled" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Delete"><i class="fas fa-trash"></i></a>
+										
+										<?php } else{?>
+										<a href="<?php echo site_url('admin/user/edit/'.$usr->user_id) ?>"
+										class="btn btn-small btn-info"  data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Edit"><i class="fas fa-edit"></i></a>
+										<a onclick="deleteConfirm('<?php echo site_url('admin/user/delete/'.$usr->user_id) ?>')"
+										href="#!" class="btn btn-small btn-danger" data-placement="bottom" data-tooltip="tooltip" style="width: 41px;" title="Delete"><i class="fas fa-trash"></i></a>
+										<?php }?>
 										</td>
 									</tr>
 									<?php endforeach; ?>
