@@ -22,7 +22,7 @@ http://hris.rf.gd
   
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://github.com/Emwaii/hris/blob/master/dashboard.png)
 
   
 ## Used By
